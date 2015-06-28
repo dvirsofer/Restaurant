@@ -12,6 +12,11 @@
 @interface CheckViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet CheckTableViewCell *checkCell;
-@property (strong, nonatomic) IBOutlet UITableView *checkTableView;
+@property (weak, nonatomic) IBOutlet UITableView *checkTableView;
+
+@property (nonatomic, strong) NSArray *foodImages;
+@property (nonatomic, strong) NSArray *foodNames;
+@property (nonatomic, strong) NSArray *foodPrices;
+@property (nonatomic, strong) NSArray *foodTargets;
 
 @end

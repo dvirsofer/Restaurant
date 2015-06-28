@@ -17,10 +17,41 @@
 @synthesize checkCell = _checkCell;
 @synthesize checkTableView = _checkTableView;
 
+@synthesize foodImages = _foodImages;
+@synthesize foodNames = _foodNames;
+@synthesize foodPrices = _foodPrices;
+@synthesize foodTargets = _foodTargets;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.foodNames = [[NSArray alloc]
+                      initWithObjects:@"Tuna",
+                      @"BMW",
+                      @"Toyota",
+                      @"Volvo",
+                      @"Smart", nil];
+    
+    self.foodPrices = [[NSArray alloc]
+                       initWithObjects:@"1.50",
+                       @"1.60",
+                       @"10.80",
+                       @"5.80",
+                       @"9.60", nil];
+    
+    self.foodTargets = [[NSArray alloc]
+                        initWithObjects:@"Me",
+                        @"Itzik",
+                        @"Avi",
+                        @"Me",
+                        @"Avi", nil];
+    
+    self.foodImages = [[NSArray alloc]
+                       initWithObjects:@"dan_logo_x1.png",
+                       @"dan_logo_x1.png",
+                       @"dan_logo_x1.png",
+                       @"dan_logo_x1.png",
+                       @"dan_logo_x1.png", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,14 +59,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.foodNames count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
- 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"checkTableCell";
     
     CheckTableViewCell *cell = (CheckTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -51,7 +84,7 @@
                 reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
+    // Configure the cell
     cell.foodPrice.text = [self.foodPrices
                            objectAtIndex: [indexPath row]];
     
@@ -65,9 +98,6 @@
                           [self.foodImages objectAtIndex: [indexPath row]]];
     
     cell.foodImage.image = foodPhoto;
-    
-    return cell;
-
     
     return cell;
 }
