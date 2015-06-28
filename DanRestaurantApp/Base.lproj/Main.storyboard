@@ -247,12 +247,17 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="delegate" destination="JHt-cr-cCa" id="RFr-Li-i13"/>
+                                    <outlet property="dataSource" destination="JHt-cr-cCa" id="Bu8-4c-ZOU"/>
+                                    <outlet property="delegate" destination="JHt-cr-cCa" id="lcT-UG-QTq"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="checkCell" destination="4AS-MW-O7s" id="VK8-rO-Q2p"/>
+                        <outlet property="checkTableView" destination="Mia-l5-D4Q" id="ZsG-tA-gfk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Wd-GU-X9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

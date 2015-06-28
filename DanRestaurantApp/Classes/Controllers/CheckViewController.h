@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CheckTableViewController.h"
+#import "CheckTableViewCell.h"
 
-@interface CheckViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface CheckViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet CheckTableViewCell *checkCell;
+@property (strong, nonatomic) IBOutlet UITableView *checkTableView;
 
 @end
