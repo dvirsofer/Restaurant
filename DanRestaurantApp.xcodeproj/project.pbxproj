@@ -10,7 +10,6 @@
 		1C4BF4961B3E9EF900D99F3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF4951B3E9EF900D99F3B /* main.m */; };
 		1C4BF4991B3E9EF900D99F3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF4981B3E9EF900D99F3B /* AppDelegate.m */; };
 		1C4BF49C1B3E9EF900D99F3B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF49B1B3E9EF900D99F3B /* ViewController.m */; };
-		1C4BF49F1B3E9EF900D99F3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BF49D1B3E9EF900D99F3B /* Main.storyboard */; };
 		1C4BF4A11B3E9EF900D99F3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BF4A01B3E9EF900D99F3B /* Images.xcassets */; };
 		1C4BF4A41B3E9EF900D99F3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BF4A21B3E9EF900D99F3B /* LaunchScreen.xib */; };
 		1C4BF4B01B3E9EF900D99F3B /* DanRestaurantAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF4AF1B3E9EF900D99F3B /* DanRestaurantAppTests.m */; };
@@ -66,7 +65,6 @@
 		1C4BF4981B3E9EF900D99F3B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1C4BF49A1B3E9EF900D99F3B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1C4BF49B1B3E9EF900D99F3B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1C4BF49E1B3E9EF900D99F3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C4BF4A01B3E9EF900D99F3B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1C4BF4A31B3E9EF900D99F3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1C4BF4A91B3E9EF900D99F3B /* DanRestaurantAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanRestaurantAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,7 +155,6 @@
 				1C4BF4981B3E9EF900D99F3B /* AppDelegate.m */,
 				1C4BF49A1B3E9EF900D99F3B /* ViewController.h */,
 				1C4BF49B1B3E9EF900D99F3B /* ViewController.m */,
-				1C4BF49D1B3E9EF900D99F3B /* Main.storyboard */,
 				1C4BF4A01B3E9EF900D99F3B /* Images.xcassets */,
 				1C4BF4A21B3E9EF900D99F3B /* LaunchScreen.xib */,
 				1C4BF4931B3E9EF900D99F3B /* Supporting Files */,
@@ -399,7 +396,6 @@
 				1C4BF4E51B3EA40600D99F3B /* icon87.png in Resources */,
 				1C4BF4DF1B3EA40600D99F3B /* icon180.png in Resources */,
 				1C4BF51F1B3EC73500D99F3B /* dan_logo_x1.png in Resources */,
-				1C4BF49F1B3E9EF900D99F3B /* Main.storyboard in Resources */,
 				1C4BF4EB1B3EA40600D99F3B /* btn@3x.png in Resources */,
 				1C4BF4F01B3EA40600D99F3B /* tile@2x.png in Resources */,
 				1C4BF4F11B3EA40600D99F3B /* tile@3x.png in Resources */,
@@ -462,14 +458,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1C4BF49D1B3E9EF900D99F3B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1C4BF49E1B3E9EF900D99F3B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1C4BF4A21B3E9EF900D99F3B /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
