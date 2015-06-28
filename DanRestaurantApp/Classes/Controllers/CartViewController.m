@@ -116,7 +116,7 @@
     }
     
     //**************************** TODO ****************************//
-    // Remove from database + update the sum //
+    // Remove from database + update the Sum here //
     
     [self.cartTableView reloadData];
 }
