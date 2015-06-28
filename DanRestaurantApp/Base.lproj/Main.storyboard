@@ -21,14 +21,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="dan_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ljO-QC-has">
                                 <rect key="frame" x="271" y="84" width="58" height="36"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="מספר אישי" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1t-fL-utg">
-                                <rect key="frame" x="200" y="155" width="200" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="568" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="מספר אישי" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1t-fL-utg">
+                                <rect key="frame" x="16" y="155" width="568" height="30"/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="תעודת זהות" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dgy-f4-Poo">
-                                <rect key="frame" x="200" y="193" width="200" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="568" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="תעודת זהות" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dgy-f4-Poo">
+                                <rect key="frame" x="16" y="193" width="568" height="30"/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -40,11 +40,8 @@
                                 <color key="highlightedColor" red="0.015686275440000001" green="0.33333334329999997" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYF-Wy-YRS">
-                                <rect key="frame" x="270" y="285" width="60" height="30"/>
+                                <rect key="frame" x="278" y="231" width="44" height="30"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="gIT-n9-hV1"/>
-                                </constraints>
                                 <state key="normal" title="התחבר">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -62,52 +59,19 @@
                         <color key="backgroundColor" red="0.08235294118" green="0.28627450980000002" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="AYL-9L-fiX" firstAttribute="trailing" secondItem="56V-JN-edo" secondAttribute="trailingMargin" id="0oH-UP-36t"/>
-                            <constraint firstItem="rYF-Wy-YRS" firstAttribute="centerX" secondItem="y1t-fL-utg" secondAttribute="centerX" id="0tv-BJ-KFH"/>
-                            <constraint firstItem="rYF-Wy-YRS" firstAttribute="top" secondItem="y1t-fL-utg" secondAttribute="bottom" constant="93" id="2tU-Ah-6iv"/>
-                            <constraint firstAttribute="centerY" secondItem="rYF-Wy-YRS" secondAttribute="centerY" id="4GT-5e-37X"/>
+                            <constraint firstAttribute="centerX" secondItem="rYF-Wy-YRS" secondAttribute="centerX" id="3Oo-lQ-Bek"/>
                             <constraint firstAttribute="centerX" secondItem="ljO-QC-has" secondAttribute="centerX" id="4Km-Fb-JSr"/>
-                            <constraint firstItem="Dgy-f4-Poo" firstAttribute="top" secondItem="ljO-QC-has" secondAttribute="bottom" constant="73" id="5d8-Eb-o1M"/>
-                            <constraint firstAttribute="centerX" secondItem="rYF-Wy-YRS" secondAttribute="centerX" id="5en-R8-6Js"/>
-                            <constraint firstAttribute="centerX" secondItem="y1t-fL-utg" secondAttribute="centerX" id="60D-Hj-kkx"/>
-                            <constraint firstItem="y1t-fL-utg" firstAttribute="top" secondItem="ljO-QC-has" secondAttribute="bottom" constant="29" id="EXF-me-LCd"/>
-                            <constraint firstItem="y1t-fL-utg" firstAttribute="top" secondItem="ljO-QC-has" secondAttribute="bottom" constant="35" id="JUa-Qb-9sl"/>
-                            <constraint firstItem="rYF-Wy-YRS" firstAttribute="centerX" secondItem="ljO-QC-has" secondAttribute="centerX" id="M2H-Ay-wBw"/>
                             <constraint firstItem="AYL-9L-fiX" firstAttribute="top" secondItem="4zS-UM-7vn" secondAttribute="bottom" constant="8" id="OOQ-bX-sS9"/>
-                            <constraint firstItem="rYF-Wy-YRS" firstAttribute="centerY" secondItem="56V-JN-edo" secondAttribute="centerY" id="Ru1-z4-uxJ"/>
-                            <constraint firstItem="rYF-Wy-YRS" firstAttribute="top" secondItem="Dgy-f4-Poo" secondAttribute="bottom" constant="49" id="WrL-Hr-lqR"/>
-                            <constraint firstAttribute="centerX" secondItem="rYF-Wy-YRS" secondAttribute="centerX" id="bz3-0g-Q1M"/>
-                            <constraint firstItem="rYF-Wy-YRS" firstAttribute="top" secondItem="Dgy-f4-Poo" secondAttribute="bottom" constant="62" id="cQp-0U-7Dq"/>
-                            <constraint firstItem="y1t-fL-utg" firstAttribute="top" secondItem="56V-JN-edo" secondAttribute="top" constant="155" id="fju-hK-xJu"/>
-                            <constraint firstAttribute="centerX" secondItem="Dgy-f4-Poo" secondAttribute="centerX" id="mK7-Fz-1X2"/>
-                            <constraint firstItem="Dgy-f4-Poo" firstAttribute="top" secondItem="y1t-fL-utg" secondAttribute="bottom" constant="14" id="nCF-2P-9Do"/>
-                            <constraint firstItem="rYF-Wy-YRS" firstAttribute="centerX" secondItem="Dgy-f4-Poo" secondAttribute="centerX" id="oGL-Qh-Yf4"/>
+                            <constraint firstItem="rYF-Wy-YRS" firstAttribute="top" secondItem="Dgy-f4-Poo" secondAttribute="bottom" constant="8" id="QWN-4n-mih"/>
+                            <constraint firstItem="Dgy-f4-Poo" firstAttribute="leading" secondItem="56V-JN-edo" secondAttribute="leadingMargin" id="Qht-Cq-BPH"/>
+                            <constraint firstItem="y1t-fL-utg" firstAttribute="trailing" secondItem="56V-JN-edo" secondAttribute="trailingMargin" id="emv-kE-uxL"/>
+                            <constraint firstItem="Dgy-f4-Poo" firstAttribute="trailing" secondItem="56V-JN-edo" secondAttribute="trailingMargin" id="hjZ-al-3Ej"/>
+                            <constraint firstItem="y1t-fL-utg" firstAttribute="leading" secondItem="56V-JN-edo" secondAttribute="leadingMargin" id="nxc-R9-Ca5"/>
+                            <constraint firstItem="Dgy-f4-Poo" firstAttribute="top" secondItem="y1t-fL-utg" secondAttribute="bottom" constant="8" id="rEK-xT-N4d"/>
+                            <constraint firstItem="y1t-fL-utg" firstAttribute="top" secondItem="ljO-QC-has" secondAttribute="bottom" constant="35" id="tq2-qt-rh4"/>
                             <constraint firstItem="AYL-9L-fiX" firstAttribute="leading" secondItem="56V-JN-edo" secondAttribute="leadingMargin" id="vm1-BH-daf"/>
                             <constraint firstItem="ljO-QC-has" firstAttribute="top" secondItem="AYL-9L-fiX" secondAttribute="bottom" constant="8" id="zsB-MJ-Klj"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="60D-Hj-kkx"/>
-                                <exclude reference="EXF-me-LCd"/>
-                                <exclude reference="5d8-Eb-o1M"/>
-                                <exclude reference="mK7-Fz-1X2"/>
-                                <exclude reference="nCF-2P-9Do"/>
-                                <exclude reference="2tU-Ah-6iv"/>
-                                <exclude reference="WrL-Hr-lqR"/>
-                                <exclude reference="bz3-0g-Q1M"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="60D-Hj-kkx"/>
-                                <include reference="EXF-me-LCd"/>
-                                <exclude reference="5d8-Eb-o1M"/>
-                                <include reference="mK7-Fz-1X2"/>
-                                <include reference="nCF-2P-9Do"/>
-                                <include reference="2tU-Ah-6iv"/>
-                                <include reference="WrL-Hr-lqR"/>
-                                <include reference="bz3-0g-Q1M"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gux-77-bIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
