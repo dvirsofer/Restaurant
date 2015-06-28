@@ -112,13 +112,13 @@
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
         [self.foodNames removeObjectAtIndex:indexPath.row];
-        [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationFade];
+        [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
     //**************************** TODO ****************************//
     // Remove from database + update the Sum here //
     
-    [self.cartTableView reloadData];
+    [self.cartTableView endUpdates];
 }
 
 -(IBAction)editButtonClicked:(id)sender
