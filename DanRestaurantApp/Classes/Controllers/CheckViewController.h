@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CheckTableViewController.h"
 
-@interface CheckViewController : UIViewController
+@interface CheckViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak,nonatomic) IBOutlet CheckTableViewController *tableViewController;
 
 @end
