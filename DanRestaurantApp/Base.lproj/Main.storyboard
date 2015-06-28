@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oYU-oJ-nnq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oYU-oJ-nnq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -156,7 +156,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="קבלה" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIU-3R-pDa">
                                 <rect key="frame" x="257" y="20" width="87" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Mia-l5-D4Q">
@@ -172,7 +172,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="60" placeholderIntrinsicHeight="21" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbd-Vs-wVn">
                                                     <rect key="frame" x="187" y="11" width="31" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjl-Al-iZP">
@@ -182,7 +182,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="oaA-ED-Wyz"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -216,7 +216,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCp-V1-CuO">
                                                     <rect key="frame" x="439" y="11" width="31" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -339,13 +339,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="סך הכל:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHW-jZ-2Ch">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14.70 ש״ח" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFB-3w-A5c">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAO-dH-vzo">
@@ -354,7 +354,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-J5-g42">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-J5-g42">
                                 <rect key="frame" x="16" y="76" width="568" height="288"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -367,7 +367,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="60" placeholderIntrinsicHeight="21" text="Target" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-R2-Fwm">
                                                     <rect key="frame" x="187" y="11" width="31" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKP-H9-PQQ">
@@ -377,7 +377,7 @@
                                                         <constraint firstAttribute="width" constant="100" id="hLF-93-rus"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -411,7 +411,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfT-L6-Lcj">
                                                     <rect key="frame" x="439" y="11" width="31" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -537,14 +537,6 @@
                                 <exclude reference="MJW-gI-RRw"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="2vh-Lj-Lin"/>
-                                <exclude reference="GGd-94-ovj"/>
-                                <exclude reference="Izw-2R-kF7"/>
-                                <exclude reference="otu-tc-O2M"/>
-                                <exclude reference="2Ml-m0-nHZ"/>
-                                <exclude reference="SMP-1P-Wjz"/>
-                                <exclude reference="aUj-0T-MTP"/>
-                                <exclude reference="vBb-kU-Q9Y"/>
                                 <exclude reference="Czb-CF-6mA"/>
                                 <exclude reference="Jaq-Aq-XV3"/>
                                 <exclude reference="fIn-6G-yIm"/>
@@ -555,6 +547,14 @@
                                 <exclude reference="l8d-hF-jam"/>
                                 <exclude reference="47g-Ll-xX2"/>
                                 <exclude reference="jGc-mt-hdr"/>
+                                <exclude reference="2vh-Lj-Lin"/>
+                                <exclude reference="GGd-94-ovj"/>
+                                <exclude reference="Izw-2R-kF7"/>
+                                <exclude reference="otu-tc-O2M"/>
+                                <exclude reference="2Ml-m0-nHZ"/>
+                                <exclude reference="SMP-1P-Wjz"/>
+                                <exclude reference="aUj-0T-MTP"/>
+                                <exclude reference="vBb-kU-Q9Y"/>
                                 <exclude reference="ba4-Us-How"/>
                             </mask>
                         </variation>
@@ -566,14 +566,6 @@
                                 <include reference="MJW-gI-RRw"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="2vh-Lj-Lin"/>
-                                <include reference="GGd-94-ovj"/>
-                                <include reference="Izw-2R-kF7"/>
-                                <include reference="otu-tc-O2M"/>
-                                <include reference="2Ml-m0-nHZ"/>
-                                <include reference="SMP-1P-Wjz"/>
-                                <include reference="aUj-0T-MTP"/>
-                                <include reference="vBb-kU-Q9Y"/>
                                 <include reference="Czb-CF-6mA"/>
                                 <include reference="Jaq-Aq-XV3"/>
                                 <include reference="fIn-6G-yIm"/>
@@ -584,6 +576,14 @@
                                 <include reference="l8d-hF-jam"/>
                                 <include reference="47g-Ll-xX2"/>
                                 <include reference="jGc-mt-hdr"/>
+                                <exclude reference="2vh-Lj-Lin"/>
+                                <include reference="GGd-94-ovj"/>
+                                <include reference="Izw-2R-kF7"/>
+                                <include reference="otu-tc-O2M"/>
+                                <include reference="2Ml-m0-nHZ"/>
+                                <include reference="SMP-1P-Wjz"/>
+                                <include reference="aUj-0T-MTP"/>
+                                <include reference="vBb-kU-Q9Y"/>
                                 <include reference="ba4-Us-How"/>
                             </mask>
                         </variation>
