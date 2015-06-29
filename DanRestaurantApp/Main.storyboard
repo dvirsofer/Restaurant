@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oYU-oJ-nnq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oYU-oJ-nnq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -45,7 +45,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="8YI-Ty-WDm" kind="show" id="uox-31-UBd"/>
+                                    <segue destination="HBL-0w-fzL" kind="show" id="uox-31-UBd"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="568" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="מספר אישי" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1t-fL-utg">
@@ -81,7 +81,7 @@
         <!--מסך ראשי-->
         <scene sceneID="09D-iF-PWf">
             <objects>
-                <viewController title="מסך ראשי" id="8YI-Ty-WDm" sceneMemberID="viewController">
+                <viewController title="מסך ראשי" id="8YI-Ty-WDm" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d5F-lE-rmY"/>
                         <viewControllerLayoutGuide type="bottom" id="mcf-O1-QWL"/>
@@ -90,55 +90,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdc-IA-28i">
-                                <rect key="frame" x="283" y="210" width="33" height="30"/>
-                                <state key="normal" title="קבלה">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="JHt-cr-cCa" kind="show" id="pve-XN-xGD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09y-wp-eVx">
-                                <rect key="frame" x="277" y="210" width="44" height="30"/>
-                                <state key="normal" title="עגלה">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="54v-K1-a4Z" kind="show" id="tPt-Jn-tUu"/>
-                                </connections>
-                            </button>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mb6-lV-ofZ">
+                                <rect key="frame" x="16" y="133" width="568" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="סנוויצ׳ים" selectedImage="dan_logo_x1.png" id="MQr-vq-g1H"/>
+                                    <tabBarItem title="פסטות וסלטים" selectedImage="dan_logo_x1.png" id="Udh-5o-vqv"/>
+                                </items>
+                            </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="תאריך:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Tp-af-ufU">
+                                <rect key="frame" x="531" y="72" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="שם:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KX-Cw-HGo">
+                                <rect key="frame" x="531" y="101" width="53" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="fRf-ct-uLp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29.06.15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaN-5r-AgM">
+                                <rect key="frame" x="16" y="72" width="507" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אור מדינה" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lk-jz-J1x">
+                                <rect key="frame" x="16" y="101" width="507" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cN4-eG-jaW">
+                                <rect key="frame" x="16" y="182" width="568" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="09y-wp-eVx" firstAttribute="top" secondItem="jdc-IA-28i" secondAttribute="bottom" constant="8" id="9cK-86-14A"/>
-                            <constraint firstAttribute="centerX" secondItem="09y-wp-eVx" secondAttribute="centerX" id="DDf-nP-LKa"/>
-                            <constraint firstAttribute="centerX" secondItem="jdc-IA-28i" secondAttribute="centerX" constant="1" id="Vfc-si-Hfs"/>
-                            <constraint firstAttribute="centerY" secondItem="jdc-IA-28i" secondAttribute="centerY" constant="75" id="gPo-u0-Ait"/>
+                            <constraint firstItem="Mb6-lV-ofZ" firstAttribute="leading" secondItem="yOM-RR-Whc" secondAttribute="leadingMargin" id="1R2-7i-uvK"/>
+                            <constraint firstItem="3Tp-af-ufU" firstAttribute="top" secondItem="d5F-lE-rmY" secondAttribute="bottom" constant="8" id="55S-UG-3l9"/>
+                            <constraint firstItem="Mb6-lV-ofZ" firstAttribute="trailing" secondItem="yOM-RR-Whc" secondAttribute="trailingMargin" id="5ez-iT-loP"/>
+                            <constraint firstItem="cN4-eG-jaW" firstAttribute="trailing" secondItem="0KX-Cw-HGo" secondAttribute="trailing" id="6Mj-ff-NeB"/>
+                            <constraint firstItem="3Tp-af-ufU" firstAttribute="trailing" secondItem="yOM-RR-Whc" secondAttribute="trailingMargin" id="IgO-Na-jaB"/>
+                            <constraint firstItem="cN4-eG-jaW" firstAttribute="trailing" secondItem="3Tp-af-ufU" secondAttribute="trailing" id="KCg-DS-jKI"/>
+                            <constraint firstItem="mcf-O1-QWL" firstAttribute="top" secondItem="cN4-eG-jaW" secondAttribute="bottom" constant="118" id="LpO-hq-R26"/>
+                            <constraint firstItem="2lk-jz-J1x" firstAttribute="leading" secondItem="yOM-RR-Whc" secondAttribute="leadingMargin" id="PaR-Gk-DsK"/>
+                            <constraint firstItem="0KX-Cw-HGo" firstAttribute="leading" secondItem="3Tp-af-ufU" secondAttribute="leading" id="PaR-Mj-EKr"/>
+                            <constraint firstItem="cN4-eG-jaW" firstAttribute="trailing" secondItem="yOM-RR-Whc" secondAttribute="trailingMargin" id="TRA-hb-RPm"/>
+                            <constraint firstAttribute="centerX" secondItem="cN4-eG-jaW" secondAttribute="centerX" id="VZz-68-JcK"/>
+                            <constraint firstItem="cN4-eG-jaW" firstAttribute="top" secondItem="Mb6-lV-ofZ" secondAttribute="bottom" id="YF9-gR-daG"/>
+                            <constraint firstItem="0KX-Cw-HGo" firstAttribute="leading" secondItem="2lk-jz-J1x" secondAttribute="trailing" constant="8" id="Zpk-4h-DW6"/>
+                            <constraint firstItem="aaN-5r-AgM" firstAttribute="top" secondItem="d5F-lE-rmY" secondAttribute="bottom" constant="8" id="dZw-lt-t1G"/>
+                            <constraint firstItem="aaN-5r-AgM" firstAttribute="leading" secondItem="yOM-RR-Whc" secondAttribute="leadingMargin" id="ga3-ia-UUp"/>
+                            <constraint firstItem="3Tp-af-ufU" firstAttribute="leading" secondItem="aaN-5r-AgM" secondAttribute="trailing" constant="8" id="gme-sc-PxN"/>
+                            <constraint firstItem="2lk-jz-J1x" firstAttribute="top" secondItem="aaN-5r-AgM" secondAttribute="bottom" constant="8" id="lae-tZ-cRd"/>
+                            <constraint firstItem="0KX-Cw-HGo" firstAttribute="baseline" secondItem="2lk-jz-J1x" secondAttribute="baseline" id="mIM-ZB-flO"/>
+                            <constraint firstAttribute="centerX" secondItem="Mb6-lV-ofZ" secondAttribute="centerX" id="o2Q-iI-bt9"/>
+                            <constraint firstItem="cN4-eG-jaW" firstAttribute="leading" secondItem="yOM-RR-Whc" secondAttribute="leadingMargin" id="o6e-b9-93Q"/>
+                            <constraint firstItem="Mb6-lV-ofZ" firstAttribute="top" secondItem="d5F-lE-rmY" secondAttribute="bottom" constant="69" id="snB-F0-9Ix"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="09y-wp-eVx"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="9cK-86-14A"/>
-                                <exclude reference="DDf-nP-LKa"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="09y-wp-eVx"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="9cK-86-14A"/>
-                                <include reference="DDf-nP-LKa"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="w6S-lZ-gcj">
+                        <barButtonItem key="leftBarButtonItem" title="Exit" id="uR6-hY-P8l">
+                            <connections>
+                                <action selector="exitButtonAction:" destination="8YI-Ty-WDm" id="y4H-5l-638"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qiy-T8-f7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="168"/>
+            <point key="canvasLocation" x="957" y="178"/>
         </scene>
         <!--Check View Controller-->
         <scene sceneID="Vld-fZ-NJe">
@@ -242,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Wd-GU-X9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="970" y="168"/>
+            <point key="canvasLocation" x="1782" y="168"/>
         </scene>
         <!--Cart View Controller-->
         <scene sceneID="hZO-Q4-7t1">
@@ -420,8 +447,27 @@
             </objects>
             <point key="canvasLocation" x="987" y="953"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xr9-wJ-Xcp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HBL-0w-fzL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3gx-dH-Iph">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8YI-Ty-WDm" kind="relationship" relationship="rootViewController" id="Gyt-fd-gHa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lnx-OP-Chb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="145" y="178"/>
+        </scene>
     </scenes>
     <resources>
         <image name="dan_logo" width="58" height="36"/>
+        <image name="dan_logo_x1.png" width="80" height="85"/>
     </resources>
 </document>
