@@ -112,7 +112,7 @@
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
         [self.foodNames removeObjectAtIndex:indexPath.row];
-        [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic	];
     }
     
     //**************************** TODO ****************************//
