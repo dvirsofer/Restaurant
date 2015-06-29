@@ -14,4 +14,7 @@
 -(IBAction)historyButtonAction:(id)sender;
 -(IBAction)cartButtonAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIView *placeholderView;
+@property (weak, nonatomic) UIViewController *currentViewController;
+
 @end

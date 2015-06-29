@@ -14,6 +14,8 @@
 
 @implementation MainViewController
 
+@synthesize placeholderView, currentViewController;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -37,11 +39,15 @@
 -(void)historyButtonAction:(id)sender {
     // When clicked history
     NSLog(@"History clicked");
+    
+    
 }
 
 -(void)cartButtonAction:(id)sender {
     // When clicked cart
     NSLog(@"Cart clicked");
+    
+    
 }
 
 @end
