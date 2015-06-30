@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CartViewController.h"
+//#import "HistoryViewController.h"
 
 @interface MainViewController : UIViewController
 
