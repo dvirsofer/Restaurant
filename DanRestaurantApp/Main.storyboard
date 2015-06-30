@@ -204,33 +204,28 @@
             </objects>
             <point key="canvasLocation" x="975" y="-790"/>
         </scene>
-        <!--View Controller-->
+        <!--Pasta View Controller-->
         <scene sceneID="Vmp-DE-P7h">
             <objects>
-                <viewController id="1tk-AU-ebL" sceneMemberID="viewController">
+                <viewController id="1tk-AU-ebL" customClass="PastaViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ybh-Gq-kK5"/>
                         <viewControllerLayoutGuide type="bottom" id="fFI-dB-4PM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rqG-7J-boJ">
+                    <view key="view" contentMode="scaleToFill" id="rqG-7J-boJ" customClass="iCarousel">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="395"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pasta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iq2-Em-3LX">
-                                <rect key="frame" x="278" y="187" width="44" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="iq2-Em-3LX" secondAttribute="centerX" id="VsU-68-KtP"/>
-                            <constraint firstAttribute="centerY" secondItem="iq2-Em-3LX" secondAttribute="centerY" id="uiw-Bq-l6s"/>
-                        </constraints>
+                        <connections>
+                            <outlet property="dataSource" destination="1tk-AU-ebL" id="tHg-1b-s8c"/>
+                            <outlet property="delegate" destination="1tk-AU-ebL" id="KYE-Eh-P3p"/>
+                        </connections>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="395"/>
+                    <connections>
+                        <outlet property="carousel" destination="rqG-7J-boJ" id="lf8-1w-0DP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZW-Dt-BNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

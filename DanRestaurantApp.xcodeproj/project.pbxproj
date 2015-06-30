@@ -25,6 +25,10 @@
 		1C4BF5251B3EF1EF00D99F3B /* CheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5241B3EF1EF00D99F3B /* CheckViewController.m */; };
 		1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */; };
 		1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A5D1B403E4600679D8C /* CartViewController.m */; };
+		4440AFCD1B42E856001D6E2D /* PastaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4440AFCC1B42E856001D6E2D /* PastaViewController.m */; };
+		4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */; };
+		4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */; };
+		4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */; };
 		4456FC7F1B405D3E004663F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4456FC7E1B405D3E004663F0 /* Main.storyboard */; };
 		44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D4B40E1B416D920087CA9C /* MainViewController.m */; };
 		638111FACE4DC363D21C66ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39506D9C5F357B6147445F2B /* libPods.a */; };
@@ -72,6 +76,11 @@
 		1CCF2A5C1B403E4600679D8C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		1CCF2A5D1B403E4600679D8C /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 		39506D9C5F357B6147445F2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4440AFCB1B42E856001D6E2D /* PastaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastaViewController.h; sourceTree = "<group>"; };
+		4440AFCC1B42E856001D6E2D /* PastaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PastaViewController.m; sourceTree = "<group>"; };
+		4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dan_logo_x1.png; sourceTree = "<group>"; };
+		4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dan_logo_x2.png; sourceTree = "<group>"; };
+		4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dan_logo_x3.png; sourceTree = "<group>"; };
 		4456FC7E1B405D3E004663F0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		44D4B40D1B416D920087CA9C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		44D4B40E1B416D920087CA9C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -110,6 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				1C09ED611B41ADC40099792A /* background@3x.png */,
+				4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */,
+				4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */,
+				4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */,
 				1C09ED621B41ADC40099792A /* button_separator@3x.png */,
 				1C09ED591B41AA710099792A /* background.png */,
 				1C09ED5A1B41AA710099792A /* background@2x.png */,
@@ -220,6 +232,8 @@
 				44D4B40E1B416D920087CA9C /* MainViewController.m */,
 				1C09ED681B41B7D10099792A /* TabBarSegue.h */,
 				1C09ED691B41B7D10099792A /* TabBarSegue.m */,
+				4440AFCB1B42E856001D6E2D /* PastaViewController.h */,
+				4440AFCC1B42E856001D6E2D /* PastaViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -331,9 +345,12 @@
 				1C09ED601B41AA710099792A /* button_separator@2x.png in Resources */,
 				1C09ED5D1B41AA710099792A /* background.png in Resources */,
 				1C4BF4A41B3E9EF900D99F3B /* LaunchScreen.xib in Resources */,
+				4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */,
 				1C09ED5F1B41AA710099792A /* button_separator.png in Resources */,
+				4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */,
 				1C09ED5E1B41AA710099792A /* background@2x.png in Resources */,
 				1C4BF4A11B3E9EF900D99F3B /* Images.xcassets in Resources */,
+				4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */,
 				1C09ED631B41ADC40099792A /* background@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +410,7 @@
 				44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */,
 				1C4BF4961B3E9EF900D99F3B /* main.m in Sources */,
 				1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */,
+				4440AFCD1B42E856001D6E2D /* PastaViewController.m in Sources */,
 				1C4BF5251B3EF1EF00D99F3B /* CheckViewController.m in Sources */,
 				1C4BF51A1B3EB06E00D99F3B /* CheckTableViewCell.m in Sources */,
 			);
