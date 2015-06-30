@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oYU-oJ-nnq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oYU-oJ-nnq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gux-77-bIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-566" y="168"/>
+            <point key="canvasLocation" x="-502" y="-790"/>
         </scene>
         <!--מסך ראשי-->
         <scene sceneID="09D-iF-PWf">
@@ -202,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qiy-T8-f7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015" y="247"/>
+            <point key="canvasLocation" x="975" y="-790"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Vmp-DE-P7h">
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZW-Dt-BNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1699" y="349.5"/>
+            <point key="canvasLocation" x="1704" y="-878.5"/>
         </scene>
         <!--Check View Controller-->
         <scene sceneID="Vld-fZ-NJe">
@@ -338,7 +338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Wd-GU-X9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="190" y="978"/>
+            <point key="canvasLocation" x="-502" y="-78"/>
         </scene>
         <!--Cart View Controller-->
         <scene sceneID="hZO-Q4-7t1">
@@ -379,7 +379,11 @@
                                                 <action selector="editButtonClicked:" destination="54v-K1-a4Z" id="zPr-4Q-7uD"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="חזור" id="2Bl-8U-djB"/>
+                                        <barButtonItem key="rightBarButtonItem" title="חזור" id="2Bl-8U-djB">
+                                            <connections>
+                                                <action selector="returnButtonClicked:" destination="54v-K1-a4Z" id="NrK-xw-Qbf"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -514,7 +518,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fY1-Zt-jN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="887" y="1025"/>
+            <point key="canvasLocation" x="199" y="-91"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xr9-wJ-Xcp">
@@ -532,7 +536,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnx-OP-Chb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="178"/>
+            <point key="canvasLocation" x="225" y="-790"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ehT-qP-iXu">
@@ -564,7 +568,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="muc-Ap-l16" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="859.5"/>
+            <point key="canvasLocation" x="1704" y="-412.5"/>
         </scene>
     </scenes>
     <resources>

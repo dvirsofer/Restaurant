@@ -13,6 +13,7 @@
 
 @property (assign, nonatomic, getter=isClicked) BOOL clicked;
 -(IBAction)editButtonClicked:(id)sender;
+-(IBAction)returnButtonClicked:(id)sender;
 
 @property (weak, nonatomic) IBOutlet CartTableViewCell *cartCell;
 @property (weak, nonatomic) IBOutlet UITableView *cartTableView;

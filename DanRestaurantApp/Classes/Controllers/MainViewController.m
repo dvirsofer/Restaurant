@@ -47,8 +47,12 @@
 -(void)cartButtonAction:(id)sender {
     // When clicked cart
     NSLog(@"Cart clicked");
-    CartViewController *carViewController = [[CartViewController alloc] initWithNibName:nil bundle:nil];
-    [self presentViewController:carViewController animated:YES completion:nil];
+    //CartViewController *carViewController = [[CartViewController alloc] init];
+    //[self.navigationController pushViewController:carViewController animated:YES];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"cartTableView"];
+    [self presentViewController:vc animated:YES completion:nil];
+    
     
     
 }
