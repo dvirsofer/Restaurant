@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "CarouselViewController.h"
 
 @interface MainViewController ()
 
@@ -40,8 +41,6 @@
 -(void)historyButtonAction:(id)sender {
     // When clicked history
     NSLog(@"History clicked");
-    
-    
 }
 
 -(void)cartButtonAction:(id)sender {
@@ -52,9 +51,27 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"cartTableView"];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+-(void)pastaButtonAction:(id)sender {
+    // When clicked pasta
+    NSLog(@"pasta clicked");
+}
+
+-(void)sandwichButtonAction:(id)sender {
+    // When clicked sandwich
+    NSLog(@"Sandwich clicked");
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"prepareForSegue: %@", segue.identifier);
     
-    
-    
+    if ([segue.identifier isEqualToString:@"PastaSegue"]) {
+        [segue.destinationViewController setCustomImages:0];
+    } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
+        [segue.destinationViewController setCustomImages:1];
+    }
 }
 
 @end

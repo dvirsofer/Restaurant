@@ -114,12 +114,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אור מדינה" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lk-jz-J1x">
-                                <rect key="frame" x="16" y="101" width="507" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gG9-1W-PxW">
                                 <rect key="frame" x="502" y="146" width="82" height="30"/>
                                 <state key="normal" title="פסטות/סלטים">
@@ -127,6 +121,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="pastaButtonAction:" destination="8YI-Ty-WDm" eventType="touchUpInside" id="qwP-Sd-rpb"/>
                                     <segue destination="1tk-AU-ebL" kind="custom" identifier="PastaSegue" customClass="TabBarSegue" id="OYH-aW-SBB"/>
                                 </connections>
                             </button>
@@ -137,7 +132,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="46I-OQ-VXd" kind="custom" identifier="SandwichSegue" customClass="TabBarSegue" id="pGz-MC-6Oz"/>
+                                    <action selector="sandwichButtonAction:" destination="8YI-Ty-WDm" eventType="touchUpInside" id="tNx-On-MTT"/>
+                                    <segue destination="1tk-AU-ebL" kind="custom" identifier="SandwichSegue" customClass="TabBarSegue" id="R2L-98-vwo"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="button_separator.png" translatesAutoresizingMaskIntoConstraints="NO" id="tUu-z5-4Rj">
@@ -159,6 +155,12 @@
                                     <constraint firstAttribute="centerX" secondItem="sNP-FG-MnM" secondAttribute="centerX" id="QrB-CC-U3K"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="אור מדינה" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lk-jz-J1x">
+                                <rect key="frame" x="16" y="101" width="507" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -204,10 +206,10 @@
             </objects>
             <point key="canvasLocation" x="975" y="-790"/>
         </scene>
-        <!--Pasta View Controller-->
+        <!--Carousel View Controller-->
         <scene sceneID="Vmp-DE-P7h">
             <objects>
-                <viewController id="1tk-AU-ebL" customClass="PastaViewController" sceneMemberID="viewController">
+                <viewController id="1tk-AU-ebL" customClass="CarouselViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ybh-Gq-kK5"/>
                         <viewControllerLayoutGuide type="bottom" id="fFI-dB-4PM"/>
@@ -229,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZW-Dt-BNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="-878.5"/>
+            <point key="canvasLocation" x="1688" y="-770.5"/>
         </scene>
         <!--Check View Controller-->
         <scene sceneID="Vld-fZ-NJe">
@@ -533,42 +535,13 @@
             </objects>
             <point key="canvasLocation" x="225" y="-790"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ehT-qP-iXu">
-            <objects>
-                <viewController id="46I-OQ-VXd" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LyD-a4-Jlm"/>
-                        <viewControllerLayoutGuide type="bottom" id="MEy-Lj-Ur3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AZH-Ml-LLh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="395"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sandwich" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ4-oG-eDs">
-                                <rect key="frame" x="262" y="187" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="rZ4-oG-eDs" secondAttribute="centerY" id="Nao-IK-7BE"/>
-                            <constraint firstAttribute="centerX" secondItem="rZ4-oG-eDs" secondAttribute="centerX" id="ieQ-zA-idf"/>
-                        </constraints>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="395"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="muc-Ap-l16" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1704" y="-412.5"/>
-        </scene>
     </scenes>
     <resources>
         <image name="background.png" width="748" height="88"/>
         <image name="button_separator.png" width="6" height="81"/>
         <image name="dan_logo" width="58" height="36"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="R2L-98-vwo"/>
+    </inferredMetricsTieBreakers>
 </document>

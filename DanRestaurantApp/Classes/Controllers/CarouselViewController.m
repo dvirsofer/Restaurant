@@ -1,18 +1,18 @@
 //
-//  PastaViewController.m
+//  CarouselViewController.m
 //  DanRestaurantApp
 //
-//  Created by DvirSofer on 6/30/15.
+//  Created by DvirSofer on 7/1/15.
 //  Copyright (c) 2015 Or. All rights reserved.
 //
 
-#import "PastaViewController.h"
+#import "CarouselViewController.h"
 
-@interface PastaViewController ()
+@interface CarouselViewController ()
 
 @end
 
-@implementation PastaViewController
+@implementation CarouselViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,11 +24,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     [carousel setType:iCarouselTypeCylinder];
-    self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", nil];
+    //self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", nil];
     return [self.images count];
 }
 
@@ -46,7 +45,7 @@
     UIImageView *iv;
     if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
     {
-        iv=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 200, 200)];
+        iv=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 240, 240)];
     }
     NSString *temp=[self.images objectAtIndex:index];
     iv.image=[UIImage imageNamed:temp];
@@ -80,6 +79,16 @@
     return YES;
 }
 
+-(void)setCustomImages:(int)option
+{
+    if(option == 0) {
+        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", nil];
+    }
+    else {
+        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", @"dan_logo_x1.png", nil];
+    }
+}
+
 /*
 #pragma mark - Navigation
 
@@ -91,4 +100,3 @@
 */
 
 @end
-

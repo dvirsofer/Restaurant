@@ -15,8 +15,11 @@
 -(IBAction)exitButtonAction:(id)sender;
 -(IBAction)historyButtonAction:(id)sender;
 -(IBAction)cartButtonAction:(id)sender;
+-(IBAction)pastaButtonAction:(id)sender;
+-(IBAction)sandwichButtonAction:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIView *placeholderView;
 @property (weak, nonatomic) UIViewController *currentViewController;
+@property (nonatomic, strong) NSArray *images;
 
 @end
