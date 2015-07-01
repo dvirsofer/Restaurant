@@ -36,6 +36,9 @@
     view = [[UIView alloc] init];
     view.contentMode = UIViewContentModeScaleAspectFit;
     CGRect rec = view.frame;
+    
+    
+    
     if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
     {
         rec.size.width = 250;
@@ -50,6 +53,13 @@
     NSString *temp=[self.images objectAtIndex:index];
     iv.image=[UIImage imageNamed:temp];
     iv.contentMode = UIViewContentModeScaleAspectFit;
+    
+//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTaped:)];
+//    singleTap.numberOfTapsRequired = 1;
+//    singleTap.numberOfTouchesRequired = 1;
+//    [iv addGestureRecognizer:singleTap];
+//    [iv setUserInteractionEnabled:YES];
+    
     [view addSubview:iv];
     return view;
 }
@@ -88,6 +98,12 @@
         self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", @"dan_logo_x1.png", nil];
     }
 }
+
+//- (void)imageTaped:(UIGestureRecognizer *)recognizer {
+//    NSInteger x = [self.images indexOfObject:recognizer];
+//    NSLog(@"x = %ld", (long)x);
+//}
+
 
 /*
 #pragma mark - Navigation
