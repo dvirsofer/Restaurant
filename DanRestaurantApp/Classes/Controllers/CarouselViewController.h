@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
 
-@interface CarouselViewController : UIViewController
+@interface CarouselViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
+
 -(void)setCustomImages:(int)option;
 
 @property (nonatomic, strong) IBOutlet iCarousel *carousel;
-@property (nonatomic, strong) NSArray *images;
+
 
 @end

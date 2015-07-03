@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oYU-oJ-nnq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lfi-Cd-9MS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -207,6 +207,50 @@
             <point key="canvasLocation" x="975" y="-790"/>
         </scene>
         <!--Carousel View Controller-->
+        <scene sceneID="nUj-ab-mfK">
+            <objects>
+                <viewController id="lfi-Cd-9MS" customClass="CarouselViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uC6-GJ-817"/>
+                        <viewControllerLayoutGuide type="bottom" id="U1o-qR-xIb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JTt-Up-BvI">
+                        <rect key="frame" x="0.0" y="20" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="0xG-Mh-RhP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WnW-QJ-1Lt" userLabel="iCarousel" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lfi-Cd-9MS" id="rd3-Ho-POC"/>
+                                    <outlet property="delegate" destination="lfi-Cd-9MS" id="e0w-dk-7qw"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WnW-QJ-1Lt" firstAttribute="trailing" secondItem="0xG-Mh-RhP" secondAttribute="trailing" id="89N-YB-Qef"/>
+                            <constraint firstItem="0xG-Mh-RhP" firstAttribute="leading" secondItem="WnW-QJ-1Lt" secondAttribute="leading" id="Cwz-i4-4ye"/>
+                            <constraint firstItem="0xG-Mh-RhP" firstAttribute="top" secondItem="JTt-Up-BvI" secondAttribute="top" id="QXc-8N-WWh"/>
+                            <constraint firstItem="0xG-Mh-RhP" firstAttribute="bottom" secondItem="JTt-Up-BvI" secondAttribute="bottom" id="We1-z5-awb"/>
+                            <constraint firstItem="WnW-QJ-1Lt" firstAttribute="leading" secondItem="JTt-Up-BvI" secondAttribute="leading" id="Xsc-Nj-Kps"/>
+                            <constraint firstAttribute="trailing" secondItem="WnW-QJ-1Lt" secondAttribute="trailing" id="mUX-Mg-Nts"/>
+                            <constraint firstAttribute="bottom" secondItem="WnW-QJ-1Lt" secondAttribute="bottom" constant="225" id="o5N-9c-AmW"/>
+                            <constraint firstItem="0xG-Mh-RhP" firstAttribute="top" secondItem="WnW-QJ-1Lt" secondAttribute="top" id="zlN-yv-cGW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="carousel" destination="WnW-QJ-1Lt" id="KCq-I9-llD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ysX-R6-J72" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="-78"/>
+        </scene>
+        <!--Carousel View Controller-->
         <scene sceneID="Vmp-DE-P7h">
             <objects>
                 <viewController id="1tk-AU-ebL" customClass="CarouselViewController" sceneMemberID="viewController">
@@ -214,24 +258,47 @@
                         <viewControllerLayoutGuide type="top" id="Ybh-Gq-kK5"/>
                         <viewControllerLayoutGuide type="bottom" id="fFI-dB-4PM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rqG-7J-boJ" customClass="iCarousel">
+                    <view key="view" contentMode="scaleToFill" id="rqG-7J-boJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="395"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKT-oy-TfV" userLabel="iCarousel" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="20" width="600" height="326"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1tk-AU-ebL" id="PZE-tZ-68M"/>
+                                    <outlet property="delegate" destination="1tk-AU-ebL" id="WE9-Cc-96f"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="gcP-LS-lWX">
+                                <rect key="frame" x="16" y="354" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="1tk-AU-ebL" id="tHg-1b-s8c"/>
-                            <outlet property="delegate" destination="1tk-AU-ebL" id="KYE-Eh-P3p"/>
-                        </connections>
+                        <constraints>
+                            <constraint firstItem="gcP-LS-lWX" firstAttribute="top" secondItem="JKT-oy-TfV" secondAttribute="bottom" constant="8" id="AbI-n3-Heb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JKT-oy-TfV" secondAttribute="trailing" constant="-16" id="DJR-ou-H2e"/>
+                            <constraint firstItem="JKT-oy-TfV" firstAttribute="top" secondItem="Ybh-Gq-kK5" secondAttribute="bottom" id="dEu-KY-TX7"/>
+                            <constraint firstItem="gcP-LS-lWX" firstAttribute="leading" secondItem="rqG-7J-boJ" secondAttribute="leadingMargin" id="eyw-Ed-Usy"/>
+                            <constraint firstAttribute="centerX" secondItem="JKT-oy-TfV" secondAttribute="centerX" id="jml-Dt-LUN"/>
+                            <constraint firstAttribute="centerX" secondItem="gcP-LS-lWX" secondAttribute="centerX" id="ljZ-QX-3at"/>
+                            <constraint firstItem="JKT-oy-TfV" firstAttribute="leading" secondItem="rqG-7J-boJ" secondAttribute="leadingMargin" constant="-16" id="uOX-HN-RB0"/>
+                            <constraint firstAttribute="bottom" secondItem="gcP-LS-lWX" secondAttribute="bottom" constant="20" symbolic="YES" id="wZZ-qN-CyK"/>
+                            <constraint firstItem="gcP-LS-lWX" firstAttribute="top" secondItem="JKT-oy-TfV" secondAttribute="bottom" constant="8" id="xDN-4b-u5e"/>
+                            <constraint firstItem="gcP-LS-lWX" firstAttribute="trailing" secondItem="rqG-7J-boJ" secondAttribute="trailingMargin" id="zGs-41-xU1"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="395"/>
                     <connections>
-                        <outlet property="carousel" destination="rqG-7J-boJ" id="lf8-1w-0DP"/>
+                        <outlet property="carousel" destination="JKT-oy-TfV" id="2Tz-CQ-Lua"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZW-Dt-BNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688" y="-770.5"/>
+            <point key="canvasLocation" x="1794" y="-727.5"/>
         </scene>
         <!--Check View Controller-->
         <scene sceneID="Vld-fZ-NJe">
