@@ -72,4 +72,17 @@
     }
 }
 
+- (void) buttonIsPressed:(UIButton *)sender
+{
+    //get item index for button
+    NSInteger index = [sender tag];
+    
+    [[[UIAlertView alloc] initWithTitle:@"Button Tapped"
+                                message:[NSString stringWithFormat:@"You tapped button number %li", (long)index]
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
+}
+
+
 @end

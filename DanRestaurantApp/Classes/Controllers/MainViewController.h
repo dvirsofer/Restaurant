@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CartViewController.h"
+#import "iCarousel.h"
 //#import "HistoryViewController.h"
 
 @interface MainViewController : UIViewController

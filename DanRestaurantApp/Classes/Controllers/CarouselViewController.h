@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
+#import "MainViewController.h"
 
 @interface CarouselViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
 
 -(void)setCustomImages:(int)option;
 
+@property (nonatomic, strong) MainViewController *tabViewController;
 @property (nonatomic, strong) IBOutlet iCarousel *carousel;
 
 
