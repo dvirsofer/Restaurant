@@ -8,7 +8,7 @@
         <!--מסך כניסה-->
         <scene sceneID="sS7-uN-Krf">
             <objects>
-                <viewController title="מסך כניסה" id="oYU-oJ-nnq" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" title="מסך כניסה" id="oYU-oJ-nnq" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4zS-UM-7vn"/>
                         <viewControllerLayoutGuide type="bottom" id="TSs-r3-rDN"/>
@@ -20,12 +20,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="dan_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ljO-QC-has">
                                 <rect key="frame" x="271" y="84" width="58" height="36"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="568" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="תעודת זהות" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dgy-f4-Poo">
-                                <rect key="frame" x="16" y="193" width="568" height="30"/>
-                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="מזנון" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYL-9L-fiX">
                                 <rect key="frame" x="16" y="28" width="568" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
@@ -45,7 +39,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="HBL-0w-fzL" kind="show" id="uox-31-UBd"/>
+                                    <action selector="Login:" destination="oYU-oJ-nnq" eventType="touchUpInside" id="Qyo-Jh-OVp"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="568" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="מספר אישי" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1t-fL-utg">
@@ -53,6 +47,12 @@
                                 <accessibility key="accessibilityConfiguration" hint=""/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="568" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="תעודת זהות" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dgy-f4-Poo">
+                                <rect key="frame" x="16" y="193" width="568" height="30"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -73,10 +73,15 @@
                             <constraint firstItem="ljO-QC-has" firstAttribute="top" secondItem="AYL-9L-fiX" secondAttribute="bottom" constant="8" id="zsB-MJ-Klj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="password" destination="Dgy-f4-Poo" id="dr5-lT-qCM"/>
+                        <outlet property="personal_number" destination="y1t-fL-utg" id="EDa-ad-WkF"/>
+                        <segue destination="HBL-0w-fzL" kind="show" identifier="mainView" id="zyk-NL-opt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gux-77-bIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-502" y="-790"/>
+            <point key="canvasLocation" x="-746" y="-790"/>
         </scene>
         <!--מסך ראשי-->
         <scene sceneID="09D-iF-PWf">
@@ -192,55 +197,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w6S-lZ-gcj">
-                        <barButtonItem key="leftBarButtonItem" title="יציאה" id="uR6-hY-P8l">
+                        <barButtonItem key="leftBarButtonItem" title="התנתק" id="uR6-hY-P8l">
                             <connections>
-                                <action selector="exitButtonAction:" destination="8YI-Ty-WDm" id="y4H-5l-638"/>
+                                <action selector="exitButtonAction:" destination="8YI-Ty-WDm" id="fhn-42-NH0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="employeeName" destination="2lk-jz-J1x" id="kxT-W3-ZJi"/>
                         <outlet property="placeholderView" destination="fcI-pj-vUj" id="QY4-YX-was"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qiy-T8-f7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="975" y="-790"/>
-        </scene>
-        <!--Carousel View Controller-->
-        <scene sceneID="nUj-ab-mfK">
-            <objects>
-                <viewController id="lfi-Cd-9MS" customClass="CarouselViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uC6-GJ-817"/>
-                        <viewControllerLayoutGuide type="bottom" id="U1o-qR-xIb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JTt-Up-BvI">
-                        <rect key="frame" x="0.0" y="20" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WnW-QJ-1Lt" userLabel="iCarousel" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="375"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="lfi-Cd-9MS" id="rd3-Ho-POC"/>
-                                    <outlet property="delegate" destination="lfi-Cd-9MS" id="e0w-dk-7qw"/>
-                                </connections>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="WnW-QJ-1Lt" firstAttribute="leading" secondItem="JTt-Up-BvI" secondAttribute="leading" id="Xsc-Nj-Kps"/>
-                            <constraint firstAttribute="trailing" secondItem="WnW-QJ-1Lt" secondAttribute="trailing" id="mUX-Mg-Nts"/>
-                            <constraint firstAttribute="bottom" secondItem="WnW-QJ-1Lt" secondAttribute="bottom" constant="225" id="o5N-9c-AmW"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="carousel" destination="WnW-QJ-1Lt" id="KCq-I9-llD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ysX-R6-J72" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1075" y="-70"/>
         </scene>
         <!--Carousel View Controller-->
         <scene sceneID="Vmp-DE-P7h">
@@ -255,7 +225,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKT-oy-TfV" userLabel="iCarousel" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="28" width="600" height="339"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="395"/>
                                 <connections>
                                     <outlet property="dataSource" destination="1tk-AU-ebL" id="PZE-tZ-68M"/>
                                     <outlet property="delegate" destination="1tk-AU-ebL" id="WE9-Cc-96f"/>
@@ -376,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Wd-GU-X9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-502" y="-78"/>
+            <point key="canvasLocation" x="-214" y="-30"/>
         </scene>
         <!--Cart View Controller-->
         <scene sceneID="hZO-Q4-7t1">
@@ -556,12 +526,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fY1-Zt-jN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="-91"/>
+            <point key="canvasLocation" x="513" y="-3"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xr9-wJ-Xcp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HBL-0w-fzL" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainViewController" automaticallyAdjustsScrollViewInsets="NO" id="HBL-0w-fzL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3gx-dH-Iph">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -574,7 +544,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnx-OP-Chb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="225" y="-790"/>
+            <point key="canvasLocation" x="113" y="-770"/>
         </scene>
     </scenes>
     <resources>

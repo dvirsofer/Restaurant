@@ -19,8 +19,14 @@
 -(IBAction)pastaButtonAction:(id)sender;
 -(IBAction)sandwichButtonAction:(id)sender;
 
+-(void)setEmployeeName:(NSString *)employeeName;
+
 @property (weak, nonatomic) IBOutlet UIView *placeholderView;
 @property (weak, nonatomic) UIViewController *currentViewController;
 @property (nonatomic, strong) NSArray *images;
+
+@property (strong, nonatomic) NSString *employee_name;
+
+@property (strong, nonatomic) IBOutlet UILabel *employeeNameLbl;
 
 @end

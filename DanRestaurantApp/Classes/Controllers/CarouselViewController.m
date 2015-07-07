@@ -10,27 +10,15 @@
 
 @interface CarouselViewController ()
 
-@property (nonatomic, strong) NSMutableArray *items;
-
 @end
 
 @implementation CarouselViewController
 
 @synthesize carousel;
-@synthesize items;
 
 - (void)awakeFromNib
 {
-    //set up data
-    //your carousel should always be driven by an array of
-    //data of some kind - don't store data in your item views
-    //or the recycling mechanism will destroy your data once
-    //your item views move off-screen
-    self.items = [NSMutableArray array];
-    for (int i = 0; i < 5; i++)
-    {
-        [items addObject:@(i)];
-    }
+    //Setups done in the segue
 }
 
 - (void)dealloc
@@ -67,11 +55,10 @@
 
 #pragma mark -
 #pragma mark iCarousel methods
-
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //return the total number of items in the carousel
-    return [items count];
+    return [self.images count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
@@ -81,19 +68,13 @@
     if (button == nil)
     {
         //no button available to recycle, so create new one
-        UIImage *image = [UIImage imageNamed:@"page.png"];
+        UIImage *image = [UIImage imageNamed:[self.images objectAtIndex:index]];
         button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0.0f, 0.0f, image.size.width, image.size.height);
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button setBackgroundImage:image forState:UIControlStateNormal];
-        button.titleLabel.font = [button.titleLabel.font fontWithSize:50];
         button.tag = index;
         [button addTarget:self.tabViewController action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
-    
-    //set button label
-    [button setTitle:[NSString stringWithFormat:@"%li", (long)index] forState:UIControlStateNormal];
     
     return button;
 }
@@ -113,10 +94,10 @@
 -(void)setCustomImages:(int)option
 {
     if(option == 0) {
-        //self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", nil];
+        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", nil];
     }
     else {
-        //self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", @"dan_logo_x1.png", nil];
+        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", @"dan_logo_x1.png", nil];
     }
 }
 

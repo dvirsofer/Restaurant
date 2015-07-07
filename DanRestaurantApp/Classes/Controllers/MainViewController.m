@@ -36,6 +36,9 @@
 -(void)exitButtonAction:(id)sender {
     // When clicked exit
     NSLog(@"Exit clicked");
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)historyButtonAction:(id)sender {
@@ -70,6 +73,11 @@
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
         [segue.destinationViewController setCustomImages:1];
     }
+}
+
+-(void)setEmployeeName:(NSString *)employeeName
+{
+    self.employeeNameLbl.text = employeeName;
 }
 
 - (void) buttonIsPressed:(UIButton *)sender
