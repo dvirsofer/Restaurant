@@ -7,8 +7,7 @@
 //  
 
 #import "LoginViewController.h"
-#import "AppDelegate.h"
-#import "MainViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface LoginViewController ()
 
@@ -17,6 +16,7 @@
 @end
 
 @implementation LoginViewController
+@synthesize personal_number, password;
 
 
 
@@ -36,7 +36,7 @@
 }
 
 -(void) checkLogin:(id)sender {
-    if([self.personal_number.text isEqualToString:@""] || [self.password.text isEqualToString:@""]) {
+    if([personal_number.text isEqualToString:@""] || [password.text isEqualToString:@""]) {
         [[[UIAlertView alloc] initWithTitle:@"Error"
                             message:[NSString stringWithFormat:@"Enter all fields"]
                             delegate:nil
@@ -45,42 +45,61 @@
         return;
     } else {
         
+        NSString *url = @"http://webmail.dan.co.il/restaurantservice/RestaurantService.svc/Login";
         
-        // create string contains url address for php file, the file name is phpFile.php, it receives parameter :name
-        NSString *strURL = [NSString stringWithFormat:@"http://dan-restaurant.net76.net/login.php/?employee_id=%@&personal_number=%@",self.personal_number.text, self.password.text];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
-        // to execute php code
-        NSData *dataURL = [NSData dataWithContentsOfURL:[NSURL URLWithString:strURL]];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         
-        // to receive the returend value
-        NSString *strResult = [[NSString alloc] initWithData:dataURL encoding:NSUTF8StringEncoding];
+        NSDictionary *params = @ {@"personal_number" : personal_number.text, @"id" : password.text};
         
-        NSLog(@"%@", strResult);
         
-        self.employeeInfo = strResult ;
-        
-        if([strResult containsString:@"0 results"]) {
-            // invalid information
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Invalide Information" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-        } else {
-            // Success login - move to MainViewController
+        [manager POST:url parameters:params
+              success:^(AFHTTPRequestOperation *operation, id responseObject)
+        {
+            NSString *response = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            if([response isEqualToString:@"\"Wrong\""])
+            {
+                // Invalid Information (Wrong id/pass)
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Invalide Information" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                return;
+            }
+            // Success login - move to MainViewController //
+            
+            self.employeeInfo = response;
+            
+            // Remove the " " before and after the name
+            self.employeeInfo = [self.employeeInfo substringFromIndex:1];
+            self.employeeInfo = [self.employeeInfo substringToIndex:[self.employeeInfo length] - 1];
+            
+            NSLog(@"EmployeeInfo= %@", self.employeeInfo);
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainViewController"];
-            [self presentViewController:vc animated:YES completion:nil];
+            self.vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainViewController"];
+            [self presentViewController:self.vc animated:YES completion:nil];
             
             [self performSegueWithIdentifier:@"mainView" sender:sender];
         }
+              failure:
+         ^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+         }];
     }
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    MainViewController *mainViewController = segue.destinationViewController;
-    NSLog(@"Employee Name:%@", self.employeeInfo);
-    NSLog(@"%@", mainViewController.employee_name);
-    mainViewController.employee_name = self.employeeInfo;
-    [segue.destinationViewController setEmployeeName:self.employeeInfo];
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"mainView"])
+    {
+        if ([segue.destinationViewController isKindOfClass:[UINavigationController class]])
+        {
+            UINavigationController *navController = self.vc;
+
+            MainViewController *vc1 = [navController.viewControllers objectAtIndex:0];
+            
+            [vc1 setEmployeeName: self.employeeInfo];
+        }
+    }
 }
 
 

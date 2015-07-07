@@ -26,6 +26,8 @@
     
     NSArray *navButtonArray = [[NSArray alloc] initWithObjects:historyButton, cartButton, nil];
     self.navigationItem.rightBarButtonItems = navButtonArray;
+    
+    self.employeeNameLbl.text = self.employee_name;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,7 +79,7 @@
 
 -(void)setEmployeeName:(NSString *)employeeName
 {
-    self.employeeNameLbl.text = employeeName;
+    self.employee_name = employeeName;
 }
 
 - (void) buttonIsPressed:(UIButton *)sender

@@ -23,6 +23,7 @@
 		1C4BF5171B3EAEC200D99F3B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5161B3EAEC200D99F3B /* LoginViewController.m */; };
 		1C4BF51A1B3EB06E00D99F3B /* CheckTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */; };
 		1C4BF5251B3EF1EF00D99F3B /* CheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5241B3EF1EF00D99F3B /* CheckViewController.m */; };
+		1CBB86F11B4BD3B600003122 /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB86F01B4BD3B600003122 /* Employee.m */; };
 		1CC950DA1B453DA100CD201E /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC950D91B453DA100CD201E /* page.png */; };
 		1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */; };
 		1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A5D1B403E4600679D8C /* CartViewController.m */; };
@@ -73,6 +74,8 @@
 		1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTableViewCell.m; sourceTree = "<group>"; };
 		1C4BF5231B3EF1EF00D99F3B /* CheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckViewController.h; sourceTree = "<group>"; };
 		1C4BF5241B3EF1EF00D99F3B /* CheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckViewController.m; sourceTree = "<group>"; };
+		1CBB86EF1B4BD3B600003122 /* Employee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Employee.h; sourceTree = "<group>"; };
+		1CBB86F01B4BD3B600003122 /* Employee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employee.m; sourceTree = "<group>"; };
 		1CC950D91B453DA100CD201E /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = page.png; path = ../page.png; sourceTree = "<group>"; };
 		1CCF2A561B403C8B00679D8C /* CartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewCell.h; sourceTree = "<group>"; };
 		1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewCell.m; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 		1C09ED6B1B41C1A60099792A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1CBB86EF1B4BD3B600003122 /* Employee.h */,
+				1CBB86F01B4BD3B600003122 /* Employee.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */,
 				1C4BF4961B3E9EF900D99F3B /* main.m in Sources */,
 				1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */,
+				1CBB86F11B4BD3B600003122 /* Employee.m in Sources */,
 				1C4BF5251B3EF1EF00D99F3B /* CheckViewController.m in Sources */,
 				1C4BF51A1B3EB06E00D99F3B /* CheckTableViewCell.m in Sources */,
 			);

@@ -204,7 +204,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="employeeName" destination="2lk-jz-J1x" id="kxT-W3-ZJi"/>
+                        <outlet property="employeeNameLbl" destination="2lk-jz-J1x" id="iEB-Ft-hl3"/>
                         <outlet property="placeholderView" destination="fcI-pj-vUj" id="QY4-YX-was"/>
                     </connections>
                 </viewController>
