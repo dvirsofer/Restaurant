@@ -7,6 +7,7 @@
 //
 
 #import "CarouselViewController.h"
+#import "CustomPopUp.h"
 
 @interface CarouselViewController ()
 
@@ -79,17 +80,23 @@
     return button;
 }
 
-- (void) buttonIsPressed:(UIButton *)sender
+/*- (UIView *) buttonIsPressed:(UIButton *)sender
 {
     //get item index for button
     NSInteger index = [sender tag];
+
+    CustomPopUp *popup = [[NSBundle mainBundle] loadNibNamed:@"PopupView" owner:self options:nil];
+    popup.numText.text = @"0";
+    popup.title.text = [NSString stringWithFormat: @"You tapped button number %li", (long)index];
+    
     
     [[[UIAlertView alloc] initWithTitle:@"Button Tapped"
                                 message:[NSString stringWithFormat:@"You tapped button number %li", (long)index]
                                delegate:nil
                       cancelButtonTitle:@"OK"
                       otherButtonTitles:nil] show];
-}
+    return popup;
+}*/
 
 -(void)setCustomImages:(int)option
 {

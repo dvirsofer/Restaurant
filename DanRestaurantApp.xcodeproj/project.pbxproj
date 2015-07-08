@@ -33,6 +33,11 @@
 		4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */; };
 		444B5B7B1B4434AA00CD116D /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B5B7A1B4434AA00CD116D /* CarouselViewController.m */; };
 		4456FC7F1B405D3E004663F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4456FC7E1B405D3E004663F0 /* Main.storyboard */; };
+		44D00DE51B4D57E600A445F0 /* popup.png in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DE41B4D57E600A445F0 /* popup.png */; };
+		44D00DE71B4D589900A445F0 /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DE61B4D589900A445F0 /* PopupView.xib */; };
+		44D00DED1B4D5BDB00A445F0 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DEC1B4D5BDB00A445F0 /* minus.png */; };
+		44D00DF11B4D5C2500A445F0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DF01B4D5C2500A445F0 /* plus.png */; };
+		44D00DF41B4D5CFF00A445F0 /* CustomPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */; };
 		44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D4B40E1B416D920087CA9C /* MainViewController.m */; };
 		638111FACE4DC363D21C66ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39506D9C5F357B6147445F2B /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -89,6 +94,12 @@
 		444B5B791B4434AA00CD116D /* CarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
 		444B5B7A1B4434AA00CD116D /* CarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselViewController.m; sourceTree = "<group>"; };
 		4456FC7E1B405D3E004663F0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		44D00DE41B4D57E600A445F0 /* popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popup.png; sourceTree = "<group>"; };
+		44D00DE61B4D589900A445F0 /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
+		44D00DEC1B4D5BDB00A445F0 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
+		44D00DF01B4D5C2500A445F0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		44D00DF21B4D5CFF00A445F0 /* CustomPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopUp.h; sourceTree = "<group>"; };
+		44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopUp.m; sourceTree = "<group>"; };
 		44D4B40D1B416D920087CA9C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		44D4B40E1B416D920087CA9C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4BF2F6793F89BB2785062A99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +139,9 @@
 				1CC950D91B453DA100CD201E /* page.png */,
 				1C09ED611B41ADC40099792A /* background@3x.png */,
 				4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */,
+				44D00DEC1B4D5BDB00A445F0 /* minus.png */,
+				44D00DF01B4D5C2500A445F0 /* plus.png */,
+				44D00DE41B4D57E600A445F0 /* popup.png */,
 				4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */,
 				4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */,
 				1C09ED621B41ADC40099792A /* button_separator@3x.png */,
@@ -175,6 +189,7 @@
 				1C4BF4B91B3EA40600D99F3B /* Assets */,
 				1C4BF4971B3E9EF900D99F3B /* AppDelegate.h */,
 				1C4BF4981B3E9EF900D99F3B /* AppDelegate.m */,
+				44D00DE61B4D589900A445F0 /* PopupView.xib */,
 				4456FC7E1B405D3E004663F0 /* Main.storyboard */,
 				1C4BF49A1B3E9EF900D99F3B /* ViewController.h */,
 				1C4BF49B1B3E9EF900D99F3B /* ViewController.m */,
@@ -254,6 +269,8 @@
 			children = (
 				1C4BF5181B3EB06E00D99F3B /* CheckTableViewCell.h */,
 				1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */,
+				44D00DF21B4D5CFF00A445F0 /* CustomPopUp.h */,
+				44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */,
 				1CCF2A561B403C8B00679D8C /* CartTableViewCell.h */,
 				1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */,
 			);
@@ -351,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D00DE51B4D57E600A445F0 /* popup.png in Resources */,
 				1C09ED641B41ADC40099792A /* button_separator@3x.png in Resources */,
 				4456FC7F1B405D3E004663F0 /* Main.storyboard in Resources */,
 				1CC950DA1B453DA100CD201E /* page.png in Resources */,
@@ -360,9 +378,12 @@
 				4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */,
 				1C09ED5F1B41AA710099792A /* button_separator.png in Resources */,
 				4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */,
+				44D00DED1B4D5BDB00A445F0 /* minus.png in Resources */,
+				44D00DF11B4D5C2500A445F0 /* plus.png in Resources */,
 				1C09ED5E1B41AA710099792A /* background@2x.png in Resources */,
 				1C4BF4A11B3E9EF900D99F3B /* Images.xcassets in Resources */,
 				1CE738291B454A9000277E4B /* ItemView.xib in Resources */,
+				44D00DE71B4D589900A445F0 /* PopupView.xib in Resources */,
 				4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */,
 				1C09ED631B41ADC40099792A /* background@3x.png in Resources */,
 			);
@@ -416,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				444B5B7B1B4434AA00CD116D /* CarouselViewController.m in Sources */,
+				44D00DF41B4D5CFF00A445F0 /* CustomPopUp.m in Sources */,
 				1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */,
 				1C09ED6A1B41B7D10099792A /* TabBarSegue.m in Sources */,
 				1C4BF5171B3EAEC200D99F3B /* LoginViewController.m in Sources */,
