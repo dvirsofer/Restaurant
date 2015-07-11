@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomPopUp : UIView
-@property (weak, nonatomic) IBOutlet UIButton *plusBtn;
-@property (weak, nonatomic) IBOutlet UIButton *minusBtn;
-@property (weak, nonatomic) IBOutlet UITextField *numText;
-@property (weak, nonatomic) IBOutlet UILabel *title;
+@interface CustomPopUp : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIView *popUpView;
+@property (strong, nonatomic) IBOutlet UIButton *plus;
+@property (strong, nonatomic) IBOutlet UIButton *minus;
+@property (strong, nonatomic) IBOutlet UITextField *numOfItems;
+@property (strong, nonatomic) IBOutlet UILabel *popupTitle;
+
+- (IBAction)closePopup:(id)sender;
+- (void)showInView:(UIView *)aView animated:(BOOL)animated;
 
 @end

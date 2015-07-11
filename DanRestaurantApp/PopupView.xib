@@ -1,56 +1,97 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPopUp">
+            <connections>
+                <outlet property="minus" destination="KRQ-w2-diO" id="RBs-FF-f9d"/>
+                <outlet property="numOfItems" destination="QpL-Ei-ctv" id="ELy-dk-KUu"/>
+                <outlet property="plus" destination="1um-Pz-J5O" id="tpR-jj-RiP"/>
+                <outlet property="popUpView" destination="s5P-pN-yOF" id="x8l-P8-1fz"/>
+                <outlet property="popupTitle" destination="SIN-V0-PyP" id="hLY-qU-Ajg"/>
+                <outlet property="view" destination="CM8-uR-S5f" id="zsK-Qf-2bV"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" placeholderIntrinsicWidth="233" placeholderIntrinsicHeight="250" id="CM8-uR-S5f" customClass="CustomPopUp">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+        <view contentMode="scaleToFill" placeholderIntrinsicWidth="233" placeholderIntrinsicHeight="250" id="CM8-uR-S5f">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="popup.png" translatesAutoresizingMaskIntoConstraints="NO" id="BUc-gz-6T8">
-                    <rect key="frame" x="0.0" y="0.0" width="233" height="250"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1um-Pz-J5O">
-                    <rect key="frame" x="171" y="77" width="50" height="50"/>
-                    <state key="normal" image="plus.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRQ-w2-diO">
-                    <rect key="frame" x="25" y="77" width="50" height="50"/>
-                    <state key="normal" image="minus.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QpL-Ei-ctv">
-                    <rect key="frame" x="94" y="87" width="45" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldw-7V-1aw">
-                    <rect key="frame" x="93" y="138" width="46" height="30"/>
-                    <state key="normal" title="הזמן">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIN-V0-PyP">
-                    <rect key="frame" x="25" y="17" width="196" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5P-pN-yOF">
+                    <rect key="frame" x="37" y="184" width="300" height="300"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popup.png" translatesAutoresizingMaskIntoConstraints="NO" id="BUc-gz-6T8">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="233"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1um-Pz-J5O">
+                            <rect key="frame" x="181" y="39" width="50" height="50"/>
+                            <state key="normal" title="plus" image="plus.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRQ-w2-diO">
+                            <rect key="frame" x="70" y="39" width="50" height="50"/>
+                            <state key="normal" title="minus" image="minus.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QpL-Ei-ctv">
+                            <rect key="frame" x="128" y="49" width="45" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldw-7V-1aw">
+                            <rect key="frame" x="135" y="135" width="30" height="30"/>
+                            <state key="normal" title="הזמן">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="closePopup:" destination="-1" eventType="touchUpInside" id="cQk-Hq-QiH"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIN-V0-PyP">
+                            <rect key="frame" x="52" y="10" width="196" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="BUc-gz-6T8" secondAttribute="trailing" id="5VE-rN-QOv"/>
+                        <constraint firstItem="BUc-gz-6T8" firstAttribute="top" secondItem="s5P-pN-yOF" secondAttribute="top" id="7ro-V6-SvR"/>
+                        <constraint firstAttribute="centerX" secondItem="Ldw-7V-1aw" secondAttribute="centerX" id="8br-o2-LpR"/>
+                        <constraint firstAttribute="centerY" secondItem="Ldw-7V-1aw" secondAttribute="centerY" id="GWK-sU-Hrk"/>
+                        <constraint firstItem="BUc-gz-6T8" firstAttribute="leading" secondItem="s5P-pN-yOF" secondAttribute="leading" id="O3k-el-4F0"/>
+                        <constraint firstAttribute="centerX" secondItem="BUc-gz-6T8" secondAttribute="centerX" id="c7f-9N-dYb"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <connections>
-                <outlet property="minusBtn" destination="KRQ-w2-diO" id="es1-1Q-93V"/>
-                <outlet property="numText" destination="QpL-Ei-ctv" id="Dic-GI-1Vu"/>
-                <outlet property="plusBtn" destination="1um-Pz-J5O" id="61d-Vf-zhB"/>
-                <outlet property="title" destination="SIN-V0-PyP" id="ypk-c5-7ld"/>
-            </connections>
-            <point key="canvasLocation" x="238" y="272"/>
+            <constraints>
+                <constraint firstItem="s5P-pN-yOF" firstAttribute="top" secondItem="CM8-uR-S5f" secondAttribute="top" constant="150" id="038-2e-vDv"/>
+                <constraint firstAttribute="centerY" secondItem="s5P-pN-yOF" secondAttribute="centerY" id="3hn-5l-MH3"/>
+                <constraint firstItem="s5P-pN-yOF" firstAttribute="top" secondItem="CM8-uR-S5f" secondAttribute="top" constant="184" id="5Yi-V3-Ccv"/>
+                <constraint firstAttribute="centerX" secondItem="s5P-pN-yOF" secondAttribute="centerX" id="5kD-mq-UX7"/>
+                <constraint firstAttribute="centerX" secondItem="s5P-pN-yOF" secondAttribute="centerX" id="Cja-i0-QS0"/>
+                <constraint firstItem="s5P-pN-yOF" firstAttribute="leading" secondItem="CM8-uR-S5f" secondAttribute="leading" constant="150" id="VU2-ft-qmY"/>
+                <constraint firstAttribute="trailing" secondItem="s5P-pN-yOF" secondAttribute="trailing" constant="38" id="dqO-qX-Kli"/>
+                <constraint firstItem="s5P-pN-yOF" firstAttribute="leading" secondItem="CM8-uR-S5f" secondAttribute="leading" constant="37" id="ebo-wr-1IP"/>
+                <constraint firstAttribute="trailing" secondItem="s5P-pN-yOF" secondAttribute="trailing" constant="150" id="fiw-sU-JJX"/>
+                <constraint firstAttribute="centerY" secondItem="s5P-pN-yOF" secondAttribute="centerY" id="uXu-Go-KQb"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="038-2e-vDv"/>
+                    <exclude reference="5kD-mq-UX7"/>
+                    <exclude reference="VU2-ft-qmY"/>
+                    <exclude reference="fiw-sU-JJX"/>
+                    <exclude reference="uXu-Go-KQb"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="237.5" y="271.5"/>
         </view>
     </objects>
     <resources>

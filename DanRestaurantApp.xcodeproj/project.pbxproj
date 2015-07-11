@@ -98,8 +98,8 @@
 		44D00DE61B4D589900A445F0 /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
 		44D00DEC1B4D5BDB00A445F0 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
 		44D00DF01B4D5C2500A445F0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
-		44D00DF21B4D5CFF00A445F0 /* CustomPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopUp.h; sourceTree = "<group>"; };
-		44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopUp.m; sourceTree = "<group>"; };
+		44D00DF21B4D5CFF00A445F0 /* CustomPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomPopUp.h; path = ../Views/CustomPopUp.h; sourceTree = "<group>"; };
+		44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomPopUp.m; path = ../Views/CustomPopUp.m; sourceTree = "<group>"; };
 		44D4B40D1B416D920087CA9C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		44D4B40E1B416D920087CA9C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4BF2F6793F89BB2785062A99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -248,6 +248,8 @@
 		1C4BF4F41B3EA40D00D99F3B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				44D00DF21B4D5CFF00A445F0 /* CustomPopUp.h */,
+				44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */,
 				1C4BF5151B3EAEC200D99F3B /* LoginViewController.h */,
 				1C4BF5161B3EAEC200D99F3B /* LoginViewController.m */,
 				444B5B791B4434AA00CD116D /* CarouselViewController.h */,
@@ -269,8 +271,6 @@
 			children = (
 				1C4BF5181B3EB06E00D99F3B /* CheckTableViewCell.h */,
 				1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */,
-				44D00DF21B4D5CFF00A445F0 /* CustomPopUp.h */,
-				44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */,
 				1CCF2A561B403C8B00679D8C /* CartTableViewCell.h */,
 				1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */,
 			);

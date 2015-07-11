@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CartViewController.h"
 #import "iCarousel.h"
+#import "CustomPopUp.h"
 //#import "HistoryViewController.h"
 
 @interface MainViewController : UIViewController
@@ -20,6 +21,9 @@
 -(IBAction)sandwichButtonAction:(id)sender;
 
 -(void)setEmployeeName:(NSString *)employeeName;
+
+@property (strong, nonatomic) CustomPopUp *popup;
+
 
 @property (weak, nonatomic) IBOutlet UIView *placeholderView;
 @property (weak, nonatomic) UIViewController *currentViewController;

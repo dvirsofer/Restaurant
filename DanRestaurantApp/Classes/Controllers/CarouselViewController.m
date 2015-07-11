@@ -80,23 +80,17 @@
     return button;
 }
 
-/*- (UIView *) buttonIsPressed:(UIButton *)sender
+- (void) buttonIsPressed:(UIButton *)sender
 {
+    /*
     //get item index for button
     NSInteger index = [sender tag];
 
-    CustomPopUp *popup = [[NSBundle mainBundle] loadNibNamed:@"PopupView" owner:self options:nil];
-    popup.numText.text = @"0";
-    popup.title.text = [NSString stringWithFormat: @"You tapped button number %li", (long)index];
-    
-    
-    [[[UIAlertView alloc] initWithTitle:@"Button Tapped"
-                                message:[NSString stringWithFormat:@"You tapped button number %li", (long)index]
-                               delegate:nil
-                      cancelButtonTitle:@"OK"
-                      otherButtonTitles:nil] show];
-    return popup;
-}*/
+    self.tabViewController.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
+    self.tabViewController.popupTitle.text = [NSString stringWithFormat:@"Index: %li", (long)index];
+    [self.tabViewController.popup showInView:self.view animated:YES];
+     */
+}
 
 -(void)setCustomImages:(int)option
 {

@@ -8,7 +8,6 @@
 
 #import "MainViewController.h"
 #import "CarouselViewController.h"
-#import "CustomPopUp.h"
 
 @interface MainViewController ()
 
@@ -83,31 +82,20 @@
     self.employee_name = employeeName;
 }
 
-- (UIView *) buttonIsPressed:(UIButton *)sender
+-(void) buttonIsPressed:(UIButton *)sender
 {
     //get item index for button
     NSInteger index = [sender tag];
     
-    CustomPopUp *popup = [[NSBundle mainBundle] loadNibNamed:@"PopupView" owner:self options:nil];
-    popup.numText.text = @"0";
-    popup.title.text = [NSString stringWithFormat: @"You tapped button number %li", (long)index];
-    
-    return popup;
+    self.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
+    //self.popup.popupTitle.text = [NSString stringWithFormat:@"Index: %li", (long)index];
+    [self.popup showInView:self.view animated:YES];
+    self.popup.popupTitle.text = [NSString stringWithFormat:@"Index: %li", (long)index];
 }
 
-/*- (void) buttonIsPressed:(UIButton *)sender
-{
-    //get item index for button
-    NSInteger index = [sender tag];
-    
-    
-    [[[UIAlertView alloc] initWithTitle:@"Button Tapped"
-     message:[NSString stringWithFormat:@"You tapped button number %li", (long)index]
-     delegate:nil
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil] show];
+- (IBAction)makeOrder:(id)sender {
+    [self.popup closePopup:sender];
 }
-*/
 
 
 @end
