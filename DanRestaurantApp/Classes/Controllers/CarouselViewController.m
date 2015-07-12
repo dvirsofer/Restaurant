@@ -38,7 +38,8 @@
     [super viewDidLoad];
     
     //configure carousel
-    carousel.type = iCarouselTypeCoverFlow2;
+    //carousel.type = iCarouselTypeCoverFlow2;
+    carousel.type = iCarouselTypeCylinder;
 }
 
 - (void)viewDidUnload
@@ -64,19 +65,41 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    if(view != nil)
-    {
-        view = [[[NSBundle mainBundle] loadNibNamed:@"CarouselView" owner:self options:nil] lastObject];
-    }
-    UIButton *button = (UIButton *)view;
+    UIButton *button;
     //create new view if no view is available for recycling
-    if (button == nil)
+    if(view == nil)
     {
-        //no button available to recycle, so create new one
-        UIImage *image = [UIImage imageNamed:[self.images objectAtIndex:index]];
+        button = (UIButton *)view;
+        //UIImage *image = [UIImage imageNamed:[self.images objectAtIndex:index]];
+        NSString *ImageURL = @"http://www.sweeteatstraditions.com/wp-content/uploads/2014/02/tuna.jpg";
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+        UIImage *image = [UIImage imageWithData:imageData];
         button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0.0f, 0.0f, image.size.width, image.size.height);
         [button setBackgroundImage:image forState:UIControlStateNormal];
+        [button setBackgroundColor:[UIColor redColor]];
+        [button setFrame:CGRectMake(0, 0, 200, 200)];
+        
+        button.imageView.contentMode = UIViewContentModeCenter;
+        
+        //Create Label
+        UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 160, 200, 100)];
+        [description setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
+        [description setText:@"טונה"];
+        description.font = [UIFont boldSystemFontOfSize:16];
+        description.textAlignment = NSTextAlignmentCenter;
+        [description setTextColor:[UIColor darkGrayColor]];
+        [description setBackgroundColor:[UIColor clearColor]];
+        [button addSubview:description];
+        
+        UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(0, 180, 200, 100)];
+        [price setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
+        [price setText: @"5.60 ש״ח"];
+        price.font = [UIFont boldSystemFontOfSize:16];
+        price.textAlignment = NSTextAlignmentCenter;
+        [price setTextColor:[UIColor darkGrayColor]];
+        [price setBackgroundColor:[UIColor clearColor]];
+        [button addSubview:price];
+
         button.tag = index;
         [button addTarget:self.tabViewController action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -84,18 +107,18 @@
     return button;
 }
 
-- (void) buttonIsPressed:(UIButton *)sender
+-(void) buttonIsPressed:(UIButton *)sender
 {
-
+    NSLog(@"Pressed");
 }
 
 -(void)setCustomImages:(int)option
 {
     if(option == 0) {
-        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", nil];
+        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo.png",@"dan_logo.png", @"dan_logo.png", nil];
     }
     else {
-        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo_x1.png",@"dan_logo_x1.png", @"dan_logo_x1.png", @"dan_logo_x1.png", nil];
+        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo.png",@"dan_logo.png", @"dan_logo.png", @"dan_logo.png", nil];
     }
 }
 
