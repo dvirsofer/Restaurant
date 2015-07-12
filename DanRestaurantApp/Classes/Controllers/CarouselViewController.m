@@ -64,6 +64,10 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
+    if(view != nil)
+    {
+        view = [[[NSBundle mainBundle] loadNibNamed:@"CarouselView" owner:self options:nil] lastObject];
+    }
     UIButton *button = (UIButton *)view;
     //create new view if no view is available for recycling
     if (button == nil)
@@ -82,14 +86,7 @@
 
 - (void) buttonIsPressed:(UIButton *)sender
 {
-    /*
-    //get item index for button
-    NSInteger index = [sender tag];
 
-    self.tabViewController.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
-    self.tabViewController.popupTitle.text = [NSString stringWithFormat:@"Index: %li", (long)index];
-    [self.tabViewController.popup showInView:self.view animated:YES];
-     */
 }
 
 -(void)setCustomImages:(int)option

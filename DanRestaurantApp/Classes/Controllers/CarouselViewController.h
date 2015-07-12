@@ -15,6 +15,7 @@
 -(void)setCustomImages:(int)option;
 
 @property (nonatomic, strong) NSArray *images;
+
 @property (nonatomic, strong) MainViewController *tabViewController;
 @property (nonatomic, strong) IBOutlet iCarousel *carousel;
 

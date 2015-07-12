@@ -23,11 +23,11 @@
 		1C4BF5171B3EAEC200D99F3B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5161B3EAEC200D99F3B /* LoginViewController.m */; };
 		1C4BF51A1B3EB06E00D99F3B /* CheckTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */; };
 		1C4BF5251B3EF1EF00D99F3B /* CheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5241B3EF1EF00D99F3B /* CheckViewController.m */; };
+		1C7B03CB1B52A05D003B0E70 /* CarouselVIew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C7B03CA1B52A05D003B0E70 /* CarouselVIew.xib */; };
 		1CBB86F11B4BD3B600003122 /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB86F01B4BD3B600003122 /* Employee.m */; };
 		1CC950DA1B453DA100CD201E /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC950D91B453DA100CD201E /* page.png */; };
 		1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */; };
 		1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A5D1B403E4600679D8C /* CartViewController.m */; };
-		1CE738291B454A9000277E4B /* ItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE738281B454A9000277E4B /* ItemView.xib */; };
 		4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */; };
 		4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */; };
 		4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */; };
@@ -79,6 +79,7 @@
 		1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTableViewCell.m; sourceTree = "<group>"; };
 		1C4BF5231B3EF1EF00D99F3B /* CheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckViewController.h; sourceTree = "<group>"; };
 		1C4BF5241B3EF1EF00D99F3B /* CheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckViewController.m; sourceTree = "<group>"; };
+		1C7B03CA1B52A05D003B0E70 /* CarouselVIew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselVIew.xib; sourceTree = "<group>"; };
 		1CBB86EF1B4BD3B600003122 /* Employee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Employee.h; sourceTree = "<group>"; };
 		1CBB86F01B4BD3B600003122 /* Employee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employee.m; sourceTree = "<group>"; };
 		1CC950D91B453DA100CD201E /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = page.png; path = ../page.png; sourceTree = "<group>"; };
@@ -86,7 +87,6 @@
 		1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewCell.m; sourceTree = "<group>"; };
 		1CCF2A5C1B403E4600679D8C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		1CCF2A5D1B403E4600679D8C /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
-		1CE738281B454A9000277E4B /* ItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemView.xib; sourceTree = "<group>"; };
 		39506D9C5F357B6147445F2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dan_logo_x1.png; sourceTree = "<group>"; };
 		4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dan_logo_x2.png; sourceTree = "<group>"; };
@@ -195,8 +195,8 @@
 				1C4BF49B1B3E9EF900D99F3B /* ViewController.m */,
 				1C4BF4A01B3E9EF900D99F3B /* Images.xcassets */,
 				1C4BF4A21B3E9EF900D99F3B /* LaunchScreen.xib */,
-				1CE738281B454A9000277E4B /* ItemView.xib */,
 				1C4BF4931B3E9EF900D99F3B /* Supporting Files */,
+				1C7B03CA1B52A05D003B0E70 /* CarouselVIew.xib */,
 			);
 			path = DanRestaurantApp;
 			sourceTree = "<group>";
@@ -382,8 +382,8 @@
 				44D00DF11B4D5C2500A445F0 /* plus.png in Resources */,
 				1C09ED5E1B41AA710099792A /* background@2x.png in Resources */,
 				1C4BF4A11B3E9EF900D99F3B /* Images.xcassets in Resources */,
-				1CE738291B454A9000277E4B /* ItemView.xib in Resources */,
 				44D00DE71B4D589900A445F0 /* PopupView.xib in Resources */,
+				1C7B03CB1B52A05D003B0E70 /* CarouselVIew.xib in Resources */,
 				4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */,
 				1C09ED631B41ADC40099792A /* background@3x.png in Resources */,
 			);
