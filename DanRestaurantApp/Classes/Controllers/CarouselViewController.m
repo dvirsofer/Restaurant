@@ -9,6 +9,7 @@
 #import "CarouselViewController.h"
 #import "CustomPopUp.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "Item.h"
 
 @interface CarouselViewController ()
 
@@ -143,7 +144,6 @@
           success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          
-         
      }
           failure:
      ^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -161,7 +161,7 @@
 
 -(void)setCustomImages:(int)option
 {
-    [self getAllParams:option];
+    //[self getAllParams:option];
     /*if(option == 0) { // Pasta
         self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo.png",@"dan_logo.png", @"dan_logo.png", nil];
     }
