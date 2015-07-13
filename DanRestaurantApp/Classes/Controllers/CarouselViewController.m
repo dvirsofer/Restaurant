@@ -8,6 +8,7 @@
 
 #import "CarouselViewController.h"
 #import "CustomPopUp.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface CarouselViewController ()
 
@@ -38,8 +39,8 @@
     [super viewDidLoad];
     
     //configure carousel
-    //carousel.type = iCarouselTypeCoverFlow2;
-    carousel.type = iCarouselTypeCylinder;
+    carousel.type = iCarouselTypeCoverFlow2;
+    //carousel.type = iCarouselTypeRotary;
 }
 
 - (void)viewDidUnload
@@ -70,7 +71,8 @@
     if(view == nil)
     {
         button = (UIButton *)view;
-        //UIImage *image = [UIImage imageNamed:[self.images objectAtIndex:index]];
+        
+        
         NSString *ImageURL = @"http://www.sweeteatstraditions.com/wp-content/uploads/2014/02/tuna.jpg";
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
         UIImage *image = [UIImage imageWithData:imageData];
@@ -99,12 +101,57 @@
         [price setTextColor:[UIColor darkGrayColor]];
         [price setBackgroundColor:[UIColor clearColor]];
         [button addSubview:price];
+        
+        UILabel *calories = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 200, 100)];
+        [calories setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
+        [calories setText: @"400 קלוריות"];
+        calories.font = [UIFont boldSystemFontOfSize:16];
+        calories.textAlignment = NSTextAlignmentCenter;
+        [calories setTextColor:[UIColor darkGrayColor]];
+        [calories setBackgroundColor:[UIColor clearColor]];
+        [button addSubview:calories];
+        
+        UILabel *quantity = [[UILabel alloc]initWithFrame:CGRectMake(0, 220, 200, 100)];
+        [quantity setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
+        [quantity setText: @"10 במלאי"];
+        quantity.font = [UIFont boldSystemFontOfSize:16];
+        quantity.textAlignment = NSTextAlignmentCenter;
+        [quantity setTextColor:[UIColor darkGrayColor]];
+        [quantity setBackgroundColor:[UIColor clearColor]];
+        [button addSubview:quantity];
 
         button.tag = index;
         [button addTarget:self.tabViewController action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return button;
+}
+
+-(void) getAllParams:(int)option
+{
+    NSString *url = @"http://webmail.dan.co.il/restaurantservice/RestaurantService.svc/GetItems";
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSDictionary *params = @ {@"type" : [NSString stringWithFormat:@"%d", option]};
+    
+    
+    [manager POST:url parameters:params
+          success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         
+         
+     }
+          failure:
+     ^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@", error);
+     }];
+    
+
+
 }
 
 -(void) buttonIsPressed:(UIButton *)sender
@@ -114,12 +161,13 @@
 
 -(void)setCustomImages:(int)option
 {
-    if(option == 0) {
+    [self getAllParams:option];
+    /*if(option == 0) { // Pasta
         self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo.png",@"dan_logo.png", @"dan_logo.png", nil];
     }
     else {
         self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo.png",@"dan_logo.png", @"dan_logo.png", @"dan_logo.png", nil];
-    }
+    }*/
 }
 
 @end

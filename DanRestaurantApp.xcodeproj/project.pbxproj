@@ -14,16 +14,15 @@
 		1C09ED631B41ADC40099792A /* background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C09ED611B41ADC40099792A /* background@3x.png */; };
 		1C09ED641B41ADC40099792A /* button_separator@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C09ED621B41ADC40099792A /* button_separator@3x.png */; };
 		1C09ED6A1B41B7D10099792A /* TabBarSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C09ED691B41B7D10099792A /* TabBarSegue.m */; };
+		1C36E9321B53A09A0092225E /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C36E9311B53A09A0092225E /* Item.m */; };
 		1C4BF4961B3E9EF900D99F3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF4951B3E9EF900D99F3B /* main.m */; };
 		1C4BF4991B3E9EF900D99F3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF4981B3E9EF900D99F3B /* AppDelegate.m */; };
-		1C4BF49C1B3E9EF900D99F3B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF49B1B3E9EF900D99F3B /* ViewController.m */; };
 		1C4BF4A11B3E9EF900D99F3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BF4A01B3E9EF900D99F3B /* Images.xcassets */; };
 		1C4BF4A41B3E9EF900D99F3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BF4A21B3E9EF900D99F3B /* LaunchScreen.xib */; };
 		1C4BF4B01B3E9EF900D99F3B /* DanRestaurantAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF4AF1B3E9EF900D99F3B /* DanRestaurantAppTests.m */; };
 		1C4BF5171B3EAEC200D99F3B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5161B3EAEC200D99F3B /* LoginViewController.m */; };
 		1C4BF51A1B3EB06E00D99F3B /* CheckTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */; };
 		1C4BF5251B3EF1EF00D99F3B /* CheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5241B3EF1EF00D99F3B /* CheckViewController.m */; };
-		1C7B03CB1B52A05D003B0E70 /* CarouselView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C7B03CA1B52A05D003B0E70 /* CarouselView.xib */; };
 		1CBB86F11B4BD3B600003122 /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB86F01B4BD3B600003122 /* Employee.m */; };
 		1CC950DA1B453DA100CD201E /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC950D91B453DA100CD201E /* page.png */; };
 		1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */; };
@@ -61,13 +60,13 @@
 		1C09ED621B41ADC40099792A /* button_separator@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_separator@3x.png"; sourceTree = "<group>"; };
 		1C09ED681B41B7D10099792A /* TabBarSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarSegue.h; sourceTree = "<group>"; };
 		1C09ED691B41B7D10099792A /* TabBarSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarSegue.m; sourceTree = "<group>"; };
+		1C36E9301B53A09A0092225E /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		1C36E9311B53A09A0092225E /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		1C4BF4901B3E9EF900D99F3B /* DanRestaurantApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanRestaurantApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C4BF4941B3E9EF900D99F3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C4BF4951B3E9EF900D99F3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C4BF4971B3E9EF900D99F3B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1C4BF4981B3E9EF900D99F3B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1C4BF49A1B3E9EF900D99F3B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1C4BF49B1B3E9EF900D99F3B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1C4BF4A01B3E9EF900D99F3B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1C4BF4A31B3E9EF900D99F3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1C4BF4A91B3E9EF900D99F3B /* DanRestaurantAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanRestaurantAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +78,6 @@
 		1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTableViewCell.m; sourceTree = "<group>"; };
 		1C4BF5231B3EF1EF00D99F3B /* CheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckViewController.h; sourceTree = "<group>"; };
 		1C4BF5241B3EF1EF00D99F3B /* CheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckViewController.m; sourceTree = "<group>"; };
-		1C7B03CA1B52A05D003B0E70 /* CarouselView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselView.xib; sourceTree = "<group>"; };
 		1CBB86EF1B4BD3B600003122 /* Employee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Employee.h; sourceTree = "<group>"; };
 		1CBB86F01B4BD3B600003122 /* Employee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employee.m; sourceTree = "<group>"; };
 		1CC950D91B453DA100CD201E /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = page.png; path = ../page.png; sourceTree = "<group>"; };
@@ -158,6 +156,8 @@
 			children = (
 				1CBB86EF1B4BD3B600003122 /* Employee.h */,
 				1CBB86F01B4BD3B600003122 /* Employee.m */,
+				1C36E9301B53A09A0092225E /* Item.h */,
+				1C36E9311B53A09A0092225E /* Item.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,12 +191,9 @@
 				1C4BF4981B3E9EF900D99F3B /* AppDelegate.m */,
 				44D00DE61B4D589900A445F0 /* PopupView.xib */,
 				4456FC7E1B405D3E004663F0 /* Main.storyboard */,
-				1C4BF49A1B3E9EF900D99F3B /* ViewController.h */,
-				1C4BF49B1B3E9EF900D99F3B /* ViewController.m */,
 				1C4BF4A01B3E9EF900D99F3B /* Images.xcassets */,
 				1C4BF4A21B3E9EF900D99F3B /* LaunchScreen.xib */,
 				1C4BF4931B3E9EF900D99F3B /* Supporting Files */,
-				1C7B03CA1B52A05D003B0E70 /* CarouselView.xib */,
 			);
 			path = DanRestaurantApp;
 			sourceTree = "<group>";
@@ -383,7 +380,6 @@
 				1C09ED5E1B41AA710099792A /* background@2x.png in Resources */,
 				1C4BF4A11B3E9EF900D99F3B /* Images.xcassets in Resources */,
 				44D00DE71B4D589900A445F0 /* PopupView.xib in Resources */,
-				1C7B03CB1B52A05D003B0E70 /* CarouselView.xib in Resources */,
 				4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */,
 				1C09ED631B41ADC40099792A /* background@3x.png in Resources */,
 			);
@@ -436,12 +432,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C36E9321B53A09A0092225E /* Item.m in Sources */,
 				444B5B7B1B4434AA00CD116D /* CarouselViewController.m in Sources */,
 				44D00DF41B4D5CFF00A445F0 /* CustomPopUp.m in Sources */,
 				1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */,
 				1C09ED6A1B41B7D10099792A /* TabBarSegue.m in Sources */,
 				1C4BF5171B3EAEC200D99F3B /* LoginViewController.m in Sources */,
-				1C4BF49C1B3E9EF900D99F3B /* ViewController.m in Sources */,
 				1C4BF4991B3E9EF900D99F3B /* AppDelegate.m in Sources */,
 				44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */,
 				1C4BF4961B3E9EF900D99F3B /* main.m in Sources */,

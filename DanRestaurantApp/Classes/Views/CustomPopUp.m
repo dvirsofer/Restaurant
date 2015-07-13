@@ -10,6 +10,8 @@
 
 @implementation CustomPopUp
 
+NSInteger const maxPerItem = 2;
+
 - (void)viewDidLoad
 {
     self.view.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:.6];
@@ -28,6 +30,20 @@
         self.view.alpha = 1;
         self.view.transform = CGAffineTransformMakeScale(1, 1);
     }];
+}
+
+- (IBAction)increasePressed:(id)sender
+{
+    if([self.numOfItems.text intValue] == maxPerItem)
+        return;
+    self.numOfItems.text = [NSString stringWithFormat:@"%d",([self.numOfItems.text intValue]+1)];
+}
+
+- (IBAction)decreasePressed:(id)sender
+{
+    if([self.numOfItems.text intValue] == 0)
+        return;
+    self.numOfItems.text = [NSString stringWithFormat:@"%d",([self.numOfItems.text intValue]-1)];
 }
 
 - (void)removeAnimate

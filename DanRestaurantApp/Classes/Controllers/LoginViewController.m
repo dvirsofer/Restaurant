@@ -62,7 +62,7 @@
             if([response isEqualToString:@"\"Wrong\""])
             {
                 // Invalid Information (Wrong id/pass)
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Invalide Information" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Invalid Information" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
                 return;
             }

@@ -13,7 +13,7 @@
 @synthesize employeeId, personalNumber, employeeName;
 
 
-- (id) initWithEmployeeId:(NSString *)eId andPersonalNumber:(NSString *)pNumber andEmployeeName:(NSString *)eName
+- (instancetype) initWithEmployeeId:(NSString *)eId andPersonalNumber:(NSString *)pNumber andEmployeeName:(NSString *)eName
 {
     self = [super init];
     if (self)
