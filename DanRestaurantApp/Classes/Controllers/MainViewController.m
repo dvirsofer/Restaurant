@@ -69,11 +69,12 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"prepareForSegue: %@", segue.identifier);
+    CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
     
     if ([segue.identifier isEqualToString:@"PastaSegue"]) {
-        [segue.destinationViewController setCustomItems:1];
+        carouselController.customItemsOption = [NSNumber numberWithInt:1];
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
-        [segue.destinationViewController setCustomItems:2];
+        carouselController.customItemsOption = [NSNumber numberWithInt:2];
     }
 }
 

@@ -39,6 +39,9 @@
 {
     [super viewDidLoad];
     
+    // Init items on load
+    [self getAllParams: self.customItemsOption];
+    
     //configure carousel
     carousel.type = iCarouselTypeCoverFlow2;
     //carousel.type = iCarouselTypeRotary;
@@ -133,7 +136,7 @@
     return button;
 }
 
--(void) getAllParams:(int)option
+-(void) getAllParams:(NSNumber *)option
 {
     NSString *url = @"http://webmail.dan.co.il/restaurantservice/RestaurantService.svc/GetItems";
     
@@ -142,8 +145,7 @@
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSString *value = [NSString stringWithFormat:@"%d", option];
-    NSDictionary *params = @{@"type" : value};
+    NSDictionary *params = @ {@"type" : option};
     
     
     [manager POST:url parameters:params
@@ -183,11 +185,6 @@
 -(void) buttonIsPressed:(UIButton *)sender
 {
     NSLog(@"Pressed");
-}
-
--(void)setCustomItems:(int)option
-{
-    [self getAllParams:option];
 }
 
 @end
