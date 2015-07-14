@@ -12,9 +12,9 @@
 
 @interface CarouselViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
 
--(void)setCustomImages:(int)option;
+-(void)setCustomItems:(int)option;
 
-@property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong) NSMutableArray *items;
 
 @property (nonatomic, strong) MainViewController *tabViewController;
 @property (nonatomic, strong) IBOutlet iCarousel *carousel;

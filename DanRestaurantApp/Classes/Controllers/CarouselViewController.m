@@ -17,7 +17,7 @@
 
 @implementation CarouselViewController
 
-@synthesize carousel;
+@synthesize carousel, items;
 
 - (void)awakeFromNib
 {
@@ -62,7 +62,7 @@
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //return the total number of items in the carousel
-    return [self.images count];
+    return [self.items count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
@@ -72,9 +72,13 @@
     if(view == nil)
     {
         button = (UIButton *)view;
+        // Get item from items array
+        Item *item = [items objectAtIndex:index];
         
-        
-        NSString *ImageURL = @"http://www.sweeteatstraditions.com/wp-content/uploads/2014/02/tuna.jpg";
+        // **********************
+        // Move to Function!!!!!!
+        // **********************
+        NSString *ImageURL = item.imageUrl;
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
         UIImage *image = [UIImage imageWithData:imageData];
         button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -87,7 +91,7 @@
         //Create Label
         UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 160, 200, 100)];
         [description setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-        [description setText:@"טונה"];
+        [description setText:item.itemDescription];
         description.font = [UIFont boldSystemFontOfSize:16];
         description.textAlignment = NSTextAlignmentCenter;
         [description setTextColor:[UIColor darkGrayColor]];
@@ -96,7 +100,7 @@
         
         UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(0, 180, 200, 100)];
         [price setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-        [price setText: @"5.60 ש״ח"];
+        [price setText: [[NSString stringWithFormat:@"%f", item.price] stringByAppendingString:@"ש״ח"]];
         price.font = [UIFont boldSystemFontOfSize:16];
         price.textAlignment = NSTextAlignmentCenter;
         [price setTextColor:[UIColor darkGrayColor]];
@@ -105,7 +109,8 @@
         
         UILabel *calories = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 200, 100)];
         [calories setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-        [calories setText: @"400 קלוריות"];
+        [calories setText:[[NSString stringWithFormat:@"%ld", (long)item.calories] stringByAppendingString:@"קלוריות"]];
+        
         calories.font = [UIFont boldSystemFontOfSize:16];
         calories.textAlignment = NSTextAlignmentCenter;
         [calories setTextColor:[UIColor darkGrayColor]];
@@ -114,7 +119,7 @@
         
         UILabel *quantity = [[UILabel alloc]initWithFrame:CGRectMake(0, 220, 200, 100)];
         [quantity setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-        [quantity setText: @"10 במלאי"];
+        [quantity setText: [[NSString stringWithFormat:@"%ld", (long)item.quantity] stringByAppendingString:@"במלאי"]];
         quantity.font = [UIFont boldSystemFontOfSize:16];
         quantity.textAlignment = NSTextAlignmentCenter;
         [quantity setTextColor:[UIColor darkGrayColor]];
@@ -137,13 +142,34 @@
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    NSDictionary *params = @ {@"type" : [NSString stringWithFormat:@"%d", option]};
+    NSString *value = [NSString stringWithFormat:@"%d", option];
+    NSDictionary *params = @{@"type" : value};
     
     
     [manager POST:url parameters:params
           success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
+         NSString *response = [operation responseString];
+
+         NSData *objectData = [response dataUsingEncoding:NSUTF8StringEncoding];
          
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData options:NSJSONReadingMutableContainers error:nil];
+         
+         items = [[NSMutableArray alloc] initWithCapacity:[json count]];
+         for (id object in json) 
+         {
+             NSInteger item_id = [object[@"item_id"] intValue];
+             NSString *description = object[@"description"];
+             float price = [object[@"price"] floatValue];
+             NSInteger quantity = [object[@"quantity"] intValue];
+             NSInteger type = [object[@"type"] intValue];
+             NSInteger calories = [object[@"calories"] intValue];
+             NSString *img_url = object[@"img_url"];
+             
+             Item *item = [[Item alloc] initWithItemId:item_id andDescription:description andPrice:price andQuantity:quantity andType:type andCalories:calories andImageUrl:img_url];
+             
+             [items addObject:item];
+         }
      }
           failure:
      ^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -159,15 +185,9 @@
     NSLog(@"Pressed");
 }
 
--(void)setCustomImages:(int)option
+-(void)setCustomItems:(int)option
 {
-    //[self getAllParams:option];
-    /*if(option == 0) { // Pasta
-        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo.png",@"dan_logo.png", @"dan_logo.png", nil];
-    }
-    else {
-        self.images=[[NSMutableArray alloc]initWithObjects:@"dan_logo.png",@"dan_logo.png", @"dan_logo.png", @"dan_logo.png", nil];
-    }*/
+    [self getAllParams:option];
 }
 
 @end

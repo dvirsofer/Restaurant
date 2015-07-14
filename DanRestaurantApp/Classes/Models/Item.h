@@ -10,14 +10,14 @@
 
 @interface Item : NSObject
 
-- (id)initWithJSONDictionary:(NSDictionary *)jsonDictionary;
+- (instancetype) initWithItemId:(NSInteger)iId andDescription:(NSString *)iDescription andPrice:(float)iPrice andQuantity:(NSInteger)iQuantity andType:(NSInteger)iType andCalories:(NSInteger)iCalories andImageUrl:(NSString *)iUrl;
 
-@property (nonatomic) NSNumber *itemId;
+@property (nonatomic) NSInteger itemId;
 @property (nonatomic) NSString *itemDescription;
-@property (nonatomic) NSNumber *price;
-@property (nonatomic) NSNumber *quantity;
-@property (nonatomic) NSNumber *type;
-@property (nonatomic) NSNumber *calories;
+@property (nonatomic) float price;
+@property (nonatomic) NSInteger quantity;
+@property (nonatomic) NSInteger type;
+@property (nonatomic) NSInteger calories;
 @property (nonatomic) NSString *imageUrl;
 
 @end

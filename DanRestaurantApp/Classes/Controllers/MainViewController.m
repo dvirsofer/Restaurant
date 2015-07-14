@@ -71,9 +71,9 @@
     NSLog(@"prepareForSegue: %@", segue.identifier);
     
     if ([segue.identifier isEqualToString:@"PastaSegue"]) {
-        [segue.destinationViewController setCustomImages:0];
+        [segue.destinationViewController setCustomItems:1];
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
-        [segue.destinationViewController setCustomImages:1];
+        [segue.destinationViewController setCustomItems:2];
     }
 }
 
@@ -88,7 +88,6 @@
     NSInteger index = [sender tag];
     
     self.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
-    //self.popup.popupTitle.text = [NSString stringWithFormat:@"Index: %li", (long)index];
     [self.popup showInView:self.view animated:YES];
     self.popup.popupTitle.text = [NSString stringWithFormat:@"Index: %li", (long)index];
 }
