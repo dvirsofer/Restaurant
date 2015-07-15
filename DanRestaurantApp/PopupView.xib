@@ -22,7 +22,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5P-pN-yOF">
                     <rect key="frame" x="37" y="184" width="300" height="300"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="popup.png" translatesAutoresizingMaskIntoConstraints="NO" id="BUc-gz-6T8">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popup.png" translatesAutoresizingMaskIntoConstraints="NO" id="BUc-gz-6T8">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="233"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1um-Pz-J5O">
