@@ -139,14 +139,13 @@
 -(void) getAllParams:(NSNumber *)option
 {
     NSString *url = @"http://webmail.dan.co.il/restaurantservice/RestaurantService.svc/GetItems";
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     NSDictionary *params = @ {@"type" : option};
     
+    [[manager operationQueue] waitUntilAllOperationsAreFinished];
     
     [manager POST:url parameters:params
           success:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -172,13 +171,12 @@
              
              [items addObject:item];
          }
+         [self.carousel reloadData];
      }
           failure:
      ^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"Error: %@", error);
      }];
-    
-
 
 }
 

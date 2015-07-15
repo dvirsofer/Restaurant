@@ -18,5 +18,8 @@
 @property (nonatomic, strong) MainViewController *tabViewController;
 @property (nonatomic, strong) IBOutlet iCarousel *carousel;
 
+-(void) getAllParams:(NSNumber *)option;
+
+
 
 @end
