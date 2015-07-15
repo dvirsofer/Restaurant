@@ -6,6 +6,18 @@
 //  Copyright (c) 2015 Or. All rights reserved.
 //
 
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#endif
+
 #ifndef DanRestaurantApp_DanRestaurantApp_Prefix_pch
 #define DanRestaurantApp_DanRestaurantApp_Prefix_pch
 
@@ -13,3 +25,4 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #endif
+

@@ -38,6 +38,7 @@
 		44D00DED1B4D5BDB00A445F0 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DEC1B4D5BDB00A445F0 /* minus.png */; };
 		44D00DF11B4D5C2500A445F0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DF01B4D5C2500A445F0 /* plus.png */; };
 		44D00DF41B4D5CFF00A445F0 /* CustomPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */; };
+		44D10A001B56ACE900411609 /* ProductMidel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44D109FE1B56ACE900411609 /* ProductMidel.xcdatamodeld */; };
 		44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D4B40E1B416D920087CA9C /* MainViewController.m */; };
 		638111FACE4DC363D21C66ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39506D9C5F357B6147445F2B /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		44D00DF01B4D5C2500A445F0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		44D00DF21B4D5CFF00A445F0 /* CustomPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomPopUp.h; path = ../Views/CustomPopUp.h; sourceTree = "<group>"; };
 		44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomPopUp.m; path = ../Views/CustomPopUp.m; sourceTree = "<group>"; };
+		44D109FF1B56ACE900411609 /* ProductMidel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProductMidel.xcdatamodel; sourceTree = "<group>"; };
 		44D4B40D1B416D920087CA9C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		44D4B40E1B416D920087CA9C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4BF2F6793F89BB2785062A99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				1CAC90101B56A93E00F11F10 /* DanRestaurantApp-Prefix.pch */,
+				44D109FE1B56ACE900411609 /* ProductMidel.xcdatamodeld */,
 				1C4BF4941B3E9EF900D99F3B /* Info.plist */,
 				1C4BF4951B3E9EF900D99F3B /* main.m */,
 			);
@@ -439,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C36E9321B53A09A0092225E /* Item.m in Sources */,
+				44D10A001B56ACE900411609 /* ProductMidel.xcdatamodeld in Sources */,
 				444B5B7B1B4434AA00CD116D /* CarouselViewController.m in Sources */,
 				44D00DF41B4D5CFF00A445F0 /* CustomPopUp.m in Sources */,
 				1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */,
@@ -657,6 +661,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		44D109FE1B56ACE900411609 /* ProductMidel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				44D109FF1B56ACE900411609 /* ProductMidel.xcdatamodel */,
+			);
+			currentVersion = 44D109FF1B56ACE900411609 /* ProductMidel.xcdatamodel */;
+			path = ProductMidel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1C4BF4881B3E9EF900D99F3B /* Project object */;
 }
