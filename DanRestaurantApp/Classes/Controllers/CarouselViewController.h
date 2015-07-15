@@ -12,9 +12,8 @@
 
 @interface CarouselViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
 
--(void)setCustomItems:(int)option;
-
 @property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) NSNumber *customItemsOption; // property for holding the option type
 
 @property (nonatomic, strong) MainViewController *tabViewController;
 @property (nonatomic, strong) IBOutlet iCarousel *carousel;
