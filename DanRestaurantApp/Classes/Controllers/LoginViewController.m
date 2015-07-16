@@ -44,16 +44,11 @@
                             otherButtonTitles:nil] show];
         return;
     } else {
-        
         NSString *url = @"http://webmail.dan.co.il/restaurantservice/RestaurantService.svc/Login";
-        
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        
         NSDictionary *params = @ {@"personal_number" : personal_number.text, @"id" : password.text};
-        
         
         [manager POST:url parameters:params
               success:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -66,15 +61,13 @@
                 [alert show];
                 return;
             }
-            // Success login - move to MainViewController //
-            
+            // Success login - move to MainViewController
             self.employeeInfo = response;
             
             // Remove the " " before and after the name
             self.employeeInfo = [self.employeeInfo substringFromIndex:1];
             self.employeeInfo = [self.employeeInfo substringToIndex:[self.employeeInfo length] - 1];
             
-            NSLog(@"EmployeeInfo= %@", self.employeeInfo);
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             self.vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainViewController"];
             [self presentViewController:self.vc animated:YES completion:nil];

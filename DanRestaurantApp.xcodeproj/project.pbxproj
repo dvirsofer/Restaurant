@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C03B9BC1B584E750027A898 /* CarouselViewNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C03B9BB1B584E750027A898 /* CarouselViewNetworkManager.m */; };
 		1C09ED5D1B41AA710099792A /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C09ED591B41AA710099792A /* background.png */; };
 		1C09ED5E1B41AA710099792A /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C09ED5A1B41AA710099792A /* background@2x.png */; };
 		1C09ED5F1B41AA710099792A /* button_separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C09ED5B1B41AA710099792A /* button_separator.png */; };
@@ -28,6 +29,7 @@
 		1CC950DA1B453DA100CD201E /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC950D91B453DA100CD201E /* page.png */; };
 		1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */; };
 		1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A5D1B403E4600679D8C /* CartViewController.m */; };
+		1CD697481B58680B006CE024 /* GenericHelpFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD697471B58680B006CE024 /* GenericHelpFunctions.m */; };
 		4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */; };
 		4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */; };
 		4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C03B9BA1B584E750027A898 /* CarouselViewNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewNetworkManager.h; sourceTree = "<group>"; };
+		1C03B9BB1B584E750027A898 /* CarouselViewNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselViewNetworkManager.m; sourceTree = "<group>"; };
 		1C09ED591B41AA710099792A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		1C09ED5A1B41AA710099792A /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		1C09ED5B1B41AA710099792A /* button_separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_separator.png; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 		1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewCell.m; sourceTree = "<group>"; };
 		1CCF2A5C1B403E4600679D8C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		1CCF2A5D1B403E4600679D8C /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
+		1CD697461B58680B006CE024 /* GenericHelpFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericHelpFunctions.h; sourceTree = "<group>"; };
+		1CD697471B58680B006CE024 /* GenericHelpFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericHelpFunctions.m; sourceTree = "<group>"; };
 		39506D9C5F357B6147445F2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dan_logo_x1.png; sourceTree = "<group>"; };
 		4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dan_logo_x2.png; sourceTree = "<group>"; };
@@ -136,6 +142,24 @@
 				39506D9C5F357B6147445F2B /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C03B9B91B584DD50027A898 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1C03B9BA1B584E750027A898 /* CarouselViewNetworkManager.h */,
+				1C03B9BB1B584E750027A898 /* CarouselViewNetworkManager.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		1C03B9BD1B585D910027A898 /* HelpFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				1CD697461B58680B006CE024 /* GenericHelpFunctions.h */,
+				1CD697471B58680B006CE024 /* GenericHelpFunctions.m */,
+			);
+			name = HelpFunctions;
 			sourceTree = "<group>";
 		};
 		1C09ED581B41AA5C0099792A /* Images */ = {
@@ -192,6 +216,8 @@
 		1C4BF4921B3E9EF900D99F3B /* DanRestaurantApp */ = {
 			isa = PBXGroup;
 			children = (
+				1C03B9BD1B585D910027A898 /* HelpFunctions */,
+				1C03B9B91B584DD50027A898 /* Network */,
 				1C4BF4F31B3EA40D00D99F3B /* Classes */,
 				1C4BF4B91B3EA40600D99F3B /* Assets */,
 				1C4BF4971B3E9EF900D99F3B /* AppDelegate.h */,
@@ -441,10 +467,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CD697481B58680B006CE024 /* GenericHelpFunctions.m in Sources */,
 				1C36E9321B53A09A0092225E /* Item.m in Sources */,
 				44D10A001B56ACE900411609 /* ProductMidel.xcdatamodeld in Sources */,
 				444B5B7B1B4434AA00CD116D /* CarouselViewController.m in Sources */,
 				44D00DF41B4D5CFF00A445F0 /* CustomPopUp.m in Sources */,
+				1C03B9BC1B584E750027A898 /* CarouselViewNetworkManager.m in Sources */,
 				1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */,
 				1C09ED6A1B41B7D10099792A /* TabBarSegue.m in Sources */,
 				1C4BF5171B3EAEC200D99F3B /* LoginViewController.m in Sources */,

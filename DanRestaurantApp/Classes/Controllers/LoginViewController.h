@@ -17,7 +17,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *personal_number;
 @property (strong, nonatomic) IBOutlet UITextField *password;
 
-@property (strong, nonatomic) NSMutableArray *json;
 @property (strong, nonatomic) UINavigationController *vc;
 
 @end

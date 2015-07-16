@@ -10,18 +10,22 @@
 
 @implementation CustomPopUp
 
-NSInteger const maxPerItem = 2;
+NSInteger const maxPerItem = 2; // Set the maximum of quantity per one item
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    // Create the bounds and background view of the popup
     self.view.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:.6];
     self.popUpView.layer.cornerRadius = 5;
     self.popUpView.layer.shadowOpacity = 0.8;
     self.popUpView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
+/*!
+ @brief Shows the popup.
+ @discussion This method shows the popup on the view
+ */
 - (void)showAnimate
 {
     self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
@@ -32,6 +36,11 @@ NSInteger const maxPerItem = 2;
     }];
 }
 
+/*!
+ @brief Increase the quantity per item presented in the popup
+ @discussion Updates the self.numOfItems text to the old quantity + 1.
+ @param  Button press.
+ */
 - (IBAction)increasePressed:(id)sender
 {
     if([self.numOfItems.text intValue] == maxPerItem)
@@ -39,6 +48,11 @@ NSInteger const maxPerItem = 2;
     self.numOfItems.text = [NSString stringWithFormat:@"%d",([self.numOfItems.text intValue]+1)];
 }
 
+/*!
+ @brief Decrease the quantity per item presented in the popup
+ @discussion Updates the self.numOfItems text to the old quantity - 1.
+ @param  Button press.
+ */
 - (IBAction)decreasePressed:(id)sender
 {
     if([self.numOfItems.text intValue] == 0)
