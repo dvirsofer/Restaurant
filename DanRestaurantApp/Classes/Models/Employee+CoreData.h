@@ -1,5 +1,5 @@
 //
-//  Employee.m
+//  Employee+CoreData.h
 //  DanRestaurantApp
 //
 //  Created by Or on 7/17/15.
@@ -8,11 +8,8 @@
 
 #import "Employee.h"
 
+@interface Employee (CoreData)
 
-@implementation Employee
-
-@dynamic employee_id;
-@dynamic name;
-@dynamic personal_number;
++(void)saveEmployee:(NSDictionary *)employeeDict;
 
 @end

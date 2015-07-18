@@ -60,6 +60,7 @@
                        @"dan_logo_x1.png", nil];
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -92,18 +93,13 @@
     // Configure the cell
     cell.foodPrice.text = [self.foodPrices
                            objectAtIndex: [indexPath row]];
-    
     cell.foodName.text = [self.foodNames
                           objectAtIndex:[indexPath row]];
-    
     cell.foodTarget.text = [self.foodTargets
                             objectAtIndex:[indexPath row]];
-    
     UIImage *foodPhoto = [UIImage imageNamed:
                           [self.foodImages objectAtIndex: [indexPath row]]];
-    
     cell.foodImage.image = foodPhoto;
-    
     return cell;
 }
 

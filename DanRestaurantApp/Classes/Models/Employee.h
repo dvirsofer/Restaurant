@@ -2,18 +2,18 @@
 //  Employee.h
 //  DanRestaurantApp
 //
-//  Created by Or on 7/7/15.
+//  Created by Or on 7/17/15.
 //  Copyright (c) 2015 Or. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface Employee : NSObject
 
-@property (strong, nonatomic) NSString *employeeId;
-@property (strong, nonatomic) NSString *personalNumber;
-@property (strong, nonatomic) NSString *employeeName;
+@interface Employee : NSManagedObject
 
--(id) initWithEmployeeId: (NSString *) eId andPersonalNumber: (NSString *) pNumber andEmployeeName: (NSString *)eName;
+@property (nonatomic, retain) NSNumber *employee_id;
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSNumber *personal_number;
 
 @end

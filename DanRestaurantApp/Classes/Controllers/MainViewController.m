@@ -23,7 +23,6 @@
     UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"היסטוריה" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonAction:)];
     UIBarButtonItem *cartButton = [[UIBarButtonItem alloc] initWithTitle:@"עגלה" style:UIBarButtonItemStylePlain target:self action:@selector(cartButtonAction:)];
     
-    
     NSArray *navButtonArray = [[NSArray alloc] initWithObjects:historyButton, cartButton, nil];
     self.navigationItem.rightBarButtonItems = navButtonArray;
     
@@ -51,9 +50,11 @@
 -(void)cartButtonAction:(id)sender {
     // When clicked cart
     NSLog(@"Cart clicked");
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"cartTableView"];
-    [self presentViewController:vc animated:YES completion:nil];
+    //UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"cartTableView"];
+    //[self presentViewController:vc animated:YES completion:nil];
+    
+    [self performSegueWithIdentifier: @"cartSegue" sender: self];
 }
 
 -(void)pastaButtonAction:(id)sender {
@@ -75,7 +76,10 @@
         carouselController.customItemsOption = [NSNumber numberWithInt:1];
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
         carouselController.customItemsOption = [NSNumber numberWithInt:2];
-    }
+    } //else if ([segue.identifier isEqualToString:@"cartSegue"]) {
+        //AddCustomerViewController *addCustomerViewController = segue.destinationViewController;
+        //addCustomerViewController.delegate = self;
+    //}
 }
 
 -(void)setEmployeeName:(NSString *)employeeName

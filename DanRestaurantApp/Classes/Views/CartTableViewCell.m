@@ -10,12 +10,6 @@
 
 @implementation CartTableViewCell
 
-@synthesize foodImage = _foodImage;
-@synthesize foodName = _foodName;
-@synthesize foodPrice = _foodPrice;
-@synthesize foodTarget = _foodTarget;
-@synthesize deleteItemButton = _deleteItemButton;
-
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -32,8 +26,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
 }
 
 + (NSString *)reuseIdentifier {

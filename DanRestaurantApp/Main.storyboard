@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HBL-0w-fzL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oYU-oJ-nnq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -206,11 +206,12 @@
                     <connections>
                         <outlet property="employeeNameLbl" destination="2lk-jz-J1x" id="iEB-Ft-hl3"/>
                         <outlet property="placeholderView" destination="fcI-pj-vUj" id="QY4-YX-was"/>
+                        <segue destination="ViW-S3-537" kind="show" identifier="cartSegue" id="ljB-B2-HOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qiy-T8-f7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="-790"/>
+            <point key="canvasLocation" x="1011" y="-738"/>
         </scene>
         <!--Carousel View Controller-->
         <scene sceneID="Vmp-DE-P7h">
@@ -351,7 +352,7 @@
             </objects>
             <point key="canvasLocation" x="-214" y="-30"/>
         </scene>
-        <!--Cart View Controller-->
+        <!--עגלה-->
         <scene sceneID="hZO-Q4-7t1">
             <objects>
                 <viewController storyboardIdentifier="cartTableView" id="54v-K1-a4Z" customClass="CartViewController" sceneMemberID="viewController">
@@ -381,25 +382,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMD-6c-s2B">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="עגלה" id="P2b-dk-l0l">
-                                        <barButtonItem key="leftBarButtonItem" title="ערוך" id="kRO-WZ-9Vk">
-                                            <connections>
-                                                <action selector="editButtonClicked:" destination="54v-K1-a4Z" id="zPr-4Q-7uD"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="חזור" id="2Bl-8U-djB">
-                                            <connections>
-                                                <action selector="returnButtonClicked:" destination="54v-K1-a4Z" id="NrK-xw-Qbf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-J5-g42">
-                                <rect key="frame" x="0.0" y="72" width="600" height="410"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-J5-g42">
+                                <rect key="frame" x="0.0" y="64" width="600" height="366"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartTableCell" id="3vM-Ke-Hak" customClass="CartTableViewCell">
@@ -492,19 +476,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UsD-J5-g42" firstAttribute="trailing" secondItem="LSj-YU-9Uo" secondAttribute="trailingMargin" id="0Kh-qc-NfV"/>
                             <constraint firstAttribute="centerX" secondItem="E9p-wR-HZ6" secondAttribute="centerX" id="1dA-nR-39Z"/>
                             <constraint firstItem="UsD-J5-g42" firstAttribute="leading" secondItem="LSj-YU-9Uo" secondAttribute="leadingMargin" constant="-16" id="47w-a9-D1N"/>
                             <constraint firstItem="4f8-34-sv4" firstAttribute="top" secondItem="Xqv-aA-XOS" secondAttribute="bottom" constant="20" id="5WX-Be-T3v"/>
                             <constraint firstItem="E9p-wR-HZ6" firstAttribute="trailing" secondItem="LSj-YU-9Uo" secondAttribute="trailingMargin" id="8O1-BV-WaU"/>
-                            <constraint firstItem="UsD-J5-g42" firstAttribute="leading" secondItem="LSj-YU-9Uo" secondAttribute="leadingMargin" id="Eiq-hj-0gG"/>
                             <constraint firstItem="Xqv-aA-XOS" firstAttribute="top" secondItem="bkm-1A-dzR" secondAttribute="bottom" constant="10" id="HPx-Wk-CUg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FMD-6c-s2B" secondAttribute="trailing" constant="-16" id="Haz-cP-GWS"/>
                             <constraint firstAttribute="centerX" secondItem="Xqv-aA-XOS" secondAttribute="centerX" id="JKv-Xq-BXV"/>
                             <constraint firstItem="E9p-wR-HZ6" firstAttribute="leading" secondItem="LSj-YU-9Uo" secondAttribute="leadingMargin" id="KTo-SR-qsB"/>
                             <constraint firstItem="E9p-wR-HZ6" firstAttribute="top" secondItem="UsD-J5-g42" secondAttribute="bottom" constant="8" id="Vrb-Bd-zjZ"/>
-                            <constraint firstItem="UsD-J5-g42" firstAttribute="top" secondItem="FMD-6c-s2B" secondAttribute="bottom" id="eK0-0R-nWr"/>
-                            <constraint firstItem="FMD-6c-s2B" firstAttribute="top" secondItem="x5p-jP-WYH" secondAttribute="bottom" constant="8" id="eWv-ek-p3w"/>
                             <constraint firstItem="bkm-1A-dzR" firstAttribute="leading" secondItem="LSj-YU-9Uo" secondAttribute="leadingMargin" id="eon-pD-Nsc"/>
                             <constraint firstItem="bkm-1A-dzR" firstAttribute="trailing" secondItem="LSj-YU-9Uo" secondAttribute="trailingMargin" id="gf5-qI-ldD"/>
                             <constraint firstAttribute="centerX" secondItem="bkm-1A-dzR" secondAttribute="centerX" id="n4b-d9-v4s"/>
@@ -513,28 +492,28 @@
                             <constraint firstAttribute="trailingMargin" secondItem="UsD-J5-g42" secondAttribute="trailing" constant="-16" id="pXD-3F-Dyd"/>
                             <constraint firstItem="Xqv-aA-XOS" firstAttribute="top" secondItem="bkm-1A-dzR" secondAttribute="bottom" constant="10" id="rpG-O3-gJi"/>
                             <constraint firstItem="bkm-1A-dzR" firstAttribute="top" secondItem="E9p-wR-HZ6" secondAttribute="bottom" constant="8" id="sLQ-Yp-Rf2"/>
-                            <constraint firstItem="FMD-6c-s2B" firstAttribute="leading" secondItem="LSj-YU-9Uo" secondAttribute="leadingMargin" constant="-16" id="seu-1p-bFo"/>
-                            <constraint firstAttribute="centerX" secondItem="FMD-6c-s2B" secondAttribute="centerX" id="xcm-2G-Igp"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="0Kh-qc-NfV"/>
-                                <exclude reference="Eiq-hj-0gG"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="עגלה" id="P2b-dk-l0l">
+                        <barButtonItem key="backBarButtonItem" title="חזור" id="1nx-ru-oyT"/>
+                        <barButtonItem key="rightBarButtonItem" title="ערוך" id="kRO-WZ-9Vk">
+                            <connections>
+                                <action selector="editButtonClicked:" destination="54v-K1-a4Z" id="zPr-4Q-7uD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cartTableView" destination="UsD-J5-g42" id="jir-pF-vfN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fY1-Zt-jN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="513" y="-3"/>
+            <point key="canvasLocation" x="1322" y="23"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--MainNavigation-->
         <scene sceneID="Xr9-wJ-Xcp">
             <objects>
-                <navigationController storyboardIdentifier="mainViewController" automaticallyAdjustsScrollViewInsets="NO" id="HBL-0w-fzL" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainViewController" title="MainNavigation" automaticallyAdjustsScrollViewInsets="NO" id="HBL-0w-fzL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3gx-dH-Iph">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -547,7 +526,23 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnx-OP-Chb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="-770"/>
+            <point key="canvasLocation" x="205" y="-766"/>
+        </scene>
+        <!--CartNavigation-->
+        <scene sceneID="jED-Ub-VHI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WsI-lP-Nl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController title="CartNavigation" id="ViW-S3-537" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UK3-H8-Ey7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="54v-K1-a4Z" kind="relationship" relationship="rootViewController" id="vvU-GH-PfA"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="562" y="16"/>
         </scene>
     </scenes>
     <resources>
