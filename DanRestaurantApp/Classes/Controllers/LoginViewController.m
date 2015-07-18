@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "Employee+CoreData.h"
 
 @interface LoginViewController ()
 
@@ -38,47 +39,11 @@
                             cancelButtonTitle:@"OK"
                             otherButtonTitles:nil] show];
         return;
-    } else {
-//        NSString *url = @"http://webmail.dan.co.il/restaurantservice/RestaurantService.svc/Login";
-//        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//        NSDictionary *params = @ {@"personal_number" : personal_number.text, @"id" : password.text};
-//        
-//        [manager POST:url parameters:params
-//              success:^(AFHTTPRequestOperation *operation, id responseObject)
-//        {
-//            NSString *response = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//            if([response isEqualToString:@"\"Wrong\""])
-//            {
-//                // Invalid Information (Wrong id/pass)
-//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Invalid Information" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//                [alert show];
-//                return;
-//            }
-//            // Success login - move to MainViewController
-//            self.employeeInfo = response;
-//            
-//            // Remove the " " before and after the name
-//            self.employeeInfo = [self.employeeInfo substringFromIndex:1];
-//            self.employeeInfo = [self.employeeInfo substringToIndex:[self.employeeInfo length] - 1];
-//            
-//            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//            self.vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainViewController"];
-//            [self presentViewController:self.vc animated:YES completion:nil];
-//            
-//            [self performSegueWithIdentifier:@"mainView" sender:sender];
-//        }
-//              failure:
-//         ^(AFHTTPRequestOperation *operation, NSError *error) {
-//             NSLog(@"Error: %@", error);
-//         }];
-        
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        self.vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainViewController"];
-        [self presentViewController:self.vc animated:YES completion:nil];
-
-        [self performSegueWithIdentifier:@"mainView" sender:sender];
+    }
+    else {
+        LoginNetworkManager *loginManager = [[LoginNetworkManager alloc] init];
+        loginManager.delegate = self;
+        [loginManager asyncLogin:personal_number.text withPass:password.text];
     }
 }
 
@@ -92,6 +57,26 @@
             [vc1 setEmployeeName: self.employeeInfo];
         }
     }
+}
+
+#pragma mark - LoginNetworkManagerDelegate
+
+- (void) resultFound:(NSArray *)json {
+    //save in local data and move to MainViewController.
+    // Save emplyoee in local data
+    [Employee saveEmployee:json];
+    
+    Employee *test = [Employee getEmployee];
+    NSLog(@"Name: %@, Id: %@, PNum: %@", test.name, test.employee_id, test.personal_number);
+    
+    [self performSegueWithIdentifier:@"mainViewSegue" sender: self];
+    
+}
+
+- (void) errorFound:(NSError *) error{
+    //show error messege.
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Wrong ID or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 

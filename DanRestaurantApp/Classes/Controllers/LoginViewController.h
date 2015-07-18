@@ -10,7 +10,6 @@
 #import "MainViewController.h"
 #import "AppDelegate.h"
 #import "MainViewController.h"
-#import "Employee.h"
 #import "LoginNetworkManager.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate, LoginNetworkManagerDelegate>

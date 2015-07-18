@@ -13,6 +13,10 @@ static NSString * const LOGIN_URL = @"http://webmail.dan.co.il/restaurantservice
 
 @implementation LoginNetworkManager
 
+/*!
+ @discussion Get the employee info from server call resultFound if success and errorFound if not.
+ @param 2 Strings - Personal number and password
+ */
 -(void) asyncLogin:(NSString *)employee_id withPass:(NSString *)personal_number
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -24,50 +28,34 @@ static NSString * const LOGIN_URL = @"http://webmail.dan.co.il/restaurantservice
           success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          NSString *response = [operation responseString];
-         
          NSData *objectData = [response dataUsingEncoding:NSUTF8StringEncoding];
-         
          NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData options:NSJSONReadingMutableContainers error:nil];
          
          if([json count] == 0)
          {
              // Invalid Information (Wrong id/pass)
-             if (self.delegate != nil && [self.delegate respondsToSelector:@selector(errorFound)]) {
-                 [self.delegate errorFound];
+             if (self.delegate != nil && [self.delegate respondsToSelector:@selector(errorFound:)]) {
+                 NSError *error;
+                 // dictionary for error details
+                 NSMutableDictionary* errorDetails = [NSMutableDictionary dictionary];
+                 [errorDetails setValue:@"Wrong" forKey:NSLocalizedDescriptionKey];
+                 // create the error
+                 error = [NSError errorWithDomain:@"login" code:200 userInfo:errorDetails];
+                 [self.delegate errorFound: error];
              }
          }
          // Success login - create new employee and send it to delegate
-         
-         // Get the employee name
-         NSString *new_name = json[0][@"employee_name"];
-         // Remove the " " before and after the name
-         new_name = [new_name substringFromIndex:1];
-         new_name = [new_name substringToIndex:[new_name length] - 1];
-         
-         // Formatter in order to get number from string
-         NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
-         format.numberStyle = NSNumberFormatterDecimalStyle;
-         
-         // Get the employee id and personal number
-         NSNumber *new_employee_id = [format numberFromString:json[0][@"employee_id"]];
-         NSNumber *new_personal_number = [format numberFromString:json[0][@"personal_number"]];
-         
-         // Create new employee
-         Employee *employee = [[Employee alloc] init];
-         employee.name = new_name;
-         employee.employee_id = new_employee_id;
-         employee.personal_number = new_personal_number;
-
          // Send the new employee to delegate
          if (self.delegate != nil && [self.delegate respondsToSelector:@selector(resultFound:)]) {
-             [self.delegate resultFound:employee];
+             // Call resultFound in delegate
+             [self.delegate resultFound:json];
          }
      }
           failure:
      ^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"Error: %@", error);
-         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(errorFound)]) {
-             [self.delegate errorFound];
+         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(errorFound:)]) {
+             [self.delegate errorFound: error];
          }
      }];
 }

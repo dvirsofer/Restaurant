@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Employee.h"
 
 @protocol LoginNetworkManagerDelegate <NSObject>
 @required
-- (void) resultFound:(Employee *)employee;
-- (void) errorFound;
+- (void) resultFound:(NSArray *)employee;
+- (void) errorFound:(NSError *) error;
 @end
 
 @interface LoginNetworkManager : NSObject
