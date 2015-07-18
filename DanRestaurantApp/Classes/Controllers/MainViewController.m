@@ -25,10 +25,13 @@
     
     NSArray *navButtonArray = [[NSArray alloc] initWithObjects:historyButton, cartButton, nil];
     self.navigationItem.rightBarButtonItems = navButtonArray;
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"d/M/yyyy"];
+    NSString *currentDate = [formatter stringFromDate:[NSDate date]];
     
     self.employeeNameLbl.text = self.employee_name;
-    
-    
+    self.employeeNameLbl.text = currentDate;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,7 +92,6 @@
 {
     //get item index for button
     NSInteger index = [sender tag];
-    
     self.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
     [self.popup showInView:self.view animated:YES];
     self.popup.popupTitle.text = [NSString stringWithFormat:@"Index: %li", (long)index];
@@ -98,6 +100,5 @@
 - (IBAction)makeOrder:(id)sender {
     [self.popup closePopup:sender];
 }
-
 
 @end

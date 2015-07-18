@@ -10,6 +10,7 @@
 #import "CustomPopUp.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "Item.h"
+#import "CarouselView.h"
 
 @interface CarouselViewController ()
 
@@ -40,7 +41,10 @@
     [super viewDidLoad];
     
     // Init items on load
-    [self getAllParams: self.customItemsOption];
+    //[self getAllParams: self.customItemsOption];
+    CarouselViewNetworkManager *networkManager = [[CarouselViewNetworkManager alloc] init];
+    networkManager.delegate = self;
+    //[networkManager ];
     
     //configure carousel
     carousel.type = iCarouselTypeCoverFlow2;
@@ -70,65 +74,15 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    UIButton *button;
+    CarouselView *button;
     //create new view if no view is available for recycling
     if(view == nil)
     {
-        button = (UIButton *)view;
-        // Get item from items array
-        Item *item = [items objectAtIndex:index];
+        button = (CarouselView *)view;
         
-        // **********************
-        // Move to Function!!!!!!
-        // **********************
-        NSString *ImageURL = item.imageUrl;
-        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
-        UIImage *image = [UIImage imageWithData:imageData];
-        button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setBackgroundImage:image forState:UIControlStateNormal];
-        [button setBackgroundColor:[UIColor redColor]];
-        [button setFrame:CGRectMake(0, 0, 200, 200)];
+        // Create
+        button = [[CarouselView alloc] initWithItem:[items objectAtIndex:index]];
         
-        button.imageView.contentMode = UIViewContentModeCenter;
-        
-        //Create Label
-        UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 160, 200, 100)];
-        [description setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-        [description setText:item.itemDescription];
-        description.font = [UIFont boldSystemFontOfSize:16];
-        description.textAlignment = NSTextAlignmentCenter;
-        [description setTextColor:[UIColor darkGrayColor]];
-        [description setBackgroundColor:[UIColor clearColor]];
-        [button addSubview:description];
-        
-        UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(0, 180, 200, 100)];
-        [price setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-        [price setText: [[NSString stringWithFormat:@"%f", item.price] stringByAppendingString:@"ש״ח"]];
-        price.font = [UIFont boldSystemFontOfSize:16];
-        price.textAlignment = NSTextAlignmentCenter;
-        [price setTextColor:[UIColor darkGrayColor]];
-        [price setBackgroundColor:[UIColor clearColor]];
-        [button addSubview:price];
-        
-        UILabel *calories = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 200, 100)];
-        [calories setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-        [calories setText:[[NSString stringWithFormat:@"%ld", (long)item.calories] stringByAppendingString:@"קלוריות"]];
-        
-        calories.font = [UIFont boldSystemFontOfSize:16];
-        calories.textAlignment = NSTextAlignmentCenter;
-        [calories setTextColor:[UIColor darkGrayColor]];
-        [calories setBackgroundColor:[UIColor clearColor]];
-        [button addSubview:calories];
-        
-        UILabel *quantity = [[UILabel alloc]initWithFrame:CGRectMake(0, 220, 200, 100)];
-        [quantity setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-        [quantity setText: [[NSString stringWithFormat:@"%ld", (long)item.quantity] stringByAppendingString:@"במלאי"]];
-        quantity.font = [UIFont boldSystemFontOfSize:16];
-        quantity.textAlignment = NSTextAlignmentCenter;
-        [quantity setTextColor:[UIColor darkGrayColor]];
-        [quantity setBackgroundColor:[UIColor clearColor]];
-        [button addSubview:quantity];
-
         button.tag = index;
         [button addTarget:self.tabViewController action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -136,26 +90,20 @@
     return button;
 }
 
--(void) getAllParams:(NSNumber *)option
-{
-    NSString *url = @"http://webmail.dan.co.il/restaurantservice/RestaurantService.svc/GetItems";
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    NSDictionary *params = @ {@"type" : option};
-    
-    [[manager operationQueue] waitUntilAllOperationsAreFinished];
-    
-    [manager POST:url parameters:params
-          success:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         NSString *response = [operation responseString];
+#pragma mark - LoginNetworkManagerDelegate
 
-         NSData *objectData = [response dataUsingEncoding:NSUTF8StringEncoding];
-         
-         NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData options:NSJSONReadingMutableContainers error:nil];
-         
+- (void) resultFound:(NSArray *)json {
+    
+    
+}
+
+- (void) errorFound:(NSError *) error{
+    //show error messege.
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Wrong ID or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+/*Move To model
          items = [[NSMutableArray alloc] initWithCapacity:[json count]];
          for (id object in json) 
          {
@@ -171,14 +119,8 @@
              
              [items addObject:item];
          }
-         [self.carousel reloadData];
-     }
-          failure:
-     ^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"Error: %@", error);
-     }];
+         [self.carousel reloadData];*/
 
-}
 
 -(void) buttonIsPressed:(UIButton *)sender
 {

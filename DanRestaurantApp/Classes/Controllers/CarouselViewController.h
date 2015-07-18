@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
 #import "MainViewController.h"
+#import "CarouselViewNetworkManager.h"
 
-@interface CarouselViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
+@interface CarouselViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, CarouselViewNetworkManagerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, strong) NSNumber *customItemsOption; // property for holding the option type

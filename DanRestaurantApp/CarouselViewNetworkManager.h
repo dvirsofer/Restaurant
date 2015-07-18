@@ -16,4 +16,6 @@
 
 @interface CarouselViewNetworkManager : NSObject
 
+@property (nonatomic, weak) id<CarouselViewNetworkManagerDelegate>	delegate;
+
 @end
