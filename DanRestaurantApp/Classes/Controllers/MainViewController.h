@@ -10,15 +10,8 @@
 #import "CartViewController.h"
 #import "iCarousel.h"
 #import "CustomPopUp.h"
-//#import "HistoryViewController.h"
 
 @interface MainViewController : UIViewController
-
--(IBAction)exitButtonAction:(id)sender;
--(IBAction)historyButtonAction:(id)sender;
--(IBAction)cartButtonAction:(id)sender;
--(IBAction)pastaButtonAction:(id)sender;
--(IBAction)sandwichButtonAction:(id)sender;
 
 -(void)setEmployeeName:(NSString *)employeeName;
 

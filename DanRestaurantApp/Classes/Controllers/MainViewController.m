@@ -27,11 +27,17 @@
     self.navigationItem.rightBarButtonItems = navButtonArray;
     
     self.employeeNameLbl.text = self.employee_name;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self performSegueWithIdentifier: @"PastaSegue" sender: self];
 }
 
 -(void)exitButtonAction:(id)sender {
@@ -50,21 +56,16 @@
 -(void)cartButtonAction:(id)sender {
     // When clicked cart
     NSLog(@"Cart clicked");
-    //UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"cartTableView"];
-    //[self presentViewController:vc animated:YES completion:nil];
-    
     [self performSegueWithIdentifier: @"cartSegue" sender: self];
 }
 
--(void)pastaButtonAction:(id)sender {
-    // When clicked pasta
-    NSLog(@"pasta clicked");
+
+- (IBAction)pressedPastaButton:(id)sender {
+    [self performSegueWithIdentifier: @"PastaSegue" sender: self];
 }
 
--(void)sandwichButtonAction:(id)sender {
-    // When clicked sandwich
-    NSLog(@"Sandwich clicked");
+- (IBAction)pressedSandwichButton:(id)sender {
+    [self performSegueWithIdentifier: @"SandwichSegue" sender: self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -76,10 +77,7 @@
         carouselController.customItemsOption = [NSNumber numberWithInt:1];
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
         carouselController.customItemsOption = [NSNumber numberWithInt:2];
-    } //else if ([segue.identifier isEqualToString:@"cartSegue"]) {
-        //AddCustomerViewController *addCustomerViewController = segue.destinationViewController;
-        //addCustomerViewController.delegate = self;
-    //}
+    }
 }
 
 -(void)setEmployeeName:(NSString *)employeeName

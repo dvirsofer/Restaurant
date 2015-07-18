@@ -126,8 +126,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pastaButtonAction:" destination="8YI-Ty-WDm" eventType="touchUpInside" id="qwP-Sd-rpb"/>
-                                    <segue destination="1tk-AU-ebL" kind="custom" identifier="PastaSegue" customClass="TabBarSegue" id="OYH-aW-SBB"/>
+                                    <action selector="pressedPastaButton:" destination="8YI-Ty-WDm" eventType="touchUpInside" id="7gh-d9-Lf6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwk-Yx-pwA">
@@ -137,8 +136,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="sandwichButtonAction:" destination="8YI-Ty-WDm" eventType="touchUpInside" id="tNx-On-MTT"/>
-                                    <segue destination="1tk-AU-ebL" kind="custom" identifier="SandwichSegue" customClass="TabBarSegue" id="R2L-98-vwo"/>
+                                    <action selector="pressedSandwichButton:" destination="8YI-Ty-WDm" eventType="touchUpInside" id="wu0-06-mdX"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="button_separator.png" translatesAutoresizingMaskIntoConstraints="NO" id="tUu-z5-4Rj">
@@ -207,6 +205,8 @@
                         <outlet property="employeeNameLbl" destination="2lk-jz-J1x" id="iEB-Ft-hl3"/>
                         <outlet property="placeholderView" destination="fcI-pj-vUj" id="QY4-YX-was"/>
                         <segue destination="ViW-S3-537" kind="show" identifier="cartSegue" id="ljB-B2-HOz"/>
+                        <segue destination="1tk-AU-ebL" kind="custom" identifier="PastaSegue" customClass="TabBarSegue" id="CCH-wS-7gk"/>
+                        <segue destination="1tk-AU-ebL" kind="custom" identifier="SandwichSegue" customClass="TabBarSegue" id="vxn-k5-fhY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qiy-T8-f7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -551,6 +551,6 @@
         <image name="dan_logo" width="58" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="R2L-98-vwo"/>
+        <segue reference="vxn-k5-fhY"/>
     </inferredMetricsTieBreakers>
 </document>
