@@ -31,7 +31,7 @@ static NSString * const LOGIN_URL = @"http://webmail.dan.co.il/restaurantservice
          NSData *objectData = [response dataUsingEncoding:NSUTF8StringEncoding];
          NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData options:NSJSONReadingMutableContainers error:nil];
          
-         if([json count] == 0)
+         if([json count] == 0 || json == nil)
          {
              // Invalid Information (Wrong id/pass)
              if (self.delegate != nil && [self.delegate respondsToSelector:@selector(errorFound:)]) {
@@ -42,6 +42,7 @@ static NSString * const LOGIN_URL = @"http://webmail.dan.co.il/restaurantservice
                  // create the error
                  error = [NSError errorWithDomain:@"login" code:200 userInfo:errorDetails];
                  [self.delegate errorFound: error];
+                 return;
              }
          }
          // Success login - create new employee and send it to delegate

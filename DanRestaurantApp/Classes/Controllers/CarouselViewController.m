@@ -9,7 +9,7 @@
 #import "CarouselViewController.h"
 #import "CustomPopUp.h"
 #import "AFHTTPRequestOperationManager.h"
-#import "Item.h"
+#import "Product.h"
 #import "CarouselView.h"
 
 @interface CarouselViewController ()
@@ -41,14 +41,12 @@
     [super viewDidLoad];
     
     // Init items on load
-    //[self getAllParams: self.customItemsOption];
     CarouselViewNetworkManager *networkManager = [[CarouselViewNetworkManager alloc] init];
     networkManager.delegate = self;
     //[networkManager ];
     
     //configure carousel
     carousel.type = iCarouselTypeCoverFlow2;
-    //carousel.type = iCarouselTypeRotary;
 }
 
 - (void)viewDidUnload
@@ -90,41 +88,22 @@
     return button;
 }
 
+-(void) buttonIsPressed:(UIButton *)sender{}
+
 #pragma mark - LoginNetworkManagerDelegate
 
-- (void) resultFound:(NSArray *)json {
+- (void) resultsFound:(NSArray *)json {
+    // Save items info in self.items array
+    self.items = [Product setItemsArray: json];
     
-    
+    // Reload the carousel with updated items
+    [self.carousel reloadData];
 }
 
 - (void) errorFound:(NSError *) error{
-    //show error messege.
+    // Show error messege.
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Wrong ID or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
-}
-
-/*Move To model
-         items = [[NSMutableArray alloc] initWithCapacity:[json count]];
-         for (id object in json) 
-         {
-             NSInteger item_id = [object[@"item_id"] intValue];
-             NSString *description = object[@"description"];
-             float price = [object[@"price"] floatValue];
-             NSInteger quantity = [object[@"quantity"] intValue];
-             NSInteger type = [object[@"type"] intValue];
-             NSInteger calories = [object[@"calories"] intValue];
-             NSString *img_url = object[@"img_url"];
-             
-             Item *item = [[Item alloc] initWithItemId:item_id andDescription:description andPrice:price andQuantity:quantity andType:type andCalories:calories andImageUrl:img_url];
-             
-             [items addObject:item];
-         }
-         [self.carousel reloadData];*/
-
-
--(void) buttonIsPressed:(UIButton *)sender
-{
-    NSLog(@"Pressed");
 }
 
 @end

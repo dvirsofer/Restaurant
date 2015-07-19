@@ -19,4 +19,39 @@
 @dynamic quantity;
 @dynamic type;
 
++ (NSMutableArray *) setItemsArray: (NSArray *)json {
+    NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:[json count]];
+    for (id object in json)
+    {
+        NSNumber *item_id = [object valueForKey:@"item_id"];
+        NSString *description = [object valueForKey:@"description"];
+        NSNumber *price = [object valueForKey:@"price"];
+        NSNumber *quantity = [object valueForKey:@"quantity"];
+        NSNumber *type = [object valueForKey:@"type"];
+        NSNumber *calories = [object valueForKey:@"calories"];
+        NSString *img_url = [object valueForKey:@"img_url"];
+        
+        Product *prod = [[Product alloc] initWithItemId:item_id andDescription:description andPrice:price andQuantity:quantity andType:type andCalories:calories andImageUrl:img_url];
+        
+        [items addObject:prod];
+    }
+    return items;
+}
+
+- (instancetype) initWithItemId:(NSNumber *)iId andDescription:(NSString *)iDescription andPrice:(NSNumber *)iPrice andQuantity:(NSNumber *)iQuantity andType:(NSNumber *)iType andCalories:(NSNumber *)iCalories andImageUrl:(NSString *)iUrl {
+    self = [super init];
+    if (self)
+    {
+        self.prod_id = iId;
+        self.prod_desc = iDescription;
+        self.price = iPrice;
+        self.quantity = iQuantity;
+        self.type = iType;
+        self.calories = iCalories;
+        self.img_url = iUrl;
+    }
+    return self;
+}
+
+
 @end

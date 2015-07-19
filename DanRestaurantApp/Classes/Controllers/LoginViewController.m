@@ -12,7 +12,7 @@
 
 @interface LoginViewController ()
 
-@property (strong, nonatomic) NSString *employeeInfo;
+//@property (strong, nonatomic) NSString *employeeInfo;
 
 @end
 
@@ -32,6 +32,7 @@
 }
 
 - (void) checkLogin:(id)sender {
+    // Basic check if any of the text fields is empty
     if([personal_number.text isEqualToString:@""] || [password.text isEqualToString:@""]) {
         [[[UIAlertView alloc] initWithTitle:@"Error"
                             message:[NSString stringWithFormat:@"Enter all fields"]
@@ -41,23 +42,25 @@
         return;
     }
     else {
+        // Check login in server - call resultsFound if success or errorFound if not
         LoginNetworkManager *loginManager = [[LoginNetworkManager alloc] init];
         loginManager.delegate = self;
         [loginManager asyncLogin:personal_number.text withPass:password.text];
     }
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+/*-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"mainView"])
     {
         if ([segue.destinationViewController isKindOfClass:[UINavigationController class]])
         {
             UINavigationController *navController = self.vc;
             MainViewController *vc1 = [navController.viewControllers objectAtIndex:0];
+            // Set the employee name on main screen
             [vc1 setEmployeeName: self.employeeInfo];
         }
     }
-}
+}*/
 
 #pragma mark - LoginNetworkManagerDelegate
 
@@ -65,17 +68,14 @@
     //save in local data and move to MainViewController.
     // Save emplyoee in local data
     [Employee saveEmployee:json];
-    
-    Employee *test = [Employee getEmployee];
-    NSLog(@"Name: %@, Id: %@, PNum: %@", test.name, test.employee_id, test.personal_number);
-    
+    // Move to main view
     [self performSegueWithIdentifier:@"mainViewSegue" sender: self];
     
 }
 
 - (void) errorFound:(NSError *) error{
     //show error messege.
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Wrong ID or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Information" message:@"Wrong ID or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
 }
 

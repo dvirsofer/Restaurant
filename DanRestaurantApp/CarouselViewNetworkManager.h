@@ -18,4 +18,6 @@
 
 @property (nonatomic, weak) id<CarouselViewNetworkManagerDelegate>	delegate;
 
+-(void) getAllParams:(NSNumber *)option;
+
 @end

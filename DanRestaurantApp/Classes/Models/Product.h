@@ -20,4 +20,7 @@
 @property (nonatomic, retain) NSNumber * quantity;
 @property (nonatomic, retain) NSNumber * type;
 
++ (NSMutableArray *) setItemsArray: (NSArray *)json;
+- (instancetype) initWithItemId:(NSNumber *)iId andDescription:(NSString *)iDescription andPrice:(NSNumber *)iPrice andQuantity:(NSNumber *)iQuantity andType:(NSNumber *)iType andCalories:(NSNumber *)iCalories andImageUrl:(NSString *)iUrl;
+
 @end

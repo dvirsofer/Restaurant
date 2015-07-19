@@ -60,6 +60,10 @@ NSInteger const maxPerItem = 2; // Set the maximum of quantity per one item
     self.numOfItems.text = [NSString stringWithFormat:@"%d",([self.numOfItems.text intValue]-1)];
 }
 
+/*!
+ @brief Remove the popup.
+ @discussion Remove from the view.
+ */
 - (void)removeAnimate
 {
     [UIView animateWithDuration:.25 animations:^{
@@ -72,10 +76,20 @@ NSInteger const maxPerItem = 2; // Set the maximum of quantity per one item
     }];
 }
 
+/*!
+ @brief Close the popup
+ @discussion Close the popup
+ @param  Button press.
+ */
 - (IBAction)closePopup:(id)sender {
     [self removeAnimate];
 }
 
+/*!
+ @brief Show the popup in view
+ @discussion if animated is on - show with animate
+ @param  Popup's view and Animated-Y/N.
+ */
 - (void)showInView:(UIView *)aView animated:(BOOL)animated
 {
     [aView addSubview:self.view];
