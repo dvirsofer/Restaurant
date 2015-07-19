@@ -49,7 +49,7 @@
     }
 }
 
-/*-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+/*--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"mainView"])
     {
         if ([segue.destinationViewController isKindOfClass:[UINavigationController class]])
