@@ -49,19 +49,6 @@
     }
 }
 
-/*--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"mainView"])
-    {
-        if ([segue.destinationViewController isKindOfClass:[UINavigationController class]])
-        {
-            UINavigationController *navController = self.vc;
-            MainViewController *vc1 = [navController.viewControllers objectAtIndex:0];
-            // Set the employee name on main screen
-            [vc1 setEmployeeName: self.employeeInfo];
-        }
-    }
-}*/
-
 #pragma mark - LoginNetworkManagerDelegate
 
 - (void) resultFound:(NSArray *)json {

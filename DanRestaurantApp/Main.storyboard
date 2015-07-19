@@ -202,6 +202,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateLbl" destination="aaN-5r-AgM" id="p5s-XA-2pC"/>
                         <outlet property="employeeNameLbl" destination="2lk-jz-J1x" id="iEB-Ft-hl3"/>
                         <outlet property="placeholderView" destination="fcI-pj-vUj" id="QY4-YX-was"/>
                         <segue destination="ViW-S3-537" kind="show" identifier="cartSegue" id="ljB-B2-HOz"/>
@@ -508,7 +509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fY1-Zt-jN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234" y="-52"/>
+            <point key="canvasLocation" x="1504" y="-25"/>
         </scene>
         <!--MainNavigation-->
         <scene sceneID="Xr9-wJ-Xcp">

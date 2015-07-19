@@ -10,7 +10,6 @@
 
 @interface Employee (CoreData)
 
-//+(void)saveEmployee:(NSDictionary *)employeeDict;
 +(void)saveEmployee:(NSArray *)json;
 +(Employee *)getEmployee;
 

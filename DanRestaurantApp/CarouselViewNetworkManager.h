@@ -16,8 +16,8 @@
 
 @interface CarouselViewNetworkManager : NSObject
 
-@property (nonatomic, weak) id<CarouselViewNetworkManagerDelegate>	delegate;
+@property (nonatomic, strong) id<CarouselViewNetworkManagerDelegate> delegate;
 
--(void) getAllParams:(NSNumber *)option;
+- (void) getAllParams:(NSNumber *)option;
 
 @end

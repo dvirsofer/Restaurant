@@ -9,7 +9,7 @@
 #import "CarouselViewController.h"
 #import "CustomPopUp.h"
 #import "AFHTTPRequestOperationManager.h"
-#import "Product.h"
+#import "Product+CoreData.h"
 #import "CarouselView.h"
 
 @interface CarouselViewController ()
@@ -40,13 +40,20 @@
 {
     [super viewDidLoad];
     
-    // Init items on load
+    /*// Init items on load
     CarouselViewNetworkManager *networkManager = [[CarouselViewNetworkManager alloc] init];
     networkManager.delegate = self;
-    //[networkManager ];
+    [networkManager getAllParams: self.customItemsOption];*/
     
     //configure carousel
     carousel.type = iCarouselTypeCoverFlow2;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    // Init items on load
+    CarouselViewNetworkManager *networkManager = [[CarouselViewNetworkManager alloc] init];
+    networkManager.delegate = self;
+    [networkManager getAllParams: self.customItemsOption];
 }
 
 - (void)viewDidUnload
@@ -90,8 +97,7 @@
 
 -(void) buttonIsPressed:(UIButton *)sender{}
 
-#pragma mark - LoginNetworkManagerDelegate
-
+#pragma mark - CarouselViewNetworkManagerDelegate
 - (void) resultsFound:(NSArray *)json {
     // Save items info in self.items array
     self.items = [Product setItemsArray: json];

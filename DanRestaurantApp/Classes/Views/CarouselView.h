@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Item.h"
+#import "Product.h"
 
 @interface CarouselView : UIButton
--(instancetype)initWithItem: (Item *) item;
+
+-(instancetype)initWithItem: (Product *) product;
+
 @end

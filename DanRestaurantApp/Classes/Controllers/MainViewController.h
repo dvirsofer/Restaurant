@@ -13,17 +13,10 @@
 
 @interface MainViewController : UIViewController
 
--(void)setEmployeeName:(NSString *)employeeName;
-
 @property (strong, nonatomic) CustomPopUp *popup;
-
-
 @property (weak, nonatomic) IBOutlet UIView *placeholderView;
 @property (weak, nonatomic) UIViewController *currentViewController;
-@property (nonatomic, strong) NSArray *images;
-
-@property (strong, nonatomic) NSString *employee_name;
-
 @property (strong, nonatomic) IBOutlet UILabel *employeeNameLbl;
+@property (strong, nonatomic) IBOutlet UILabel *dateLbl;
 
 @end

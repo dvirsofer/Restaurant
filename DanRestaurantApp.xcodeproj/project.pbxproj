@@ -28,6 +28,7 @@
 		1CC950DA1B453DA100CD201E /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC950D91B453DA100CD201E /* page.png */; };
 		1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */; };
 		1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A5D1B403E4600679D8C /* CartViewController.m */; };
+		1CD527C01B5C086D0019B9E8 /* Product+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD527BF1B5C086D0019B9E8 /* Product+CoreData.m */; };
 		1CD697481B58680B006CE024 /* GenericHelpFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD697471B58680B006CE024 /* GenericHelpFunctions.m */; };
 		1CD6974B1B592E84006CE024 /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD6974A1B592E84006CE024 /* Authorization.m */; };
 		1CD697511B592EEB006CE024 /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD697501B592EEB006CE024 /* Employee.m */; };
@@ -96,6 +97,8 @@
 		1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewCell.m; sourceTree = "<group>"; };
 		1CCF2A5C1B403E4600679D8C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		1CCF2A5D1B403E4600679D8C /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
+		1CD527BE1B5C086D0019B9E8 /* Product+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Product+CoreData.h"; sourceTree = "<group>"; };
+		1CD527BF1B5C086D0019B9E8 /* Product+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Product+CoreData.m"; sourceTree = "<group>"; };
 		1CD697461B58680B006CE024 /* GenericHelpFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericHelpFunctions.h; sourceTree = "<group>"; };
 		1CD697471B58680B006CE024 /* GenericHelpFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericHelpFunctions.m; sourceTree = "<group>"; };
 		1CD697491B592E84006CE024 /* Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authorization.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				1CD697531B592F25006CE024 /* Employee+CoreData.m */,
 				443CA1EC1B5ABBD500B8DA75 /* Product.h */,
 				443CA1ED1B5ABBD500B8DA75 /* Product.m */,
+				1CD527BE1B5C086D0019B9E8 /* Product+CoreData.h */,
+				1CD527BF1B5C086D0019B9E8 /* Product+CoreData.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 				44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */,
 				1CD697541B592F25006CE024 /* Employee+CoreData.m in Sources */,
 				1CD6974B1B592E84006CE024 /* Authorization.m in Sources */,
+				1CD527C01B5C086D0019B9E8 /* Product+CoreData.m in Sources */,
 				1C4BF4961B3E9EF900D99F3B /* main.m in Sources */,
 				1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */,
 				1C4BF5251B3EF1EF00D99F3B /* CheckViewController.m in Sources */,

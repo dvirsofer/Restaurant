@@ -10,8 +10,8 @@
 
 @implementation CarouselView
 
--(instancetype)initWithItem: (Item *) item {
-    NSString *ImageURL = item.imageUrl;
+-(instancetype)initWithItem: (Product *) product {
+    NSString *ImageURL = product.img_url;
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
     UIImage *image = [UIImage imageWithData:imageData];
     self = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -24,7 +24,7 @@
     //Create Label
     UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 160, 200, 100)];
     [description setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-    [description setText:item.itemDescription];
+    [description setText:product.prod_desc];
     description.font = [UIFont boldSystemFontOfSize:16];
     description.textAlignment = NSTextAlignmentCenter;
     [description setTextColor:[UIColor darkGrayColor]];
@@ -33,7 +33,7 @@
     
     UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(0, 180, 200, 100)];
     [price setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-    [price setText: [[NSString stringWithFormat:@"%.2f", item.price] stringByAppendingString:@"  ש״ח"]];
+    [price setText: [[NSString stringWithFormat:@"%.2f", [product.price floatValue]] stringByAppendingString:@" ש״ח"]];
     price.font = [UIFont boldSystemFontOfSize:16];
     price.textAlignment = NSTextAlignmentCenter;
     [price setTextColor:[UIColor darkGrayColor]];
@@ -42,7 +42,7 @@
     
     UILabel *calories = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 200, 100)];
     [calories setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-    [calories setText:[[NSString stringWithFormat:@"%ld", (long)item.calories] stringByAppendingString:@"קלוריות"]];
+    [calories setText:[[NSString stringWithFormat:@"%@", product.calories] stringByAppendingString:@" קלוריות"]];
     
     calories.font = [UIFont boldSystemFontOfSize:16];
     calories.textAlignment = NSTextAlignmentCenter;
@@ -52,7 +52,7 @@
     
     UILabel *quantity = [[UILabel alloc]initWithFrame:CGRectMake(0, 220, 200, 100)];
     [quantity setFont:[UIFont fontWithName:@"Arial-BoldMT" size:13]];
-    [quantity setText: [[NSString stringWithFormat:@"%ld", (long)item.quantity] stringByAppendingString:@"במלאי"]];
+    [quantity setText: [[NSString stringWithFormat:@"%@", product.quantity] stringByAppendingString:@" במלאי"]];
     quantity.font = [UIFont boldSystemFontOfSize:16];
     quantity.textAlignment = NSTextAlignmentCenter;
     [quantity setTextColor:[UIColor darkGrayColor]];

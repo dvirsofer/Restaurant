@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "CarouselViewController.h"
+#import "Employee+CoreData.h"
 
 @interface MainViewController ()
 
@@ -15,23 +16,24 @@
 
 @implementation MainViewController
 
-@synthesize placeholderView, currentViewController;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Add bar buttons - History & Cart
     UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"היסטוריה" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonAction:)];
     UIBarButtonItem *cartButton = [[UIBarButtonItem alloc] initWithTitle:@"עגלה" style:UIBarButtonItemStylePlain target:self action:@selector(cartButtonAction:)];
     
     NSArray *navButtonArray = [[NSArray alloc] initWithObjects:historyButton, cartButton, nil];
     self.navigationItem.rightBarButtonItems = navButtonArray;
 
+    // Set current date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"d/M/yyyy"];
     NSString *currentDate = [formatter stringFromDate:[NSDate date]];
+    self.dateLbl.text = currentDate;
     
-    self.employeeNameLbl.text = self.employee_name;
-    self.employeeNameLbl.text = currentDate;
+    // Get employee information from local db
+    self.employeeNameLbl.text = [Employee getEmployee].name;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,11 +83,6 @@
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
         carouselController.customItemsOption = [NSNumber numberWithInt:2];
     }
-}
-
--(void)setEmployeeName:(NSString *)employeeName
-{
-    self.employee_name = employeeName;
 }
 
 -(void) buttonIsPressed:(UIButton *)sender
