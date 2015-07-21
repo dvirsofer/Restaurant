@@ -14,7 +14,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *foodName;
 @property (nonatomic, strong) IBOutlet UILabel *foodPrice;
 @property (nonatomic, strong) IBOutlet UILabel *foodTarget;
-@property (nonatomic, strong) IBOutlet UIButton *deleteItemButton;
 
 
 @end

@@ -21,6 +21,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Check if user is already signed-in
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    NSArray *employees = [Employee loadAllEmployees];
+    if([employees count] > 0) {
+        [self performSegueWithIdentifier:@"mainViewSegue" sender: self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

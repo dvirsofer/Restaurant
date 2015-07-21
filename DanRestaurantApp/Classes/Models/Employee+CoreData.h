@@ -10,7 +10,10 @@
 
 @interface Employee (CoreData)
 
-+(void)saveEmployee:(NSArray *)json;
-+(Employee *)getEmployee;
++ (void)saveEmployee:(NSArray *)json;
+//+ (Employee *)getEmployee;
++ (void)deleteAllEmployees;
++ (NSArray *)loadAllEmployees;
++ (NSString *)getSessionName;
 
 @end

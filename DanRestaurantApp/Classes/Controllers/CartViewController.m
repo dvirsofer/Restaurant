@@ -78,6 +78,7 @@
     static NSString *CellIdentifier = @"cartTableCell";
     
     CartTableViewCell *cell = (CartTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
         [[NSBundle mainBundle] loadNibNamed:@"CartTableViewCell" owner:self options:nil];
         cell = _cartCell;

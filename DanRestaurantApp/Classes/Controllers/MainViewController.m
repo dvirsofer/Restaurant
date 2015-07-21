@@ -22,7 +22,6 @@
     // Add bar buttons - History & Cart
     UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"היסטוריה" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonAction:)];
     UIBarButtonItem *cartButton = [[UIBarButtonItem alloc] initWithTitle:@"עגלה" style:UIBarButtonItemStylePlain target:self action:@selector(cartButtonAction:)];
-    
     NSArray *navButtonArray = [[NSArray alloc] initWithObjects:historyButton, cartButton, nil];
     self.navigationItem.rightBarButtonItems = navButtonArray;
 
@@ -33,7 +32,8 @@
     self.dateLbl.text = currentDate;
     
     // Get employee information from local db
-    self.employeeNameLbl.text = [Employee getEmployee].name;
+    //self.employeeNameLbl.text = [Employee getEmployee].name;
+    self.employeeNameLbl.text = [Employee getSessionName];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,9 +48,10 @@
 -(void)exitButtonAction:(id)sender {
     // When clicked exit
     NSLog(@"Exit clicked");
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    /*UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self presentViewController:vc animated:YES completion:nil];*/
+    //[self performSegueWithIdentifier: @"cartSegue" sender: self];
 }
 
 -(void)historyButtonAction:(id)sender {

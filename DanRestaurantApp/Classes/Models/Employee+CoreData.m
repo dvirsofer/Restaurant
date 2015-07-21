@@ -32,7 +32,7 @@
     }
 }
 
-+(Employee *) getEmployee {
+/*+ (Employee *) getEmployee {
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Create and configure a fetch request with the Book entity.
@@ -56,6 +56,63 @@
     NSArray *result = [aFetchedResultsController fetchedObjects];
     NSLog(@"%@", result);
     return [result objectAtIndex:0];
+}*/
+
++ (void)deleteAllEmployees {
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = appdelegate.managedObjectContext;
+    
+    NSArray *employees = [self loadAllEmployees];
+    
+    for (int i = 0; i < employees.count ; i++) {
+        
+        Employee *employee = [employees objectAtIndex:i];
+        [context deleteObject:employee];
+    }
+    
+    
+    // save coredata context here. cderror should include the operation error,if occured
+    NSError *cderror;
+    
+    if (![context save:&cderror]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", cderror, [cderror userInfo]);
+        abort();  // Abort save operation if failed
+    }
 }
+
++ (NSArray *)loadAllEmployees {
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Create and configure a fetch request with the Book entity.
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Employee" inManagedObjectContext:[appdelegate managedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    // Create the sort descriptors array.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    // Create and initialize the fetch results controller.
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:appdelegate.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSError *error;
+    
+    if (![aFetchedResultsController performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    NSArray *employees = [aFetchedResultsController fetchedObjects];
+    
+    return employees;
+}
+
++ (NSString *)getSessionName {
+    NSArray *allEmployees = [Employee loadAllEmployees];
+    Employee *employeeSession = [allEmployees objectAtIndex:0];
+    return employeeSession.name;
+}
+
+
 
 @end
