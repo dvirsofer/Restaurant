@@ -14,6 +14,7 @@
 #import "Employee+CoreData.h"
 #import "CarouselView.h"
 #import "AppDelegate.h"
+#import "Order+CoreData.h"
 
 @interface CarouselViewController ()
 
@@ -144,16 +145,63 @@
 {
     CustomPopUp *currentPopup = (CustomPopUp *)popup;
     // Create the array of the order
-    // Get the target name + id
-    //NSString *target_id = currentPopup.targetPicker
     
+    // The id of employee who makes the order
     NSNumber *employee_id = [Employee getSessionId];
+    // Get the target name + id
+    NSInteger selectedTargetIndex = [currentPopup.targetPicker selectedRowInComponent:0];
+    NSNumber *target_id;
+    NSString *target_name;
+    // If for me
+    if(selectedTargetIndex == 0) {
+        target_id = employee_id;
+        target_name = [Employee getSessionName];
+    } else {
+        // Check in local db who is the target
+        Authorization *auth = (Authorization *)[[Authorization loadAuth] objectAtIndex:selectedTargetIndex];
+        target_id = auth.target_id;
+        target_name = auth.name;
+    }
+    
+    // Get the product which selected in carousel
+    Product *prod = [Product getProductByIndex:currentPopup.productIndex];
+    // Get the product id
+    NSNumber *prod_id = prod.prod_id;
+    // Save the current date
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd/mm/yyyy"];
+    NSString *currentDate = [formatter stringFromDate:[NSDate date]];
+    // Check if it's 1st or 2nd item of the target
+    // x2 of the same product - Save 2 items in local db (Cart)
+    if([currentPopup.numOfItems.text intValue] == 2) {
+        NSNumber *price1 = prod.price;
+        NSNumber *proce2 = [NSNumber numberWithInt:([prod.price intValue] + 10)];
+        
+    }
+    //NSNumber *price = prod.price
+    
     NSNumber *numOfItems = [NSNumber numberWithInt:[currentPopup.numOfItems.text intValue]];
     
-    // TO BE CONTINUED....
     
+    NSError *error;
     
+    //build an info object and convert to json
+    NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:
+                          @"value1", @"key1",
+                          @"value2", @"key2",
+                          @"value3", @"key3",
+                          nil];
     
+    //convert object to data
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info 
+                                                       options:NSJSONWritingPrettyPrinted error:&error];
+    
+    //print out the data contents
+    NSString *jsonSummary = [[NSString alloc] initWithData:jsonData
+                                             encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", jsonSummary);
+    
+    [Order saveOrder:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
     
 }
 

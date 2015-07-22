@@ -28,7 +28,7 @@
 
     // Set current date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"d/M/yyyy"];
+    [formatter setDateFormat:@"dd/MM/yyyy"];
     NSString *currentDate = [formatter stringFromDate:[NSDate date]];
     self.dateLbl.text = currentDate;
     

@@ -12,17 +12,18 @@
 @implementation Order (CoreData)
 
 + (void)saveOrder:(NSArray *)json {
+    
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
     
     Order *order = (Order *)[NSEntityDescription insertNewObjectForEntityForName:@"Order" inManagedObjectContext:context];
-    order.target_id = [json[0] valueForKey:@"target_id"];
-    order.target_name = [json[0] valueForKey:@"target_name"];
-    order.employee_id = [json[0] valueForKey:@"employee_id"];
-    order.prod_id = [json[0] valueForKey:@"prod_id"];
-    order.price = [json[0] valueForKey:@"price"];
-    order.order_date = [json[0] valueForKey:@"order_date"];
+    order.target_id = [json valueForKey:@"target_id"];
+    order.target_name = [json valueForKey:@"target_name"];
+    order.employee_id = [json valueForKey:@"employee_id"];
+    order.prod_id = [json valueForKey:@"prod_id"];
+    order.price = [json valueForKey:@"price"];
+    order.order_date = [json valueForKey:@"order_date"];
     
     // save coredata context here. cderror should include the operation error,if occured
     NSError *cderror;

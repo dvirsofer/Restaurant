@@ -2,19 +2,12 @@
 //  CustomPopUp.h
 //  DanRestaurantApp
 //
-//  Created by DvirSofer on 7/8/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 7/8/15.
+//  Copyright (c) 2015 Dvir & Or. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "PopUpViewDelegate.h"
-
-/*@protocol PopUpViewDelegate <NSObject>
-@required
-- (void) addToCart:(CustomPopUp *) popup;
-- (void) errorFound:(NSError *)error;
-@end*/
-
 
 @interface CustomPopUp : UIViewController
 

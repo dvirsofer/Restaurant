@@ -11,5 +11,7 @@
 @interface Product (CoreData)
 
 + (NSMutableArray *) setItemsArray: (NSArray *)json;
++ (Product *) getProductByIndex: (NSNumber *)productIndex;
++ (NSArray *)loadAllProducts;
 
 @end

@@ -117,14 +117,21 @@ NSInteger const maxPerItem = 2; // Set the maximum of quantity per one item
  @param  Button press.
  */
 - (IBAction)closePopup:(id)sender {
+    //[self.delegate removeTargets];
     [self removeAnimate];
 }
 
+/*!
+ @brief "Add To Cart" button pressed
+ @discussion Make delegate to insert the item to cart
+ @param  "Add To Cart" Button press.
+ */
 - (IBAction)addToCart:(id)sender {
     [self.delegate addToCart:self];
 }
 
 - (IBAction)endOrder:(id)sender {
+    
 }
 
 @end
