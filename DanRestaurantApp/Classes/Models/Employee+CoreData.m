@@ -64,7 +64,7 @@
     
     NSArray *employees = [self loadAllEmployees];
     
-    for (int i = 0; i < employees.count ; i++) {
+    for (int i = 0; i < [employees count]; i++) {
         
         Employee *employee = [employees objectAtIndex:i];
         [context deleteObject:employee];
@@ -109,8 +109,22 @@
 
 + (NSString *)getSessionName {
     NSArray *allEmployees = [Employee loadAllEmployees];
+    // Safety
+    if([allEmployees count] == 0) {
+        return nil;
+    }
     Employee *employeeSession = [allEmployees objectAtIndex:0];
     return employeeSession.name;
+}
+
++ (NSNumber *)getSessionId {
+    NSArray *allEmployees = [Employee loadAllEmployees];
+    // Safety
+    if([allEmployees count] == 0) {
+        return nil;
+    }
+    Employee *employeeSession = [allEmployees objectAtIndex:0];
+    return employeeSession.employee_id;
 }
 
 

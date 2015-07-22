@@ -14,9 +14,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *plus;
 @property (strong, nonatomic) IBOutlet UIButton *minus;
 @property (strong, nonatomic) IBOutlet UITextField *numOfItems;
-@property (strong, nonatomic) IBOutlet UILabel *popupTitle;
+@property (strong, nonatomic) IBOutlet UIPickerView *targetPicker;
+
+@property (strong, nonatomic) NSArray *auths;
 
 - (IBAction)closePopup:(id)sender;
-- (void)showInView:(UIView *)aView animated:(BOOL)animated;
+- (void)showInView:(UIView *)aView animated:(BOOL)animated withTargets:(NSMutableArray *)targets;
 
 @end

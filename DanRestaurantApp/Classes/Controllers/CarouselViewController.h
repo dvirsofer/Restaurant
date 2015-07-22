@@ -10,11 +10,17 @@
 #import "iCarousel.h"
 #import "MainViewController.h"
 #import "CarouselViewNetworkManager.h"
+#import "CustomPopUp.h"
 
 @interface CarouselViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, CarouselViewNetworkManagerDelegate>
 
+@property (nonatomic, strong) CarouselViewNetworkManager *networkManager;
+
 @property (nonatomic, strong) NSMutableArray *items;
-@property (nonatomic, strong) NSNumber *customItemsOption; // property for holding the option type 
+@property (nonatomic, strong) NSNumber *customItemsOption; // property for holding the option type
+
+@property (strong, nonatomic) CustomPopUp *popup;
+@property (strong, nonatomic) NSMutableArray *auths;
 
 @property (nonatomic, strong) MainViewController *tabViewController;
 @property (nonatomic, strong) IBOutlet iCarousel *carousel;

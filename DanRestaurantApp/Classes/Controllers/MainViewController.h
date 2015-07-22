@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "CartViewController.h"
 #import "iCarousel.h"
-#import "CustomPopUp.h"
+#import "PopupNetworkManager.h"
+//#import "CustomPopUp.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <PopupNetworkManagerDelegate>
 
-@property (strong, nonatomic) CustomPopUp *popup;
+//@property (strong, nonatomic) CustomPopUp *popup;
 @property (weak, nonatomic) IBOutlet UIView *placeholderView;
 @property (weak, nonatomic) UIViewController *currentViewController;
 @property (strong, nonatomic) IBOutlet UILabel *employeeNameLbl;

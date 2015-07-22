@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "Employee+CoreData.h"
+#import "Authorization+CoreData.h"
 
 @interface LoginViewController ()
 
@@ -21,16 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Check if user is already signed-in
-    
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    NSArray *employees = [Employee loadAllEmployees];
-    if([employees count] > 0) {
-        [self performSegueWithIdentifier:@"mainViewSegue" sender: self];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,6 +50,16 @@
     }
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"prepareForSegue: %@", segue.identifier);
+    //MainViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
+    
+    if ([segue.identifier isEqualToString:@"mainViewSegue"]) {
+        
+    }
+}
+
 #pragma mark - LoginNetworkManagerDelegate
 
 - (void) resultFound:(NSArray *)json {
@@ -67,7 +68,6 @@
     [Employee saveEmployee:json];
     // Move to main view
     [self performSegueWithIdentifier:@"mainViewSegue" sender: self];
-    
 }
 
 - (void) errorFound:(NSError *) error{

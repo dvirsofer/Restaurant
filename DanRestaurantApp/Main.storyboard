@@ -194,13 +194,7 @@
                             <constraint firstItem="tUu-z5-4Rj" firstAttribute="top" secondItem="epl-ZT-p2O" secondAttribute="top" id="xrv-0s-peL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="w6S-lZ-gcj">
-                        <barButtonItem key="leftBarButtonItem" title="התנתק" id="uR6-hY-P8l">
-                            <connections>
-                                <action selector="exitButtonAction:" destination="8YI-Ty-WDm" id="fhn-42-NH0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="w6S-lZ-gcj"/>
                     <connections>
                         <outlet property="dateLbl" destination="aaN-5r-AgM" id="p5s-XA-2pC"/>
                         <outlet property="employeeNameLbl" destination="2lk-jz-J1x" id="iEB-Ft-hl3"/>

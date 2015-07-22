@@ -10,7 +10,10 @@
 #import "CustomPopUp.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "Product+CoreData.h"
+#import "Authorization+CoreData.h"
+#import "Employee+CoreData.h"
 #import "CarouselView.h"
+#import "AppDelegate.h"
 
 @interface CarouselViewController ()
 
@@ -23,6 +26,7 @@
 - (void)awakeFromNib
 {
     //Setups done in the segue
+    
 }
 
 - (void)dealloc
@@ -40,10 +44,10 @@
 {
     [super viewDidLoad];
     
-    /*// Init items on load
-    CarouselViewNetworkManager *networkManager = [[CarouselViewNetworkManager alloc] init];
-    networkManager.delegate = self;
-    [networkManager getAllParams: self.customItemsOption];*/
+    // Init items on load
+    self.networkManager = [[CarouselViewNetworkManager alloc] init];
+    self.networkManager.delegate = self;
+    [self.networkManager getAllParams: self.customItemsOption];
     
     //configure carousel
     carousel.type = iCarouselTypeCoverFlow2;
@@ -51,9 +55,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     // Init items on load
-    CarouselViewNetworkManager *networkManager = [[CarouselViewNetworkManager alloc] init];
-    networkManager.delegate = self;
-    [networkManager getAllParams: self.customItemsOption];
+    //CarouselViewNetworkManager *networkManager = [[CarouselViewNetworkManager alloc] init];
+    //networkManager.delegate = self;
+    //[networkManager getAllParams: self.customItemsOption];
 }
 
 - (void)viewDidUnload
@@ -85,9 +89,10 @@
     {
         button = (CarouselView *)view;
         
-        // Create
+        // Create custom carousel view (which is clickable)
         button = [[CarouselView alloc] initWithItem:[items objectAtIndex:index]];
         
+        // Set button tag to save the index
         button.tag = index;
         [button addTarget:self.tabViewController action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -95,7 +100,27 @@
     return button;
 }
 
--(void) buttonIsPressed:(UIButton *)sender{}
+-(void) buttonIsPressed:(UIButton *)sender {
+    //get item index for button
+    //NSInteger index = [sender tag];
+    self.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
+    
+    // Get authorizations from local db
+    self.auths = [Authorization loadAuth];
+    // Add "My Self" as target option
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    Authorization *mySelf = (Authorization*)[NSEntityDescription insertNewObjectForEntityForName:@"Authorization" inManagedObjectContext:context];
+    mySelf.target_id = [Employee getSessionId];
+    mySelf.name = @"עבורי";
+    [self.auths insertObject:mySelf atIndex:0];
+    
+    // Connect data
+    //self.popup.targetPicker.dataSource = self;
+    //self.popup.targetPicker.delegate = self;
+
+    [self.popup showInView:self.view animated:YES withTargets: self.auths];
+}
 
 #pragma mark - CarouselViewNetworkManagerDelegate
 - (void) resultsFound:(NSArray *)json {

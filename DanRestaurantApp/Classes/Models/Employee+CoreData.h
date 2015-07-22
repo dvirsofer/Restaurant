@@ -15,5 +15,6 @@
 + (void)deleteAllEmployees;
 + (NSArray *)loadAllEmployees;
 + (NSString *)getSessionName;
++ (NSNumber *)getSessionId;
 
 @end

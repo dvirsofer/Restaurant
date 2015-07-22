@@ -2,7 +2,7 @@
 //  Authorization.h
 //  DanRestaurantApp
 //
-//  Created by Or on 7/17/15.
+//  Created by Or on 7/22/15.
 //  Copyright (c) 2015 Or. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 @interface Authorization : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * employee_id;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * target_id;
 
 @end

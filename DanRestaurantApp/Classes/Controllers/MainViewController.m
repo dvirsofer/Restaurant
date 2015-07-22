@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "CarouselViewController.h"
 #import "Employee+CoreData.h"
+#import "Authorization+CoreData.h"
 
 @interface MainViewController ()
 
@@ -32,8 +33,12 @@
     self.dateLbl.text = currentDate;
     
     // Get employee information from local db
-    //self.employeeNameLbl.text = [Employee getEmployee].name;
     self.employeeNameLbl.text = [Employee getSessionName];
+    
+    // Get the authorized targets from the server's database
+    PopupNetworkManager *popupManager = [[PopupNetworkManager alloc] init];
+    popupManager.delegate = self;
+    [popupManager loadAuthorizations: [Employee getSessionId]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,15 +48,6 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [self performSegueWithIdentifier: @"PastaSegue" sender: self];
-}
-
--(void)exitButtonAction:(id)sender {
-    // When clicked exit
-    NSLog(@"Exit clicked");
-    /*UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-    [self presentViewController:vc animated:YES completion:nil];*/
-    //[self performSegueWithIdentifier: @"cartSegue" sender: self];
 }
 
 -(void)historyButtonAction:(id)sender {
@@ -86,17 +82,34 @@
     }
 }
 
--(void) buttonIsPressed:(UIButton *)sender
+/*-(void) buttonIsPressed:(UIButton *)sender
 {
     //get item index for button
-    NSInteger index = [sender tag];
+    //NSInteger index = [sender tag];
     self.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
     [self.popup showInView:self.view animated:YES];
-    self.popup.popupTitle.text = [NSString stringWithFormat:@"Index: %li", (long)index];
+}*/
+
+/*- (IBAction)makeOrder:(id)sender {
+    [self.popup closePopup:sender];
+}*/
+
+#pragma mark - PopupNetworkManagerDelegate
+- (void) resultsFound:(NSArray *)json {
+    
+    
+#warning// TODO: Remove it !!!!!!!!!!!!!!!!!!!!
+    [Authorization deleteAllAuth];
+    
+    
+    // Save authorized targets info in local db
+    [Authorization saveAuth: json];
 }
 
-- (IBAction)makeOrder:(id)sender {
-    [self.popup closePopup:sender];
+- (void) errorFound:(NSError *) error{
+    // Show error messege.
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Wrong ID or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "CustomPopUp.h"
+#import "Authorization+CoreData.h"
 
 @implementation CustomPopUp
 
@@ -90,12 +91,33 @@ NSInteger const maxPerItem = 2; // Set the maximum of quantity per one item
  @discussion if animated is on - show with animate
  @param  Popup's view and Animated-Y/N.
  */
-- (void)showInView:(UIView *)aView animated:(BOOL)animated
+- (void)showInView:(UIView *)aView animated:(BOOL)animated withTargets:(NSMutableArray *)targets
 {
+    self.auths = [NSArray arrayWithArray: targets];
     [aView addSubview:self.view];
     if (animated) {
         [self showAnimate];
     }
 }
+
+#pragma mark - UIPickerViewDataSource
+// The number of columns of data
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.auths count];
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return ((Authorization *)[self.auths objectAtIndex:row]).name;
+}
+
 
 @end
