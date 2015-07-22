@@ -101,10 +101,12 @@
 }
 
 -(void) buttonIsPressed:(UIButton *)sender {
-    //get item index for button
-    //NSInteger index = [sender tag];
+    // Get item index for button
+    NSNumber *index = [NSNumber numberWithLong:[sender tag]];
+    // Initiate the popup view
     self.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
-    
+    // Save the clicked item index
+    self.popup.productIndex = index;
     // Get authorizations from local db
     self.auths = [Authorization loadAuth];
     // Add "My Self" as target option
@@ -114,11 +116,11 @@
     mySelf.target_id = [Employee getSessionId];
     mySelf.name = @"עבורי";
     [self.auths insertObject:mySelf atIndex:0];
-    
-    // Connect data
-    //self.popup.targetPicker.dataSource = self;
-    //self.popup.targetPicker.delegate = self;
 
+    // Set the popup delegate to be self
+    self.popup.delegate = self;
+    
+    // Show popup
     [self.popup showInView:self.view animated:YES withTargets: self.auths];
 }
 
@@ -135,6 +137,24 @@
     // Show error messege.
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Wrong ID or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
+}
+
+#pragma mark - PopUpViewDelegate
+- (void) addToCart:(id) popup
+{
+    CustomPopUp *currentPopup = (CustomPopUp *)popup;
+    // Create the array of the order
+    // Get the target name + id
+    //NSString *target_id = currentPopup.targetPicker
+    
+    NSNumber *employee_id = [Employee getSessionId];
+    NSNumber *numOfItems = [NSNumber numberWithInt:[currentPopup.numOfItems.text intValue]];
+    
+    // TO BE CONTINUED....
+    
+    
+    
+    
 }
 
 @end

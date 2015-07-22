@@ -12,7 +12,7 @@
 #import "CarouselViewNetworkManager.h"
 #import "CustomPopUp.h"
 
-@interface CarouselViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, CarouselViewNetworkManagerDelegate>
+@interface CarouselViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, CarouselViewNetworkManagerDelegate, PopUpViewDelegate>
 
 @property (nonatomic, strong) CarouselViewNetworkManager *networkManager;
 

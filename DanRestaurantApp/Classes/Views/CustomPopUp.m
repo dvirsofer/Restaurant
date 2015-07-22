@@ -78,15 +78,6 @@ NSInteger const maxPerItem = 2; // Set the maximum of quantity per one item
 }
 
 /*!
- @brief Close the popup
- @discussion Close the popup
- @param  Button press.
- */
-- (IBAction)closePopup:(id)sender {
-    [self removeAnimate];
-}
-
-/*!
  @brief Show the popup in view
  @discussion if animated is on - show with animate
  @param  Popup's view and Animated-Y/N.
@@ -119,5 +110,21 @@ NSInteger const maxPerItem = 2; // Set the maximum of quantity per one item
     return ((Authorization *)[self.auths objectAtIndex:row]).name;
 }
 
+#pragma mark - buttons methods
+/*!
+ @brief Close the popup
+ @discussion Close the popup
+ @param  Button press.
+ */
+- (IBAction)closePopup:(id)sender {
+    [self removeAnimate];
+}
+
+- (IBAction)addToCart:(id)sender {
+    [self.delegate addToCart:self];
+}
+
+- (IBAction)endOrder:(id)sender {
+}
 
 @end
