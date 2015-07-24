@@ -23,6 +23,8 @@
     // Add bar buttons - History & Cart
     UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"היסטוריה" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonAction:)];
     UIBarButtonItem *cartButton = [[UIBarButtonItem alloc] initWithTitle:@"עגלה" style:UIBarButtonItemStylePlain target:self action:@selector(cartButtonAction:)];
+    
+    
     NSArray *navButtonArray = [[NSArray alloc] initWithObjects:historyButton, cartButton, nil];
     self.navigationItem.rightBarButtonItems = navButtonArray;
 
@@ -50,6 +52,7 @@
     [self performSegueWithIdentifier: @"PastaSegue" sender: self];
 }
 
+#pragma mark - Actions
 -(void)historyButtonAction:(id)sender {
     // When clicked history
     NSLog(@"History clicked");
@@ -61,6 +64,12 @@
     [self performSegueWithIdentifier: @"cartSegue" sender: self];
 }
 
+- (IBAction)logoutButtonAction:(id)sender {
+    // Delete all coredata
+    
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (IBAction)pressedPastaButton:(id)sender {
     [self performSegueWithIdentifier: @"PastaSegue" sender: self];
@@ -70,6 +79,7 @@
     [self performSegueWithIdentifier: @"SandwichSegue" sender: self];
 }
 
+#pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"prepareForSegue: %@", segue.identifier);
@@ -96,12 +106,8 @@
 
 #pragma mark - PopupNetworkManagerDelegate
 - (void) resultsFound:(NSArray *)json {
-    
-    
 #warning// TODO: Remove it !!!!!!!!!!!!!!!!!!!!
     [Authorization deleteAllAuth];
-    
-    
     // Save authorized targets info in local db
     [Authorization saveAuth: json];
 }

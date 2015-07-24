@@ -14,9 +14,6 @@
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate, LoginNetworkManagerDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextField *personal_number;
-@property (strong, nonatomic) IBOutlet UITextField *password;
 
-@property (strong, nonatomic) UINavigationController *vc;
 
 @end
