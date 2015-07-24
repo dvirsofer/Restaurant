@@ -10,8 +10,14 @@
 #import "CarouselViewController.h"
 #import "Employee+CoreData.h"
 #import "Authorization+CoreData.h"
+#import "MBProgressHUD.h"
 
 @interface MainViewController ()
+
+@property (strong, nonatomic) IBOutlet UIButton *pastaButton;
+@property (strong, nonatomic) IBOutlet UIButton *sandwichButton;
+@property (strong, nonatomic) MBProgressHUD *hud;
+
 
 @end
 
@@ -23,10 +29,10 @@
     // Add bar buttons - History & Cart
     UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"היסטוריה" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonAction:)];
     UIBarButtonItem *cartButton = [[UIBarButtonItem alloc] initWithTitle:@"עגלה" style:UIBarButtonItemStylePlain target:self action:@selector(cartButtonAction:)];
-    
-    
     NSArray *navButtonArray = [[NSArray alloc] initWithObjects:historyButton, cartButton, nil];
     self.navigationItem.rightBarButtonItems = navButtonArray;
+    
+    
 
     // Set current date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -49,6 +55,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+    [self.pastaButton setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:0.9] forState:UIControlStateNormal];
     [self performSegueWithIdentifier: @"PastaSegue" sender: self];
 }
 
@@ -72,10 +79,14 @@
 }
 
 - (IBAction)pressedPastaButton:(id)sender {
+    [self.pastaButton setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:0.9] forState:UIControlStateNormal];
+    [self.sandwichButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self performSegueWithIdentifier: @"PastaSegue" sender: self];
 }
 
 - (IBAction)pressedSandwichButton:(id)sender {
+    [self.sandwichButton setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:0.9] forState:UIControlStateNormal];
+    [self.pastaButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self performSegueWithIdentifier: @"SandwichSegue" sender: self];
 }
 
