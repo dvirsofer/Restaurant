@@ -31,9 +31,9 @@
     self.loginManager = [[LoginNetworkManager alloc] init];
     self.loginManager.delegate = self;
     
+    //setup spinner
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
-    
     self.hud.labelText = @"אנא המתן מתחבר...";
 }
 
@@ -45,7 +45,7 @@
     [self checkLogin:sender];
 }
 
-- (void) checkLogin:(id)sender {
+- (void)checkLogin:(id)sender {
     // Basic check if any of the text fields is empty
     if([personal_number.text isEqualToString:@""] || [password.text isEqualToString:@""]) {
         [[[UIAlertView alloc] initWithTitle:@"שגיאה"

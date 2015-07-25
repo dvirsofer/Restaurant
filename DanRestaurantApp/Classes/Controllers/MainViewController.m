@@ -10,14 +10,11 @@
 #import "CarouselViewController.h"
 #import "Employee+CoreData.h"
 #import "Authorization+CoreData.h"
-#import "MBProgressHUD.h"
 
 @interface MainViewController ()
 
 @property (strong, nonatomic) IBOutlet UIButton *pastaButton;
 @property (strong, nonatomic) IBOutlet UIButton *sandwichButton;
-@property (strong, nonatomic) MBProgressHUD *hud;
-
 
 @end
 
@@ -31,8 +28,6 @@
     UIBarButtonItem *cartButton = [[UIBarButtonItem alloc] initWithTitle:@"עגלה" style:UIBarButtonItemStylePlain target:self action:@selector(cartButtonAction:)];
     NSArray *navButtonArray = [[NSArray alloc] initWithObjects:historyButton, cartButton, nil];
     self.navigationItem.rightBarButtonItems = navButtonArray;
-    
-    
 
     // Set current date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -73,8 +68,6 @@
 
 - (IBAction)logoutButtonAction:(id)sender {
     // Delete all coredata
-    
-    
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

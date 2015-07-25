@@ -11,7 +11,7 @@
 
 @implementation CustomPopUp
 
-NSInteger const maxPerItem = 2; // Set the maximum of quantity per one item
+NSInteger const MAX_PER_EMPLOYEE = 2;
 
 - (void)viewDidLoad
 {
@@ -44,7 +44,7 @@ NSInteger const maxPerItem = 2; // Set the maximum of quantity per one item
  */
 - (IBAction)increasePressed:(id)sender
 {
-    if([self.numOfItems.text intValue] == maxPerItem)
+    if([self.numOfItems.text intValue] == MAX_PER_EMPLOYEE)
         return;
     self.numOfItems.text = [NSString stringWithFormat:@"%d",([self.numOfItems.text intValue]+1)];
 }

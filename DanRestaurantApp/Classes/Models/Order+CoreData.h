@@ -13,5 +13,6 @@
 + (void)saveOrder:(NSArray *)json;
 + (NSMutableArray *)loadOrders;
 + (void)deleteAllOrders;
++ (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate;
 
 @end

@@ -11,6 +11,10 @@
 
 @implementation Order (CoreData)
 
+/*!
+ @discussion Save order in local database from json
+ @param  NSArray json contains order information
+ */
 + (void)saveOrder:(NSArray *)json {
     
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -35,6 +39,10 @@
     }
 }
 
+/*!
+ @discussion Load all orders from local database
+ @return Array of all orders
+ */
 + (NSMutableArray *)loadOrders {
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -61,6 +69,9 @@
     return orders;
 }
 
+/*!
+ @discussion Delete all orders from local database
+ */
 + (void)deleteAllOrders{
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = appdelegate.managedObjectContext;
@@ -82,6 +93,31 @@
         NSLog(@"Unresolved error %@, %@", cderror, [cderror userInfo]);
         abort();  // Abort save operation if failed
     }
+}
+
+/*!
+ @discussion Load all orders from same target on the order date inserted
+ @param  targetId- targeted employee. 
+         orderDate- input of the date the order has created
+ @return Array of orders
+ */
++ (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate {
+    NSMutableArray *orders = [self loadOrders];
+    int len = (int)[orders count] - 1;
+    for (int i = len; i > 0; i--) {
+        // Get order in index i
+        Order *order = [orders objectAtIndex:i];
+        // Convert NSDate to NSString
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"dd/mm/yyyy"];
+        NSString *stringDate = [formatter stringFromDate:order.order_date];
+        // Check if this is not the target id or not the order date in order to remove
+        // it from the array
+        if((order.target_id != targetId) || (![stringDate isEqualToString:orderDate])){
+            [orders removeObjectAtIndex:i];
+        }
+    }
+    return orders;
 }
 
 @end
