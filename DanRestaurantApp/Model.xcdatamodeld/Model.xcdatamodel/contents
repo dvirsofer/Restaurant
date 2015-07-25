@@ -11,9 +11,11 @@
     </entity>
     <entity name="Order" representedClassName="Order" syncable="YES">
         <attribute name="employee_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="img_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order_date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="prod_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="prod_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="target_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="target_name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -29,7 +31,7 @@
     <elements>
         <element name="Authorization" positionX="162" positionY="-9" width="117" height="75"/>
         <element name="Employee" positionX="450" positionY="-18" width="128" height="88"/>
+        <element name="Order" positionX="306" positionY="45" width="128" height="165"/>
         <element name="Product" positionX="306" positionY="0" width="128" height="150"/>
-        <element name="Order" positionX="306" positionY="45" width="128" height="135"/>
     </elements>
 </model>

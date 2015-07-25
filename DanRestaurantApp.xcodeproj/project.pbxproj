@@ -31,8 +31,6 @@
 		1CBB38291B623E370060337B /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB381A1B623E370060337B /* Employee.m */; };
 		1CBB382A1B623E370060337B /* Employee+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB381C1B623E370060337B /* Employee+CoreData.m */; };
 		1CBB382B1B623E370060337B /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB381E1B623E370060337B /* Item.m */; };
-		1CBB382C1B623E370060337B /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB38201B623E370060337B /* Order.m */; };
-		1CBB382D1B623E370060337B /* Order+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB38221B623E370060337B /* Order+CoreData.m */; };
 		1CBB382E1B623E370060337B /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB38241B623E370060337B /* Product.m */; };
 		1CBB382F1B623E370060337B /* Product+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB38261B623E370060337B /* Product+CoreData.m */; };
 		1CC950DA1B453DA100CD201E /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC950D91B453DA100CD201E /* page.png */; };
@@ -50,6 +48,8 @@
 		44D00DF11B4D5C2500A445F0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DF01B4D5C2500A445F0 /* plus.png */; };
 		44D00DF41B4D5CFF00A445F0 /* CustomPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */; };
 		44D07F361B63BA180050AC45 /* HelpFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D07F351B63BA180050AC45 /* HelpFunction.m */; };
+		44D07F3F1B63F6430050AC45 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D07F3E1B63F6430050AC45 /* Order.m */; };
+		44D07F421B63F6590050AC45 /* Order+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D07F411B63F6590050AC45 /* Order+CoreData.m */; };
 		44D10A001B56ACE900411609 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44D109FE1B56ACE900411609 /* Model.xcdatamodeld */; };
 		44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D4B40E1B416D920087CA9C /* MainViewController.m */; };
 		638111FACE4DC363D21C66ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39506D9C5F357B6147445F2B /* libPods.a */; };
@@ -109,10 +109,6 @@
 		1CBB381C1B623E370060337B /* Employee+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Employee+CoreData.m"; sourceTree = "<group>"; };
 		1CBB381D1B623E370060337B /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		1CBB381E1B623E370060337B /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		1CBB381F1B623E370060337B /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
-		1CBB38201B623E370060337B /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
-		1CBB38211B623E370060337B /* Order+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Order+CoreData.h"; sourceTree = "<group>"; };
-		1CBB38221B623E370060337B /* Order+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Order+CoreData.m"; sourceTree = "<group>"; };
 		1CBB38231B623E370060337B /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		1CBB38241B623E370060337B /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		1CBB38251B623E370060337B /* Product+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Product+CoreData.h"; sourceTree = "<group>"; };
@@ -139,6 +135,10 @@
 		44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopUp.m; sourceTree = "<group>"; };
 		44D07F341B63BA180050AC45 /* HelpFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpFunction.h; sourceTree = "<group>"; };
 		44D07F351B63BA180050AC45 /* HelpFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpFunction.m; sourceTree = "<group>"; };
+		44D07F3D1B63F6430050AC45 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		44D07F3E1B63F6430050AC45 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		44D07F401B63F6590050AC45 /* Order+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Order+CoreData.h"; sourceTree = "<group>"; };
+		44D07F411B63F6590050AC45 /* Order+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Order+CoreData.m"; sourceTree = "<group>"; };
 		44D109FF1B56ACE900411609 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		44D4B40D1B416D920087CA9C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		44D4B40E1B416D920087CA9C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -221,14 +221,14 @@
 				1CBB381C1B623E370060337B /* Employee+CoreData.m */,
 				1CBB381D1B623E370060337B /* Item.h */,
 				1CBB381E1B623E370060337B /* Item.m */,
-				1CBB381F1B623E370060337B /* Order.h */,
-				1CBB38201B623E370060337B /* Order.m */,
-				1CBB38211B623E370060337B /* Order+CoreData.h */,
-				1CBB38221B623E370060337B /* Order+CoreData.m */,
 				1CBB38231B623E370060337B /* Product.h */,
 				1CBB38241B623E370060337B /* Product.m */,
 				1CBB38251B623E370060337B /* Product+CoreData.h */,
 				1CBB38261B623E370060337B /* Product+CoreData.m */,
+				44D07F3D1B63F6430050AC45 /* Order.h */,
+				44D07F3E1B63F6430050AC45 /* Order.m */,
+				44D07F401B63F6590050AC45 /* Order+CoreData.h */,
+				44D07F411B63F6590050AC45 /* Order+CoreData.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -529,7 +529,6 @@
 			files = (
 				1C17E8F81B60F3B50065870F /* PopupNetworkManager.m in Sources */,
 				44D10A001B56ACE900411609 /* Model.xcdatamodeld in Sources */,
-				1CBB382D1B623E370060337B /* Order+CoreData.m in Sources */,
 				1CBB38281B623E370060337B /* Authorization+CoreData.m in Sources */,
 				444B5B7B1B4434AA00CD116D /* CarouselViewController.m in Sources */,
 				1CBB38291B623E370060337B /* Employee.m in Sources */,
@@ -539,6 +538,7 @@
 				1C09ED6A1B41B7D10099792A /* TabBarSegue.m in Sources */,
 				1C4BF5171B3EAEC200D99F3B /* LoginViewController.m in Sources */,
 				1C4BF4991B3E9EF900D99F3B /* AppDelegate.m in Sources */,
+				44D07F3F1B63F6430050AC45 /* Order.m in Sources */,
 				44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */,
 				1CBB382B1B623E370060337B /* Item.m in Sources */,
 				1CBB382A1B623E370060337B /* Employee+CoreData.m in Sources */,
@@ -550,8 +550,8 @@
 				1C4BF5251B3EF1EF00D99F3B /* CheckViewController.m in Sources */,
 				443CA1EB1B5AB2AB00B8DA75 /* CarouselView.m in Sources */,
 				44D07F361B63BA180050AC45 /* HelpFunction.m in Sources */,
+				44D07F421B63F6590050AC45 /* Order+CoreData.m in Sources */,
 				1CBB382E1B623E370060337B /* Product.m in Sources */,
-				1CBB382C1B623E370060337B /* Order.m in Sources */,
 				1C4BF51A1B3EB06E00D99F3B /* CheckTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

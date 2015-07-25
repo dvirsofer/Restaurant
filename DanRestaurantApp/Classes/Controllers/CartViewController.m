@@ -7,20 +7,14 @@
 //
 
 #import "CartViewController.h"
+#import "Order+CoreData.h"
 
 @interface CartViewController ()
 
+@property (strong, nonatomic) NSMutableArray *orders;
 @end
 
 @implementation CartViewController
-
-@synthesize cartCell = _cartCell;
-@synthesize cartTableView = _cartTableView;
-
-@synthesize foodImages = _foodImages;
-@synthesize foodNames = _foodNames;
-@synthesize foodPrices = _foodPrices;
-@synthesize foodTargets = _foodTargets;
 
 #pragma mark Properties
 - (BOOL)isClicked
@@ -31,33 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.clicked = NO; // Not editable
-    self.foodNames = [[NSMutableArray alloc]
-                      initWithObjects:@"טונה",
-                      @"גבינה",
-                      @"בולונז",
-                      @"טונה",
-                      @"בולונז", nil];
+    self.orders = [Order loadOrders];
+    [self.cartTableView reloadData];
     
-    self.foodPrices = [[NSMutableArray alloc]
-                       initWithObjects:@"1.50",
-                       @"1.60",
-                       @"10.80",
-                       @"5.80",
-                       @"9.60", nil];
-    
-    self.foodTargets = [[NSMutableArray alloc]
-                        initWithObjects:@"עבורי",
-                        @"עבורי",
-                        @"משה",
-                        @"משה",
-                        @"איציק", nil];
-    
-    self.foodImages = [[NSMutableArray alloc]
-                       initWithObjects:@"dan_logo_x1.png",
-                       @"dan_logo_x1.png",
-                       @"dan_logo_x1.png",
-                       @"dan_logo_x1.png",
-                       @"dan_logo_x1.png", nil];
 }
 
 
@@ -66,7 +36,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.foodNames count];
+    return [self.orders count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -92,14 +62,14 @@
     }
     
     // Configure the cell
-    cell.foodPrice.text = [self.foodPrices
-                           objectAtIndex: [indexPath row]];
-    cell.foodName.text = [self.foodNames
-                          objectAtIndex:[indexPath row]];
-    cell.foodTarget.text = [self.foodTargets
-                            objectAtIndex:[indexPath row]];
-    UIImage *foodPhoto = [UIImage imageNamed:
-                          [self.foodImages objectAtIndex: [indexPath row]]];
+    cell.foodPrice.text = [((Order *)[self.orders
+                           objectAtIndex: [indexPath row]]).price stringValue];
+    cell.foodName.text = ((Order *)[self.orders
+                          objectAtIndex:[indexPath row]]).prod_name;
+    cell.foodTarget.text = ((Order *)[self.orders
+                            objectAtIndex:[indexPath row]]).target_name;
+    UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:
+                          ((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];
     cell.foodImage.image = foodPhoto;
     return cell;
 }
@@ -108,8 +78,9 @@
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [self.foodNames removeObjectAtIndex:indexPath.row];
-        [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic	];
+#warning add delete order
+        [self.orders removeObjectAtIndex:indexPath.row];
+        [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
     //**************************** TODO ****************************//

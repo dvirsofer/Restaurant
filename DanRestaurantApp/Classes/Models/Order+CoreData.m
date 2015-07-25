@@ -2,7 +2,7 @@
 //  Order+CoreData.m
 //  DanRestaurantApp
 //
-//  Created by DvirSofer on 7/22/15.
+//  Created by DvirSofer on 7/25/15.
 //  Copyright (c) 2015 Or. All rights reserved.
 //
 
@@ -33,6 +33,8 @@
         order.prod_id = [obj valueForKey:@"prod_id"];
         order.price = [obj valueForKey:@"price"];
         order.order_date = [dateFormatter dateFromString:[obj valueForKey:@"order_date"]];
+        order.img_url = [obj valueForKey:@"img_url"];
+        order.prod_name = [obj valueForKey:@"prod_name"];
     }
     
     // save coredata context here. cderror should include the operation error,if occured
@@ -103,8 +105,8 @@
 
 /*!
  @discussion Load all orders from same target on the order date inserted
- @param  targetId- targeted employee. 
-         orderDate- input of the date the order has created
+ @param  targetId- targeted employee.
+ orderDate- input of the date the order has created
  @return Array of orders
  */
 + (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate {

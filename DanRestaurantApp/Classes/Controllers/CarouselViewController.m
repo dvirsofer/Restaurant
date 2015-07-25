@@ -167,9 +167,13 @@
     
     // Get the product which selected in carousel
     Product *prod = [Product getProductByIndex:self.currentPopup.productIndex];
-       
+    
     // Get the product id
     NSNumber *prodId = prod.prod_id;
+    // Get product image url
+    NSString *imgUrl = prod.img_url;
+    // Get product name
+    NSString *prodName = prod.prod_desc;
     // Save the current date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
@@ -185,7 +189,6 @@
     NSNumber *highPrice = prod.price;
     NSMutableArray *prices;
     
-    
     //******************** Check if there are items in quantity ********************//
     if(numOfItems > prod.quantity) {
         // Alert - Can't order anymore!
@@ -198,6 +201,7 @@
         [self.currentPopup removeAnimate];
         return;
     }
+    
     //******************** Check target items ********************//
     // Only 1 item by same employee - Low price
     if([numOfItemsFromServer intValue] + [orders count] + [numOfItems intValue] == 1) {
@@ -247,6 +251,8 @@
                               targetId, @"target_id",
                               currentDate, @"order_date",
                               targetName, @"target_name",
+                              imgUrl, @"img_url",
+                              prodName, @"prod_name",
                               nil];
         [products addObject:info];
     }

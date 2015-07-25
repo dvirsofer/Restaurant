@@ -18,9 +18,9 @@
 @property (weak, nonatomic) IBOutlet CartTableViewCell *cartCell;
 @property (weak, nonatomic) IBOutlet UITableView *cartTableView;
 
-@property (nonatomic, strong) NSMutableArray *foodImages;
-@property (nonatomic, strong) NSMutableArray *foodNames;
-@property (nonatomic, strong) NSMutableArray *foodPrices;
-@property (nonatomic, strong) NSMutableArray *foodTargets;
+//@property (nonatomic, strong) NSMutableArray *foodImages;
+//@property (nonatomic, strong) NSMutableArray *foodNames;
+//@property (nonatomic, strong) NSMutableArray *foodPrices;
+//@property (nonatomic, strong) NSMutableArray *foodTargets;
 
 @end
