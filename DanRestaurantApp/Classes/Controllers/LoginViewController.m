@@ -12,6 +12,8 @@
 #import "Authorization+CoreData.h"
 #import "MBProgressHUD.h"
 
+#import "Product+CoreData.h"
+
 @interface LoginViewController ()
 
 @property (strong, nonatomic) IBOutlet UITextField *personal_number;
@@ -27,6 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+#warning DELETE PRODUCTS DELETE!
+    [Product deleteAllProducts];
     
     self.loginManager = [[LoginNetworkManager alloc] init];
     self.loginManager.delegate = self;

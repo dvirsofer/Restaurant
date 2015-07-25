@@ -56,7 +56,7 @@ static NSString * const GET_ITEMS_BY_TARGET_URL = @"http://webmail.dan.co.il/res
          NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData options:NSJSONReadingMutableContainers error:nil];
          if (self.delegate != nil && [self.delegate respondsToSelector:@selector(resultsFound:)]) {
              // Call resultFound in delegate
-             [self.delegate resultsFound:json];
+             [self.delegate itemsFound:[json[0] valueForKey:@"numOfItems"]];
          }
      }
           failure:

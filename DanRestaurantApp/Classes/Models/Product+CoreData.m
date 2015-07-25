@@ -64,18 +64,44 @@
     return products;
 }
 
-+ (Product *) getProductByIndex: (NSNumber *)productIndex {
++ (Product *) getProductByIndex:(NSNumber *)productIndex {
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
 
     NSArray *products = [Product loadAllProducts];
-    // Safety
-    if([products count] <= [productIndex intValue]) {
+    /*// Safety
+    if([products count] >= [productIndex intValue]) {
         return nil;
-    }
-    Product *prod = (Product*)[NSEntityDescription insertNewObjectForEntityForName:@"Product" inManagedObjectContext:context];
-    prod = (Product*)([[Product loadAllProducts] objectAtIndex:[productIndex intValue]]);
+    }*/
+    Product *prod = (Product*)[NSEntityDescription entityForName:@"Product" inManagedObjectContext:context];
+    prod = (Product*)([products objectAtIndex:[productIndex intValue]]);
     return prod;
+}
+
+/*!
+ @discussion Delete all products from local database
+ */
++ (void)deleteAllProducts {
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = appdelegate.managedObjectContext;
+    
+    NSArray *products = [self loadAllProducts];
+    
+    for (int i = 0; i < [products count]; i++) {
+        // Get order in index i
+        Product *product = [products objectAtIndex:i];
+        // Remove it from context
+        [context deleteObject:product];
+    }
+    
+    // save coredata context here. cderror should include the operation error,if occured
+    NSError *cderror;
+    
+    if (![context save:&cderror]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", cderror, [cderror userInfo]);
+        abort();  // Abort save operation if failed
+    }
 }
 
 

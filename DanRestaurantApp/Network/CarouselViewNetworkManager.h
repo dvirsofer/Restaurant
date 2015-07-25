@@ -11,6 +11,7 @@
 @protocol CarouselViewNetworkManagerDelegate <NSObject>
 @required
 - (void) resultsFound:(NSArray *)items;
+-(void) itemsFound:(NSNumber *)numOfItemsFromServer;
 - (void) errorFound:(NSError *)error;
 @end
 

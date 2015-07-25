@@ -54,6 +54,9 @@
     self.hud.labelText = @"אנא המתן...";
     [self.hud show:YES];
 
+    // Remove all old products from local database
+    [Product deleteAllProducts];
+    
     // Init items on load
     self.networkManager = [[CarouselViewNetworkManager alloc] init];
     self.networkManager.delegate = self;
@@ -64,10 +67,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    // Init items on load
-    //CarouselViewNetworkManager *networkManager = [[CarouselViewNetworkManager alloc] init];
-    //networkManager.delegate = self;
-    //[networkManager getAllParams: self.customItemsOption];
+
 }
 
 - (void)viewDidUnload
@@ -127,7 +127,7 @@
     mySelf.name = @"עבורי";
     [self.auths insertObject:mySelf atIndex:0];
 
-    // Set the popup delegate to be self
+    // Set the popup delegate to be the controller
     self.popup.delegate = self;
     
     // Show popup
@@ -160,80 +160,107 @@
     }
     else {
         // Check in local db who is the target
-        Authorization *auth = (Authorization *)[[Authorization loadAuth] objectAtIndex:selectedTargetIndex];
+        Authorization *auth = (Authorization *)[[Authorization loadAuth] objectAtIndex:(selectedTargetIndex-1)];
         targetId = auth.target_id;
         targetName = auth.name;
     }
     
     // Get the product which selected in carousel
     Product *prod = [Product getProductByIndex:self.currentPopup.productIndex];
+       
     // Get the product id
     NSNumber *prodId = prod.prod_id;
     // Save the current date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-mm-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *currentDate = [formatter stringFromDate:[NSDate date]];
     NSNumber *numOfItems = [NSNumber numberWithInt:[self.currentPopup.numOfItems.text intValue]];
     
-    // Get all orders ordered by targetId in the current date
+    // Get all orders ordered by targetId in the current date from Local Database
     NSArray *orders = [Order loadOrdersByTarget:targetId andDate:currentDate];
     
+    // LowPrice is the price of the first product
+    // highPrice is the price of the other products
+    NSNumber *lowPrice = [NSNumber numberWithFloat:([prod.price floatValue] * 0.9)];
+    NSNumber *highPrice = prod.price;
+    NSMutableArray *prices;
     
-    // Check if it's 1st or 2nd item of the target
-    // x2 of the same product - Save 2 items in local db (Cart)
-    if(([orders count] == MAX_PER_EMPLOYEE) ||
-       ([orders count] + [numOfItems intValue] > MAX_PER_EMPLOYEE) ||
-       ([numOfItemsFromServer intValue] + [orders count] + [numOfItems intValue] > MAX_PER_EMPLOYEE)) {
+    
+    //******************** Check if there are items in quantity ********************//
+    if(numOfItems > prod.quantity) {
+        // Alert - Can't order anymore!
+        [[[UIAlertView alloc] initWithTitle:@"שגיאה"
+                                    message:[NSString stringWithFormat:@"אין מספיק מוצרים במלאי"]
+                                   delegate:nil
+                          cancelButtonTitle:@"אישור"
+                          otherButtonTitles:nil] show];
+        // Remove the popup
+        [self.currentPopup removeAnimate];
+        return;
+    }
+    //******************** Check target items ********************//
+    // Only 1 item by same employee - Low price
+    if([numOfItemsFromServer intValue] + [orders count] + [numOfItems intValue] == 1) {
+        prices = [[NSMutableArray alloc] init];
+        [prices addObject:lowPrice];
+    }
+    // Between 2 to max items ordered by same employee - Add to cart (1 item in low price, others in high price)
+    else if([numOfItemsFromServer intValue] + [orders count] + [numOfItems intValue] > 1 &&
+            [numOfItemsFromServer intValue] + [orders count] + [numOfItems intValue] <= MAX_PER_EMPLOYEE) {
+        prices = [[NSMutableArray alloc] init];
+        // check if it's first item of the day - low price or not - high price
+        // All items in high price
+        if([numOfItemsFromServer intValue]>0 || [orders count]>0) {
+            for(int i = 0; i < [numOfItems intValue]; i++) {
+                [prices addObject:highPrice];
+            }
+        }
+        // First item is low price and others are high price
+        else {
+            [prices addObject:lowPrice];
+            for(int i = 1; i < [numOfItems intValue]; i++) {
+                [prices addObject:highPrice];
+            }
+        }
+    }
+    // More than maximum items per employee - Show Error Alert
+    else if([numOfItemsFromServer intValue] + [orders count] + [numOfItems intValue] > MAX_PER_EMPLOYEE) {
         // Alert - Can't order anymore!
         [[[UIAlertView alloc] initWithTitle:@"שגיאה"
                                     message:[NSString stringWithFormat:@"עברת את הגבלת הפריטים ליום"]
                                    delegate:nil
                           cancelButtonTitle:@"אישור"
                           otherButtonTitles:nil] show];
-        
         // Remove the popup
         [self.currentPopup removeAnimate];
         return;
     }
-    // LowPrice is the price of the first product
-    // highPrice is the price of the other products
-    NSNumber *lowPrice;
-    NSNumber *highPrice;
-    
-    if(numOfItems == 0) {
-        [self.currentPopup removeAnimate];
-        return;
-    }
-    // Max items order in local data
-    if(([numOfItems intValue] == MAX_PER_EMPLOYEE) && ([numOfItemsFromServer intValue] == 0)){
-        lowPrice = [NSNumber numberWithFloat:([prod.price floatValue] * 0.9)];
-        highPrice = prod.price;
-    }
-    // Already ordered item/s
-    else if (([numOfItems intValue] == MAX_PER_EMPLOYEE - 1) && ([numOfItemsFromServer intValue] > 0)) {
-        highPrice = prod.price;
-    }
     
     NSError *error;
-    
-    //build an info object and convert to json
-    NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"value1", @"key1",
-                          @"value2", @"key2",
-                          @"value3", @"key3",
-                          nil];
-    
+    NSMutableArray *products = [[NSMutableArray alloc] init];
+    for(int i = 0; i < [numOfItems intValue]; i++) {
+        //build an info object and convert to json
+        NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:
+                              employeeId, @"employee_id",
+                              prodId, @"prod_id",
+                              [prices objectAtIndex:i], @"price",
+                              targetId, @"target_id",
+                              currentDate, @"order_date",
+                              targetName, @"target_name",
+                              nil];
+        [products addObject:info];
+    }
     //convert object to data
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:products
                                                        options:NSJSONWritingPrettyPrinted error:&error];
-    
     //print out the data contents
     NSString *jsonSummary = [[NSString alloc] initWithData:jsonData
                                                   encoding:NSUTF8StringEncoding];
     NSLog(@"%@", jsonSummary);
+    //[Order saveOrder:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
     
-    [Order saveOrder:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
-    
+    // Remove the popup
+    [self.currentPopup removeAnimate];
 }
 
 #warning edit
@@ -248,81 +275,32 @@
 {
     self.currentPopup = (CustomPopUp *)popup;
     
-    /*
-    // Create the array of the order //
+    NSNumber *numOfItems = [NSNumber numberWithInt:[self.currentPopup.numOfItems.text intValue]];
+    // No items in popup - Do nothing
+    if([numOfItems intValue] == 0) {
+        // Remove the popup
+        [self.currentPopup removeAnimate];
+        return;
+    }
     
-    // The id of employee who makes the order
-    NSNumber *employeeId = [Employee getSessionId];
-    // Get the target name + id
-    NSInteger selectedTargetIndex = [currentPopup.targetPicker selectedRowInComponent:0];
+    NSInteger selectedTargetIndex = [self.currentPopup.targetPicker selectedRowInComponent:0];
     NSNumber *targetId;
-    NSString *targetName;
     // If for me
     if(selectedTargetIndex == 0) {
-        targetId = employeeId;
-        targetName = [Employee getSessionName];
+        targetId = [Employee getSessionId];
     }
     else {
         // Check in local db who is the target
         Authorization *auth = (Authorization *)[[Authorization loadAuth] objectAtIndex:selectedTargetIndex];
         targetId = auth.target_id;
-        targetName = auth.name;
     }
-    
-    // Get the product which selected in carousel
-    Product *prod = [Product getProductByIndex:currentPopup.productIndex];
-    // Get the product id
-    NSNumber *prodId = prod.prod_id;
-    // Save the current date
+    // Get the current date
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-mm-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *currentDate = [formatter stringFromDate:[NSDate date]];
-    NSNumber *numOfItems = [NSNumber numberWithInt:[currentPopup.numOfItems.text intValue]];
     
-    // Get all orders ordered by targetId in the current date
-    NSArray *orders = [Order loadOrdersByTarget:targetId andDate:currentDate];
-
-    
-    // Check if it's 1st or 2nd item of the target
-    // x2 of the same product - Save 2 items in local db (Cart)
-    if(([orders count] == MAX_PER_ITEM) ||
-       ([orders count] + [numOfItems intValue] > MAX_PER_ITEM) ||
-        (fromServer + [orders count] + [numOfItems intValue] > MAX_PER_ITEM)) {
-        // Alert - Can't order anymore!
-        [[[UIAlertView alloc] initWithTitle:@"שגיאה"
-                                    message:[NSString stringWithFormat:@"עברת את הגבלת הפריטים ליום"]
-                                   delegate:nil
-                          cancelButtonTitle:@"אישור"
-                          otherButtonTitles:nil] show];
-        
-        // Remove the popup
-        [currentPopup removeAnimate];
-        return;
-    }
-    if([numOfItems intValue] == MAX_PER_ITEM) {
-        NSNumber *price1 = prod.price;
-        NSNumber *price2 = [NSNumber numberWithInt:([prod.price intValue] + 10)];
-    }
-    NSError *error;
-    
-    //build an info object and convert to json
-    NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"value1", @"key1",
-                          @"value2", @"key2",
-                          @"value3", @"key3",
-                          nil];
-    
-    //convert object to data
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info 
-                                                       options:NSJSONWritingPrettyPrinted error:&error];
-    
-    //print out the data contents
-    NSString *jsonSummary = [[NSString alloc] initWithData:jsonData
-                                             encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", jsonSummary);
-    
-    [Order saveOrder:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
-  */
+    // Get number of items from Server
+    [self.networkManager getGetItemsByTarget:targetId andDate:currentDate];
 }
 
 @end
