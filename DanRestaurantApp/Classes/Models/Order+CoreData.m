@@ -21,13 +21,19 @@
     
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
     
-    Order *order = (Order *)[NSEntityDescription insertNewObjectForEntityForName:@"Order" inManagedObjectContext:context];
-    order.target_id = [json valueForKey:@"target_id"];
-    order.target_name = [json valueForKey:@"target_name"];
-    order.employee_id = [json valueForKey:@"employee_id"];
-    order.prod_id = [json valueForKey:@"prod_id"];
-    order.price = [json valueForKey:@"price"];
-    order.order_date = [json valueForKey:@"order_date"];
+    // Set date formatter in order to convert from String to Date
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    for (NSDictionary *obj in json) {
+        Order *order = (Order *)[NSEntityDescription insertNewObjectForEntityForName:@"Order" inManagedObjectContext:context];
+        order.target_id = [obj valueForKey:@"target_id"];
+        order.target_name = [obj valueForKey:@"target_name"];
+        order.employee_id = [obj valueForKey:@"employee_id"];
+        order.prod_id = [obj valueForKey:@"prod_id"];
+        order.price = [obj valueForKey:@"price"];
+        order.order_date = [dateFormatter dateFromString:[obj valueForKey:@"order_date"]];
+    }
     
     // save coredata context here. cderror should include the operation error,if occured
     NSError *cderror;

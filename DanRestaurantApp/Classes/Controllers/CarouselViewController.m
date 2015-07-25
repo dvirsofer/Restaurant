@@ -256,8 +256,10 @@
     //print out the data contents
     NSString *jsonSummary = [[NSString alloc] initWithData:jsonData
                                                   encoding:NSUTF8StringEncoding];
+#warning REMOVE THIS
     NSLog(@"%@", jsonSummary);
-    //[Order saveOrder:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
+    // Save in local database
+    [Order saveOrder:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
     
     // Remove the popup
     [self.currentPopup removeAnimate];
