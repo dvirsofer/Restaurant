@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5P-pN-yOF">
-                    <rect key="frame" x="37" y="8" width="300" height="300"/>
+                    <rect key="frame" x="37" y="107" width="300" height="300"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="popup.png" translatesAutoresizingMaskIntoConstraints="NO" id="BUc-gz-6T8">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -121,12 +121,20 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="s5P-pN-yOF" secondAttribute="centerX" id="0du-el-fcq"/>
+                <constraint firstAttribute="bottom" secondItem="s5P-pN-yOF" secondAttribute="bottom" constant="260" id="H7C-EU-EBH"/>
                 <constraint firstItem="s5P-pN-yOF" firstAttribute="leading" secondItem="CM8-uR-S5f" secondAttribute="leading" constant="37" id="IAF-Ob-8yV"/>
                 <constraint firstItem="s5P-pN-yOF" firstAttribute="top" secondItem="CM8-uR-S5f" secondAttribute="top" constant="8" id="Rf2-b4-gbq"/>
                 <constraint firstAttribute="trailing" secondItem="s5P-pN-yOF" secondAttribute="trailing" constant="38" id="SkG-On-CH9"/>
                 <constraint firstAttribute="bottom" secondItem="s5P-pN-yOF" secondAttribute="bottom" constant="359" id="YZF-ij-yDZ"/>
+                <constraint firstItem="s5P-pN-yOF" firstAttribute="top" secondItem="CM8-uR-S5f" secondAttribute="top" constant="107" id="u3K-rd-63w"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Rf2-b4-gbq"/>
+                    <exclude reference="YZF-ij-yDZ"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="-57.5" y="295.5"/>
         </view>
     </objects>

@@ -18,11 +18,11 @@
     self = [UIButton buttonWithType:UIButtonTypeCustom];
     [self setBackgroundImage:image forState:UIControlStateNormal];
     [self setBackgroundColor:[UIColor clearColor]];
-    [self setFrame:CGRectMake(0, 0, 200, 200)];
+    [self setFrame:CGRectMake(0, 0, 300, 300)];
     self.imageView.contentMode = UIViewContentModeCenter;
     
     //Create Description label
-    UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 160, 200, 100)];
+    UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 260, 300, 150)];
     [description setFont:[UIFont fontWithName:@"Times New Roman" size:13]];
     [description setText:product.prod_desc];
     description.font = [UIFont boldSystemFontOfSize:16];
@@ -32,7 +32,7 @@
     [self addSubview:description];
     
     //Create Price label
-    UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(0, 180, 200, 100)];
+    UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(0, 280, 300, 150)];
     [price setFont:[UIFont fontWithName:@"Times New Roman" size:13]];
     [price setText: [[NSString stringWithFormat:@"%.2f", [product.price floatValue]] stringByAppendingString:@" ש״ח"]];
     price.font = [UIFont boldSystemFontOfSize:16];
@@ -42,7 +42,7 @@
     [self addSubview:price];
     
     //Create Calories label
-    UILabel *calories = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 200, 100)];
+    UILabel *calories = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, 300, 150)];
     [calories setFont:[UIFont fontWithName:@"Times New Roman" size:13]];
     [calories setText:[[NSString stringWithFormat:@"%@", product.calories] stringByAppendingString:@" קלוריות"]];
     calories.font = [UIFont boldSystemFontOfSize:16];
@@ -52,7 +52,7 @@
     [self addSubview:calories];
     
     //Create Quantity label
-    UILabel *quantity = [[UILabel alloc]initWithFrame:CGRectMake(0, 220, 200, 100)];
+    UILabel *quantity = [[UILabel alloc]initWithFrame:CGRectMake(0, 320, 300, 150)];
     [quantity setFont:[UIFont fontWithName:@"Times New Roman" size:13]];
     [quantity setText: [[NSString stringWithFormat:@"%@", product.quantity] stringByAppendingString:@" במלאי"]];
     quantity.font = [UIFont boldSystemFontOfSize:16];
