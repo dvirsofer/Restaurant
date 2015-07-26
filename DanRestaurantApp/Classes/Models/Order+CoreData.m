@@ -128,4 +128,15 @@
     return orders;
 }
 
+/*!
+ @discussion Remove an order from local database (if exists)
+ @param  An order to remove
+ */
++ (void)removeOrder:(Order *)order {
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = appdelegate.managedObjectContext;
+    
+    [context deleteObject:order];
+}
+
 @end

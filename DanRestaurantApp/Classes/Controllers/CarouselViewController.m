@@ -193,6 +193,7 @@
     
     //******************** Check if there are items in quantity ********************//
     if(numOfItems > prod.quantity) {
+        // Show error message - out of quantity
         [[[HelpFunction alloc] init] showAlert:@"אין מספיק מוצרים במלאי"];
         // Remove the popup
         [self.currentPopup removeAnimate];

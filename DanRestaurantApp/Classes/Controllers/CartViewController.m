@@ -78,8 +78,11 @@
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-#warning add delete order
+        // Remove order from local db
+        [Order removeOrder:[self.orders objectAtIndex:indexPath.row]];
+        // Remove order from orders array - orders which displayed in cart
         [self.orders removeObjectAtIndex:indexPath.row];
+        // Remove order from the cart table view
         [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     

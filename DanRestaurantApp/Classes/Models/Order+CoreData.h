@@ -13,5 +13,6 @@
 + (NSMutableArray *)loadOrders;
 + (void)deleteAllOrders;
 + (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate;
++ (void)removeOrder:(Order *)order;
 
 @end
