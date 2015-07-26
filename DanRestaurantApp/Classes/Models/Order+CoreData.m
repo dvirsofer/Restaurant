@@ -53,7 +53,6 @@
  */
 + (NSMutableArray *)loadOrders {
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     // Create and configure a fetch request with the Book entity.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Order" inManagedObjectContext:[appdelegate managedObjectContext]];
@@ -63,6 +62,14 @@
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"target_name" ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    /*int itemsPerPage = 10;
+    int reqPage = 1;
+    
+    
+    // Pagination setups
+    [fetchRequest setFetchBatchSize:itemsPerPage];
+    [fetchRequest setFetchOffset:(reqPage-1)];*/
     
     // Create and initialize the fetch results controller.
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:appdelegate.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
@@ -112,12 +119,12 @@
 + (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate {
     NSMutableArray *orders = [self loadOrders];
     int len = (int)[orders count] - 1;
-    for (int i = len; i > 0; i--) {
+    for (int i = len; i >= 0; i--) {
         // Get order in index i
         Order *order = [orders objectAtIndex:i];
         // Convert NSDate to NSString
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"dd/mm/yyyy"];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
         NSString *stringDate = [formatter stringFromDate:order.order_date];
         // Check if this is not the target id or not the order date in order to remove
         // it from the array
@@ -137,6 +144,22 @@
     NSManagedObjectContext *context = appdelegate.managedObjectContext;
     
     [context deleteObject:order];
+}
+
+/*!
+ @discussion Get the total price to pay
+ @return NSNumber* - total price
+ */
++ (NSNumber *)getTotalPrice {
+    // Load all orders
+    NSArray *orders = [self loadOrders];
+    float totalPrice = 0;
+    // Sum all the orders prices
+    for (Order *order in orders) {
+        totalPrice = totalPrice + [order.price floatValue];
+    }
+    // Convert from int to NSNumber
+    return [NSNumber numberWithFloat:totalPrice];
 }
 
 @end

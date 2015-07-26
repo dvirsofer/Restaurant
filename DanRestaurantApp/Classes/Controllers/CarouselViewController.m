@@ -124,7 +124,7 @@
     // Add "My Self" as target option
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
-    Authorization *mySelf = (Authorization*)[NSEntityDescription insertNewObjectForEntityForName:@"Authorization" inManagedObjectContext:context];
+    Authorization *mySelf = (Authorization*)[NSEntityDescription entityForName:@"Authorization" inManagedObjectContext:context];
     mySelf.target_id = [Employee getSessionId];
     mySelf.name = @"עבורי";
     [self.auths insertObject:mySelf atIndex:0];
@@ -265,10 +265,9 @@
     [self.currentPopup removeAnimate];
 }
 
-#warning edit
 - (void) errorFound:(NSError *) error{
     // Show error messege.
-    [[[HelpFunction alloc] init] showAlert:@"Wrong ID or Password"];
+    [[[HelpFunction alloc] init] showAlert:[error localizedDescription]];
 }
 
 #pragma mark - PopUpViewDelegate

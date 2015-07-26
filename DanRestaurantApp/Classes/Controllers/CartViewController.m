@@ -12,6 +12,12 @@
 @interface CartViewController ()
 
 @property (strong, nonatomic) NSMutableArray *orders;
+@property (assign, nonatomic, getter=isClicked) BOOL clicked;
+-(IBAction)editButtonClicked:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *priceLbl;
+@property (weak, nonatomic) IBOutlet CartTableViewCell *cartCell;
+@property (weak, nonatomic) IBOutlet UITableView *cartTableView;
+
 @end
 
 @implementation CartViewController
@@ -26,6 +32,7 @@
     [super viewDidLoad];
     self.clicked = NO; // Not editable
     self.orders = [Order loadOrders];
+    self.priceLbl.text = [[[Order getTotalPrice] stringValue] stringByAppendingString:@" ש״ח"];
     [self.cartTableView reloadData];
     
 }
@@ -51,8 +58,8 @@
     
     if (cell == nil) {
         [[NSBundle mainBundle] loadNibNamed:@"CartTableViewCell" owner:self options:nil];
-        cell = _cartCell;
-        _cartCell = nil;
+        cell = self.cartCell;
+        self.cartCell = nil;
     }
     
     if (cell == nil) {
@@ -68,9 +75,20 @@
                           objectAtIndex:[indexPath row]]).prod_name;
     cell.foodTarget.text = ((Order *)[self.orders
                             objectAtIndex:[indexPath row]]).target_name;
-    UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:
-                          ((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];
+    /*UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:
+                                                                               ((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];*/
+    UIImage *foodPhoto = [UIImage imageNamed:@"loading.gif"];
     cell.foodImage.image = foodPhoto;
+    //NSURL *url = [NSURL URLWithString:((Order *)[self.orders objectAtIndex:[indexPath row]]).img_url];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:
+                                                                          ((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];
+        // Now the image will have been loaded and decoded and is ready to rock for the main thread
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [cell.foodImage setImage:foodPhoto];
+        });
+    });
+    //cell.foodImage.image = foodPhoto;
     return cell;
 }
 
@@ -84,11 +102,17 @@
         [self.orders removeObjectAtIndex:indexPath.row];
         // Remove order from the cart table view
         [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic];
+        // Update the new sum after deletion
+        // Make fade animation on update price
+        [UIView animateWithDuration:0.4 animations:^{
+            self.priceLbl.alpha = 0;
+        } completion:^(BOOL finished) {
+            self.priceLbl.text = [[[Order getTotalPrice] stringValue] stringByAppendingString:@" ש״ח"];
+            [UIView animateWithDuration:0.4 animations:^{
+                self.priceLbl.alpha = 1;
+            }];
+        }];
     }
-    
-    //**************************** TODO ****************************//
-    // Remove from database + update the Sum here //
-    
     [self.cartTableView endUpdates];
 }
 

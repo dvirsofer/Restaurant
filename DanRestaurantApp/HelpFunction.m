@@ -17,8 +17,4 @@
                       otherButtonTitles:nil] show];
 }
 
-+(void)validPopup {
-    
-}
-
 @end

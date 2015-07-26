@@ -36,6 +36,7 @@
 		1CC950DA1B453DA100CD201E /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC950D91B453DA100CD201E /* page.png */; };
 		1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */; };
 		1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A5D1B403E4600679D8C /* CartViewController.m */; };
+		1CEAEEF01B65338D006DA344 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1CEAEEEF1B65338D006DA344 /* loading.gif */; };
 		443CA1EB1B5AB2AB00B8DA75 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 443CA1EA1B5AB2AB00B8DA75 /* CarouselView.m */; };
 		4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */; };
 		4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */; };
@@ -118,6 +119,7 @@
 		1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewCell.m; sourceTree = "<group>"; };
 		1CCF2A5C1B403E4600679D8C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		1CCF2A5D1B403E4600679D8C /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
+		1CEAEEEF1B65338D006DA344 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		39506D9C5F357B6147445F2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		443CA1E91B5AB2AB00B8DA75 /* CarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselView.h; sourceTree = "<group>"; };
 		443CA1EA1B5AB2AB00B8DA75 /* CarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselView.m; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		1C09ED581B41AA5C0099792A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1CEAEEEF1B65338D006DA344 /* loading.gif */,
 				1CC950D91B453DA100CD201E /* page.png */,
 				1C09ED611B41ADC40099792A /* background@3x.png */,
 				4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */,
@@ -475,6 +478,7 @@
 				1C09ED5E1B41AA710099792A /* background@2x.png in Resources */,
 				1C4BF4A11B3E9EF900D99F3B /* Images.xcassets in Resources */,
 				44D00DE71B4D589900A445F0 /* PopupView.xib in Resources */,
+				1CEAEEF01B65338D006DA344 /* loading.gif in Resources */,
 				4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */,
 				1C09ED631B41ADC40099792A /* background@3x.png in Resources */,
 			);
