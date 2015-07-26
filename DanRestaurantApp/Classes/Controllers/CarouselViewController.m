@@ -124,7 +124,8 @@
     // Add "My Self" as target option
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
-    Authorization *mySelf = (Authorization*)[NSEntityDescription entityForName:@"Authorization" inManagedObjectContext:context];
+    NSEntityDescription  *entity = [NSEntityDescription entityForName:@"Authorization" inManagedObjectContext:context];
+    Authorization *mySelf = (Authorization *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     mySelf.target_id = [Employee getSessionId];
     mySelf.name = @"עבורי";
     [self.auths insertObject:mySelf atIndex:0];
@@ -291,7 +292,7 @@
     }
     else {
         // Check in local db who is the target
-        Authorization *auth = (Authorization *)[[Authorization loadAuth] objectAtIndex:selectedTargetIndex];
+        Authorization *auth = (Authorization *)[[Authorization loadAuth] objectAtIndex:selectedTargetIndex-1];
         targetId = auth.target_id;
     }
     // Get the current date
