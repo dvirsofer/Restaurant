@@ -11,6 +11,7 @@
 #import "Employee+CoreData.h"
 #import "Authorization+CoreData.h"
 #import "MBProgressHUD.h"
+#import "HelpFunction.h"
 
 #import "Product+CoreData.h"
 
@@ -53,11 +54,7 @@
 - (void)checkLogin:(id)sender {
     // Basic check if any of the text fields is empty
     if([personal_number.text isEqualToString:@""] || [password.text isEqualToString:@""]) {
-        [[[UIAlertView alloc] initWithTitle:@"שגיאה"
-                                    message:[NSString stringWithFormat:@"הכנס את כל השדות"]
-                                   delegate:nil
-                          cancelButtonTitle:@"אישור"
-                          otherButtonTitles:nil] show];
+        [[[HelpFunction alloc] init] showAlert:@"הכנס את כל השדות"];
         return;
     }
     else {
@@ -95,8 +92,7 @@
     // Stop the loading indicator
     [self.hud hide:YES];
     //show error messege.
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"שגיאה" message:@"מספר אישי או תעודת זהות שגויים" delegate:self cancelButtonTitle:@"אישור" otherButtonTitles:nil, nil];
-    [alert show];
+    [[[HelpFunction alloc] init] showAlert:@"מספר אישי או תעודת זהות שגויים" ];
 }
 
 

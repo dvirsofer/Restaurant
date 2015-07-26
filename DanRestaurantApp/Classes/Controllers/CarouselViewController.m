@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "Order+CoreData.h"
 #import "MBProgressHUD.h"
+#import "HelpFunction.h"
 
 @interface CarouselViewController ()
 @property (strong, nonatomic) MBProgressHUD *hud;
@@ -89,6 +90,7 @@
 {
     //return the total number of items in the carousel
     return [self.items count];
+    
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
@@ -191,12 +193,7 @@
     
     //******************** Check if there are items in quantity ********************//
     if(numOfItems > prod.quantity) {
-        // Alert - Can't order anymore!
-        [[[UIAlertView alloc] initWithTitle:@"שגיאה"
-                                    message:[NSString stringWithFormat:@"אין מספיק מוצרים במלאי"]
-                                   delegate:nil
-                          cancelButtonTitle:@"אישור"
-                          otherButtonTitles:nil] show];
+        [[[HelpFunction alloc] init] showAlert:@"אין מספיק מוצרים במלאי"];
         // Remove the popup
         [self.currentPopup removeAnimate];
         return;
@@ -230,11 +227,7 @@
     // More than maximum items per employee - Show Error Alert
     else if([numOfItemsFromServer intValue] + [orders count] + [numOfItems intValue] > MAX_PER_EMPLOYEE) {
         // Alert - Can't order anymore!
-        [[[UIAlertView alloc] initWithTitle:@"שגיאה"
-                                    message:[NSString stringWithFormat:@"עברת את הגבלת הפריטים ליום"]
-                                   delegate:nil
-                          cancelButtonTitle:@"אישור"
-                          otherButtonTitles:nil] show];
+        [[[HelpFunction alloc] init] showAlert:@"עברת את הגבלת הפריטים ליום"];
         // Remove the popup
         [self.currentPopup removeAnimate];
         return;
@@ -274,8 +267,7 @@
 #warning edit
 - (void) errorFound:(NSError *) error{
     // Show error messege.
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Wrong ID or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
+    [[[HelpFunction alloc] init] showAlert:@"Wrong ID or Password"];
 }
 
 #pragma mark - PopUpViewDelegate

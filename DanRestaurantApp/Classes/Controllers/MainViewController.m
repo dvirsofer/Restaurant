@@ -10,6 +10,7 @@
 #import "CarouselViewController.h"
 #import "Employee+CoreData.h"
 #import "Authorization+CoreData.h"
+#import "HelpFunction.h"
 
 @interface MainViewController ()
 
@@ -118,8 +119,7 @@
 
 - (void) errorFound:(NSError *) error{
     // Show error messege.
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:@"Wrong ID or Password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
+    [[[HelpFunction alloc] init] showAlert:@"Wrong ID or Password"];
 }
 
 @end
