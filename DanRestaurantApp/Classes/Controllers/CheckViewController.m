@@ -25,33 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.foodNames = [[NSArray alloc]
-                      initWithObjects:@"Tuna",
-                      @"BMW",
-                      @"Toyota",
-                      @"Volvo",
-                      @"Smart", nil];
     
-    self.foodPrices = [[NSArray alloc]
-                       initWithObjects:@"1.50",
-                       @"1.60",
-                       @"10.80",
-                       @"5.80",
-                       @"9.60", nil];
-    
-    self.foodTargets = [[NSArray alloc]
-                        initWithObjects:@"Me",
-                        @"Itzik",
-                        @"Avi",
-                        @"Me",
-                        @"Avi", nil];
-    
-    self.foodImages = [[NSArray alloc]
-                       initWithObjects:@"dan_logo_x1.png",
-                       @"dan_logo_x1.png",
-                       @"dan_logo_x1.png",
-                       @"dan_logo_x1.png",
-                       @"dan_logo_x1.png", nil];
+    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning {

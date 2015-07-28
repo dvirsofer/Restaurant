@@ -10,6 +10,7 @@
 #import "CartViewController.h"
 #import "iCarousel.h"
 #import "PopupNetworkManager.h"
+#import "MBProgressHUD.h"
 //#import "CustomPopUp.h"
 
 @interface MainViewController : UIViewController <PopupNetworkManagerDelegate>
@@ -19,5 +20,7 @@
 @property (weak, nonatomic) UIViewController *currentViewController;
 @property (strong, nonatomic) IBOutlet UILabel *employeeNameLbl;
 @property (strong, nonatomic) IBOutlet UILabel *dateLbl;
+
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 @end

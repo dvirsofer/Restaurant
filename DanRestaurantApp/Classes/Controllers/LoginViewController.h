@@ -7,13 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainViewController.h"
-#import "AppDelegate.h"
-#import "MainViewController.h"
 #import "LoginNetworkManager.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate, LoginNetworkManagerDelegate>
-
-
-
 @end

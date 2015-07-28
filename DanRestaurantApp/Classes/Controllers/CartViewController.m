@@ -13,10 +13,11 @@
 
 @property (strong, nonatomic) NSMutableArray *orders;
 @property (assign, nonatomic, getter=isClicked) BOOL clicked;
--(IBAction)editButtonClicked:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *priceLbl;
 @property (weak, nonatomic) IBOutlet CartTableViewCell *cartCell;
 @property (weak, nonatomic) IBOutlet UITableView *cartTableView;
+
+-(IBAction)editButtonClicked:(id)sender;
 
 @end
 
@@ -32,11 +33,10 @@
     [super viewDidLoad];
     self.clicked = NO; // Not editable
     self.orders = [Order loadOrders];
-    self.priceLbl.text = [[[Order getTotalPrice] stringValue] stringByAppendingString:@" ש״ח"];
+    self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice] stringValue]];
     [self.cartTableView reloadData];
     
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -69,8 +69,8 @@
     }
     
     // Configure the cell
-    cell.foodPrice.text = [((Order *)[self.orders
-                           objectAtIndex: [indexPath row]]).price stringValue];
+    cell.backgroundColor = [UIColor colorWithRed:24/255.0 green:86/255.0 blue:120/255.0 alpha:0.88];
+    cell.foodPrice.text = [@"₪" stringByAppendingString:[((Order *)[self.orders objectAtIndex:[indexPath row]]).price stringValue]];
     cell.foodName.text = ((Order *)[self.orders
                           objectAtIndex:[indexPath row]]).prod_name;
     cell.foodTarget.text = ((Order *)[self.orders
@@ -79,10 +79,8 @@
                                                                                ((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];*/
     UIImage *foodPhoto = [UIImage imageNamed:@"loading.gif"];
     cell.foodImage.image = foodPhoto;
-    //NSURL *url = [NSURL URLWithString:((Order *)[self.orders objectAtIndex:[indexPath row]]).img_url];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:
-                                                                          ((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];
+        UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];
         // Now the image will have been loaded and decoded and is ready to rock for the main thread
         dispatch_sync(dispatch_get_main_queue(), ^{
             [cell.foodImage setImage:foodPhoto];
@@ -107,7 +105,7 @@
         [UIView animateWithDuration:0.4 animations:^{
             self.priceLbl.alpha = 0;
         } completion:^(BOOL finished) {
-            self.priceLbl.text = [[[Order getTotalPrice] stringValue] stringByAppendingString:@" ש״ח"];
+            self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice] stringValue]];
             [UIView animateWithDuration:0.4 animations:^{
                 self.priceLbl.alpha = 1;
             }];
@@ -128,12 +126,11 @@
         [self.cartTableView setEditing:NO animated:YES];
         self.clicked = NO;
     }
-    
 }
 
--(IBAction)returnButtonClicked:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)finishOrder:(id)sender {
+    // Show alert "are you sure?" - if yes - perform segue and send the items
 }
+
 
 @end

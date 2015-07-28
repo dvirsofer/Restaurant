@@ -24,6 +24,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Init ProgressBar
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.hud];
+    self.hud.labelText = @"אנא המתן...";
+    
     // Add bar buttons - History & Cart
     UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"היסטוריה" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonAction:)];
     UIBarButtonItem *cartButton = [[UIBarButtonItem alloc] initWithTitle:@"עגלה" style:UIBarButtonItemStylePlain target:self action:@selector(cartButtonAction:)];
@@ -52,6 +57,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [self.pastaButton setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:0.9] forState:UIControlStateNormal];
+    [self.sandwichButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self performSegueWithIdentifier: @"PastaSegue" sender: self];
 }
 
@@ -64,6 +70,12 @@
 -(void)cartButtonAction:(id)sender {
     // When clicked cart
     NSLog(@"Cart clicked");
+    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"חזור"
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [[self navigationItem] setBackBarButtonItem:newBackButton];
+ 
     [self performSegueWithIdentifier: @"cartSegue" sender: self];
 }
 

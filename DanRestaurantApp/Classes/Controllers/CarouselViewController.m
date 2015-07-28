@@ -21,25 +21,15 @@
 @interface CarouselViewController ()
 @property (strong, nonatomic) MBProgressHUD *hud;
 @property (strong, nonatomic) CustomPopUp *currentPopup;
-
 @end
 
 @implementation CarouselViewController
-
-@synthesize carousel, items;
-
-- (void)awakeFromNib
-{
-    //Setups done in the segue
-    
-}
-
 - (void)dealloc
 {
     //it's a good idea to set these to nil here to avoid
     //sending messages to a deallocated viewcontroller
-    carousel.delegate = nil;
-    carousel.dataSource = nil;
+    self.carousel.delegate = nil;
+    self.carousel.dataSource = nil;
 }
 
 #pragma mark -
@@ -64,11 +54,7 @@
     [self.networkManager getAllParams: self.customItemsOption];
     
     //configure carousel
-    carousel.type = iCarouselTypeCoverFlow2;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-
+    self.carousel.type = iCarouselTypeCoverFlow2;
 }
 
 - (void)viewDidUnload
@@ -90,7 +76,6 @@
 {
     //return the total number of items in the carousel
     return [self.items count];
-    
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
@@ -102,7 +87,7 @@
         button = (CarouselView *)view;
         
         // Create custom carousel view (which is clickable)
-        button = [[CarouselView alloc] initWithItem:[items objectAtIndex:index]];
+        button = [[CarouselView alloc] initWithItem:[self.items objectAtIndex:index]];
         
         // Set button tag to save the index
         button.tag = index;

@@ -9,18 +9,15 @@
 #import "LoginViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "Employee+CoreData.h"
-#import "Authorization+CoreData.h"
 #import "MBProgressHUD.h"
 #import "HelpFunction.h"
-
 #import "Product+CoreData.h"
 
 @interface LoginViewController ()
 
-@property (strong, nonatomic) IBOutlet UITextField *personal_number;
-@property (strong, nonatomic) IBOutlet UITextField *password;
-
-@property (strong, nonatomic) LoginNetworkManager *loginManager;
+@property (strong, nonatomic) IBOutlet UITextField *personal_number; // Personal number text field
+@property (strong, nonatomic) IBOutlet UITextField *password; // Employee id text field
+@property (strong, nonatomic) LoginNetworkManager *loginManager; // Network manager
 @property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
@@ -31,16 +28,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-#warning DELETE PRODUCTS DELETE!
-    [Product deleteAllProducts];
-    
     self.loginManager = [[LoginNetworkManager alloc] init];
     self.loginManager.delegate = self;
     
     //setup spinner
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
-    self.hud.labelText = @"אנא המתן מתחבר...";
+    self.hud.labelText = @"מתחבר אנא המתן";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,17 +60,6 @@
     }
 }
 
-#warning Remove this!!!
-/*-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSLog(@"prepareForSegue: %@", segue.identifier);
-    //MainViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
-    
-    if ([segue.identifier isEqualToString:@"mainViewSegue"]) {
-        
-    }
-}*/
-
 #pragma mark - LoginNetworkManagerDelegate
 - (void) resultFound:(NSArray *)json {
     //save in local data and move to MainViewController.
@@ -92,7 +75,7 @@
     // Stop the loading indicator
     [self.hud hide:YES];
     //show error messege.
-    [[[HelpFunction alloc] init] showAlert:@"מספר אישי או תעודת זהות שגויים" ];
+    [[[HelpFunction alloc] init] showAlert:@"מספר אישי או תעודת זהות שגויים"];
 }
 
 
