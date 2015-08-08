@@ -10,11 +10,6 @@
 
 @implementation CheckTableViewCell
 
-@synthesize foodImage = _foodImage;
-@synthesize foodName = _foodName;
-@synthesize foodPrice = _foodPrice;
-@synthesize foodTarget = _foodTarget;
-
 - (void)awakeFromNib {
     // Initialization code
 }

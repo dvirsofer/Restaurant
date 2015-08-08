@@ -7,6 +7,7 @@
 //
 
 #import "CartViewController.h"
+#import "CartTableViewCell.h"
 #import "Order+CoreData.h"
 
 @interface CartViewController ()
@@ -130,6 +131,7 @@
 
 - (IBAction)finishOrder:(id)sender {
     // Show alert "are you sure?" - if yes - perform segue and send the items
+    
 }
 
 

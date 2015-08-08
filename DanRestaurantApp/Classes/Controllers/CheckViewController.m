@@ -7,26 +7,30 @@
 //
 
 #import "CheckViewController.h"
+#import "CheckTableViewCell.h"
+#import "Order+CoreData.h"
 
 @interface CheckViewController ()
+
+@property (strong, nonatomic) NSMutableArray *orders;
+@property (strong, nonatomic) IBOutlet UILabel *priceLbl;
+@property (weak, nonatomic) IBOutlet CheckTableViewCell *checkCell;
+@property (weak, nonatomic) IBOutlet UITableView *checkTableView;
 
 @end
 
 @implementation CheckViewController
 
-@synthesize checkCell = _checkCell;
-@synthesize checkTableView = _checkTableView;
-
-@synthesize foodImages = _foodImages;
-@synthesize foodNames = _foodNames;
-@synthesize foodPrices = _foodPrices;
-@synthesize foodTargets = _foodTargets;
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
+    self.orders = [Order loadOrders];
+    self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice] stringValue]];
+    [self.checkTableView reloadData];
+    self.navigationItem.hidesBackButton = YES; // Disable back button
+}
+
+- (IBAction)goBack:(id)sender {
+    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +39,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.foodNames count];
+    return [self.orders count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,10 +51,11 @@
     static NSString *CellIdentifier = @"checkTableCell";
     
     CheckTableViewCell *cell = (CheckTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
         [[NSBundle mainBundle] loadNibNamed:@"CheckTableViewCell" owner:self options:nil];
-        cell = _checkCell;
-        _checkCell = nil;
+        cell = self.checkCell;
+        self.checkCell = nil;
     }
     
     if (cell == nil) {
@@ -60,20 +65,25 @@
     }
     
     // Configure the cell
-    cell.foodPrice.text = [self.foodPrices
-                           objectAtIndex: [indexPath row]];
-    
-    cell.foodName.text = [self.foodNames
-                          objectAtIndex:[indexPath row]];
-    
-    cell.foodTarget.text = [self.foodTargets
-                            objectAtIndex:[indexPath row]];
-    
-    UIImage *foodPhoto = [UIImage imageNamed:
-                          [self.foodImages objectAtIndex: [indexPath row]]];
-    
+    cell.backgroundColor = [UIColor colorWithRed:24/255.0 green:86/255.0 blue:120/255.0 alpha:0.88];
+    cell.foodPrice.text = [@"₪" stringByAppendingString:[((Order *)[self.orders objectAtIndex:[indexPath row]]).price stringValue]];
+    cell.foodName.text = ((Order *)[self.orders
+                                    objectAtIndex:[indexPath row]]).prod_name;
+    cell.foodTarget.text = ((Order *)[self.orders
+                                      objectAtIndex:[indexPath row]]).target_name;
+    /*UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:
+     ((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];*/
+    UIImage *foodPhoto = [UIImage imageNamed:@"loading.gif"];
     cell.foodImage.image = foodPhoto;
-    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];
+        // Now the image will have been loaded and decoded and is ready to rock for the main thread
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [cell.foodImage setImage:foodPhoto];
+        });
+    });
+    //cell.foodImage.image = foodPhoto;
+    [cell setUserInteractionEnabled:NO];
     return cell;
 }
 

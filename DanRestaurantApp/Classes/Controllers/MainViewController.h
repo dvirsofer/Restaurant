@@ -11,7 +11,6 @@
 #import "iCarousel.h"
 #import "PopupNetworkManager.h"
 #import "MBProgressHUD.h"
-//#import "CustomPopUp.h"
 
 @interface MainViewController : UIViewController <PopupNetworkManagerDelegate>
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CartTableViewCell.h"
 
 @interface CartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
 @end

@@ -377,7 +377,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="395"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKT-oy-TfV" userLabel="iCarousel" customClass="iCarousel">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKT-oy-TfV" userLabel="iCarousel" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="395"/>
                                 <connections>
                                     <outlet property="dataSource" destination="1tk-AU-ebL" id="PZE-tZ-68M"/>
@@ -393,6 +393,15 @@
                             <constraint firstItem="JKT-oy-TfV" firstAttribute="leading" secondItem="rqG-7J-boJ" secondAttribute="leadingMargin" constant="-16" id="Xg1-OF-GEv"/>
                             <constraint firstItem="JKT-oy-TfV" firstAttribute="bottom" secondItem="fFI-dB-4PM" secondAttribute="top" id="nCP-ek-xGE"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="16x-L9-6MH"/>
+                                <exclude reference="BRB-LG-z4X"/>
+                                <exclude reference="Vfy-EU-DeN"/>
+                                <exclude reference="Xg1-OF-GEv"/>
+                                <exclude reference="nCP-ek-xGE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="395"/>
@@ -421,6 +430,9 @@
                                 <state key="normal" title="חזור">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="goBack:" destination="JHt-cr-cCa" eventType="touchUpInside" id="3pG-G4-I6D"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="סך הכל:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4j-xN-MLT">
                                 <rect key="frame" x="16" y="489" width="568" height="24"/>
@@ -440,7 +452,7 @@
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.94117647059999998" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartTableCell" id="jfL-Ks-gVs" customClass="CartTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="checkTableCell" id="jfL-Ks-gVs" customClass="CheckTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jfL-Ks-gVs" id="rFw-Uz-FpZ">
@@ -546,16 +558,16 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94117647059999998" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="foodImage" destination="6bl-Pr-yIe" id="COH-Ue-GLz"/>
-                                            <outlet property="foodName" destination="Pqo-5u-Xkx" id="8qI-Dm-vpQ"/>
-                                            <outlet property="foodPrice" destination="LBE-Yk-OA3" id="PYj-16-dkX"/>
-                                            <outlet property="foodTarget" destination="39A-mx-G1j" id="OpF-UV-IrB"/>
+                                            <outlet property="foodImage" destination="6bl-Pr-yIe" id="aPf-Hy-H7e"/>
+                                            <outlet property="foodName" destination="Pqo-5u-Xkx" id="F90-H8-SHo"/>
+                                            <outlet property="foodPrice" destination="LBE-Yk-OA3" id="ouJ-wQ-s3B"/>
+                                            <outlet property="foodTarget" destination="39A-mx-G1j" id="nFY-re-8Ga"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="54v-K1-a4Z" id="Qbs-Bs-N7F"/>
-                                    <outlet property="delegate" destination="54v-K1-a4Z" id="A0l-60-vIM"/>
+                                    <outlet property="dataSource" destination="JHt-cr-cCa" id="UN3-ar-r6D"/>
+                                    <outlet property="delegate" destination="JHt-cr-cCa" id="bix-n2-Bj3"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -579,6 +591,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="קבלה" id="vZl-JB-lkF"/>
+                    <connections>
+                        <outlet property="checkTableView" destination="fSI-Fz-XAG" id="Fpn-kW-fU1"/>
+                        <outlet property="priceLbl" destination="S0Q-if-IpZ" id="SOT-th-V4I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Wd-GU-X9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
