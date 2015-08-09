@@ -15,5 +15,6 @@
 + (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate;
 + (void)removeOrder:(Order *)order;
 + (NSNumber *)getTotalPrice;
++ (void)updateOrderPrice: (Order *)order;
 
 @end

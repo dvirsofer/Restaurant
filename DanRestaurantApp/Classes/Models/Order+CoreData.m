@@ -63,14 +63,6 @@
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    /*int itemsPerPage = 10;
-    int reqPage = 1;
-    
-    
-    // Pagination setups
-    [fetchRequest setFetchBatchSize:itemsPerPage];
-    [fetchRequest setFetchOffset:(reqPage-1)];*/
-    
     // Create and initialize the fetch results controller.
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:appdelegate.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     NSError *error;
@@ -160,6 +152,16 @@
     }
     // Convert from int to NSNumber
     return [NSNumber numberWithFloat:totalPrice];
+}
+
++ (void)updateOrderPrice: (Order *)order {
+    // Load all orders
+    NSArray *orders = [self loadOrders];
+    for (Order *orderInLocal in orders) {
+        if(orderInLocal == order) {
+            orderInLocal.price = [NSNumber numberWithFloat:([orderInLocal.price floatValue] * 0.9)];
+        }
+    }
 }
 
 @end

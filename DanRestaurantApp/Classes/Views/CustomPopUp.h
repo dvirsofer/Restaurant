@@ -17,13 +17,13 @@ extern NSInteger const MAX_PER_EMPLOYEE; // Set the maximum of quantity per one 
 @property (strong, nonatomic) IBOutlet UIButton *minus;
 @property (strong, nonatomic) IBOutlet UITextField *numOfItems;
 @property (strong, nonatomic) IBOutlet UIPickerView *targetPicker;
-@property (strong, nonatomic) NSNumber *productIndex;
 
+@property (strong, nonatomic) NSNumber *productIndex;
 @property (strong, nonatomic) NSArray *auths;
 
 @property (weak, nonatomic) id<PopUpViewDelegate> delegate;
 
-- (void)removeAnimate;
-- (void)showInView:(UIView *)aView animated:(BOOL)animated withTargets:(NSMutableArray *)targets;
+-(void)removeAnimate;
+-(void)showInView:(UIView *)aView animated:(BOOL)animated withTargets:(NSMutableArray *)targets;
 
 @end

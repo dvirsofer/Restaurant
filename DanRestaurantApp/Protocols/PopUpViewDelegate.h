@@ -11,5 +11,6 @@
 @protocol PopUpViewDelegate <NSObject>
 
 -(void) addToCart:(id) popup;
+-(void) endOrder:(id) popup;
 
 @end

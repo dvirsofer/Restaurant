@@ -239,11 +239,6 @@
     //convert object to data
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:products
                                                        options:NSJSONWritingPrettyPrinted error:&error];
-    //print out the data contents
-    NSString *jsonSummary = [[NSString alloc] initWithData:jsonData
-                                                  encoding:NSUTF8StringEncoding];
-#warning REMOVE THIS
-    NSLog(@"%@", jsonSummary);
     // Save in local database
     [Order saveOrder:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
     
@@ -287,6 +282,34 @@
     
     // Get number of items from Server
     [self.networkManager getGetItemsByTarget:targetId andDate:currentDate];
+}
+
+-(void) endOrder:(id) popup
+{
+    [self addToCart:popup];
+    // Show "are you sure?" alert
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"הזמן"
+                                                    message:@"האם אתה בטוח שברצונך לסיים את ההזמנה?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"לא"
+                                          otherButtonTitles:@"כן", nil];
+    [alert show];
+}
+
+#pragma mark - alert view
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch(buttonIndex) {
+        case 0: //"No" pressed
+            break;
+        case 1: //"Yes" pressed
+            // Save in database
+            
+            // Move to cart view
+            //NSLog(@"PARENT:%@", self.tabViewController);
+            [self performSegueWithIdentifier:@"checkCarSegue" sender: self];
+            break;
+    }
 }
 
 @end

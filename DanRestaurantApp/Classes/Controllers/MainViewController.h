@@ -14,7 +14,6 @@
 
 @interface MainViewController : UIViewController <PopupNetworkManagerDelegate>
 
-//@property (strong, nonatomic) CustomPopUp *popup;
 @property (weak, nonatomic) IBOutlet UIView *placeholderView;
 @property (weak, nonatomic) UIViewController *currentViewController;
 @property (strong, nonatomic) IBOutlet UILabel *employeeNameLbl;

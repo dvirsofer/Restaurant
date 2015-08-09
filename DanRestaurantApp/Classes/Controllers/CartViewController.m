@@ -95,10 +95,20 @@
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
+        Order *orderToDelete = [self.orders objectAtIndex:indexPath.row];
+        // Check if it's low price item
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *order_date = [formatter stringFromDate:orderToDelete.order_date];
+        NSArray *arrayOfOrders = [Order loadOrdersByTarget:orderToDelete.target_id andDate:order_date];
+        if([arrayOfOrders objectAtIndex:0] == orderToDelete && [arrayOfOrders count] > 1) {
+            [Order updateOrderPrice:[arrayOfOrders objectAtIndex:1]];
+        }
         // Remove order from local db
-        [Order removeOrder:[self.orders objectAtIndex:indexPath.row]];
+        [Order removeOrder: orderToDelete];
         // Remove order from orders array - orders which displayed in cart
-        [self.orders removeObjectAtIndex:indexPath.row];
+        self.orders = [Order loadOrders];
+        //[self.orders removeObjectAtIndex:indexPath.row];
         // Remove order from the cart table view
         [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic];
         // Update the new sum after deletion
@@ -111,6 +121,7 @@
                 self.priceLbl.alpha = 1;
             }];
         }];
+        [self.cartTableView reloadData];
     }
     [self.cartTableView endUpdates];
 }
@@ -130,8 +141,27 @@
 }
 
 - (IBAction)finishOrder:(id)sender {
-    // Show alert "are you sure?" - if yes - perform segue and send the items
-    
+    // Show "are you sure?" alert
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"הזמן"
+                                                    message:@"האם אתה בטוח שברצונך לסיים את ההזמנה?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"לא"
+                                          otherButtonTitles:@"כן", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch(buttonIndex) {
+        case 0: //"No" pressed
+            break;
+        case 1: //"Yes" pressed
+            // Save in database
+            
+            // Move to check view
+            [self performSegueWithIdentifier:@"checkSegue" sender: self];
+            break;
+    }
 }
 
 

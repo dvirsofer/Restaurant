@@ -130,8 +130,13 @@ NSInteger const MAX_PER_EMPLOYEE = 2;
     [self.delegate addToCart:self];
 }
 
+/*!
+ @brief "Finish Order" button pressed
+ @discussion Make delegate to finish the order
+ @param  "Finish Order" Button press.
+ */
 - (IBAction)endOrder:(id)sender {
-    
+    [self.delegate endOrder:self];
 }
 
 @end

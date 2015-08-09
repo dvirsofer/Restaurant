@@ -65,6 +65,13 @@
 -(void)historyButtonAction:(id)sender {
     // When clicked history
     NSLog(@"History clicked");
+    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"חזור"
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:nil
+                                                                     action:nil];
+    [[self navigationItem] setBackBarButtonItem:newBackButton];
+    
+    [self performSegueWithIdentifier: @"historySegue" sender: self];
 }
 
 -(void)cartButtonAction:(id)sender {
