@@ -10,6 +10,6 @@
 
 @interface HelpFunction : NSObject
 
--(void)showAlert:(NSString *)alert;
++(void)showAlert:(NSString *)alert;
 
 @end

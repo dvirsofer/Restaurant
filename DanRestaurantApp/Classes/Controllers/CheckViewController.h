@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CheckViewNetworkManager.h"
 
-@interface CheckViewController : UIViewController
+@interface CheckViewController : UIViewController <CheckViewNetworkManagerDelegate>
 @end

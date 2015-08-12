@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 1
 
+// STCollapseTableView
+#define COCOAPODS_POD_AVAILABLE_STCollapseTableView
+#define COCOAPODS_VERSION_MAJOR_STCollapseTableView 0
+#define COCOAPODS_VERSION_MINOR_STCollapseTableView 1
+#define COCOAPODS_VERSION_PATCH_STCollapseTableView 1
+
 // iCarousel
 #define COCOAPODS_POD_AVAILABLE_iCarousel
 #define COCOAPODS_VERSION_MAJOR_iCarousel 1

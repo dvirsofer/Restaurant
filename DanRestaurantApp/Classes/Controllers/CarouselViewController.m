@@ -91,7 +91,7 @@
         
         // Set button tag to save the index
         button.tag = index;
-        [button addTarget:self.tabViewController action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return button;
@@ -106,6 +106,7 @@
     self.popup.productIndex = index;
     // Get authorizations from local db
     self.auths = [Authorization loadAuth];
+#warning MOVE TO MODEL
     // Add "My Self" as target option
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appdelegate managedObjectContext];
@@ -177,10 +178,12 @@
     NSNumber *highPrice = prod.price;
     NSMutableArray *prices;
     
+    // Get number of items of the product in localDB
+    NSNumber *numOfProducts = [Order getNumOfProductById:prodId];
     //******************** Check if there are items in quantity ********************//
-    if(numOfItems > prod.quantity) {
+    if([numOfItems intValue] + [numOfProducts intValue] > [prod.quantity intValue]) {
         // Show error message - out of quantity
-        [[[HelpFunction alloc] init] showAlert:@"אין מספיק מוצרים במלאי"];
+        [HelpFunction showAlert:@"אין מספיק מוצרים במלאי"];
         // Remove the popup
         [self.currentPopup removeAnimate];
         return;
@@ -214,7 +217,7 @@
     // More than maximum items per employee - Show Error Alert
     else if([numOfItemsFromServer intValue] + [orders count] + [numOfItems intValue] > MAX_PER_EMPLOYEE) {
         // Alert - Can't order anymore!
-        [[[HelpFunction alloc] init] showAlert:@"עברת את הגבלת הפריטים ליום"];
+        [HelpFunction showAlert:@"עברת את הגבלת הפריטים ליום"];
         // Remove the popup
         [self.currentPopup removeAnimate];
         return;
@@ -248,7 +251,7 @@
 
 - (void) errorFound:(NSError *) error{
     // Show error messege.
-    [[[HelpFunction alloc] init] showAlert:[error localizedDescription]];
+    [HelpFunction showAlert:[error localizedDescription]];
 }
 
 #pragma mark - PopUpViewDelegate
@@ -275,13 +278,8 @@
         Authorization *auth = (Authorization *)[[Authorization loadAuth] objectAtIndex:selectedTargetIndex-1];
         targetId = auth.target_id;
     }
-    // Get the current date
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *currentDate = [formatter stringFromDate:[NSDate date]];
-    
     // Get number of items from Server
-    [self.networkManager getGetItemsByTarget:targetId andDate:currentDate];
+    [self.networkManager getGetItemsByTarget:targetId];
 }
 
 -(void) endOrder:(id) popup
@@ -290,13 +288,13 @@
     // Show "are you sure?" alert
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"הזמן"
                                                     message:@"האם אתה בטוח שברצונך לסיים את ההזמנה?"
-                                                   delegate:self
+                                                   delegate:self.tabViewController
                                           cancelButtonTitle:@"לא"
                                           otherButtonTitles:@"כן", nil];
     [alert show];
 }
 
-#pragma mark - alert view
+/*#pragma mark - alert view
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch(buttonIndex) {
@@ -306,10 +304,9 @@
             // Save in database
             
             // Move to cart view
-            //NSLog(@"PARENT:%@", self.tabViewController);
-            [self performSegueWithIdentifier:@"checkCarSegue" sender: self];
+            [self performSegueWithIdentifier:@"checkViewSegue" sender: self];
             break;
     }
-}
+}*/
 
 @end

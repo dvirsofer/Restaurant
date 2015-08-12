@@ -107,6 +107,7 @@ NSInteger const MAX_PER_EMPLOYEE = 2;
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
+#warning CHANGE TO ACCESS FROM DELEGATE
     return ((Authorization *)[self.auths objectAtIndex:row]).name;
 }
 

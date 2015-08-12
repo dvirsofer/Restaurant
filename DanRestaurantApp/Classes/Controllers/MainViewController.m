@@ -98,8 +98,11 @@
 }
 
 - (IBAction)pressedSandwichButton:(id)sender {
+    // Set sandwich button bolded (blue)
     [self.sandwichButton setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:0.9] forState:UIControlStateNormal];
+    // Set pasta button unbolded (white)
     [self.pastaButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    // 
     [self performSegueWithIdentifier: @"SandwichSegue" sender: self];
 }
 
@@ -107,26 +110,16 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"prepareForSegue: %@", segue.identifier);
-    CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
     
+    CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"PastaSegue"]) {
         carouselController.customItemsOption = [NSNumber numberWithInt:1];
+        [carouselController setTabViewController:self];
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
         carouselController.customItemsOption = [NSNumber numberWithInt:2];
+        [carouselController setTabViewController:self];
     }
 }
-
-/*-(void) buttonIsPressed:(UIButton *)sender
-{
-    //get item index for button
-    //NSInteger index = [sender tag];
-    self.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
-    [self.popup showInView:self.view animated:YES];
-}*/
-
-/*- (IBAction)makeOrder:(id)sender {
-    [self.popup closePopup:sender];
-}*/
 
 #pragma mark - PopupNetworkManagerDelegate
 - (void) resultsFound:(NSArray *)json {
@@ -138,7 +131,23 @@
 
 - (void) errorFound:(NSError *) error{
     // Show error messege.
-    [[[HelpFunction alloc] init] showAlert:@"Wrong ID or Password"];
+    [HelpFunction showAlert:@"Wrong ID or Password"];
 }
+
+#pragma mark - alert view
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch(buttonIndex) {
+        case 0: //"No" pressed
+            break;
+        case 1: //"Yes" pressed
+            // Save in database
+            
+            // Move to cart view
+            [self performSegueWithIdentifier:@"checkViewSegue" sender: self];
+            break;
+    }
+}
+
 
 @end

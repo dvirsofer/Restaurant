@@ -28,6 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Clean localDB
+    [Employee deleteAllEmployees];
+    
     self.loginManager = [[LoginNetworkManager alloc] init];
     self.loginManager.delegate = self;
     
@@ -48,7 +51,7 @@
 - (void)checkLogin:(id)sender {
     // Basic check if any of the text fields is empty
     if([personal_number.text isEqualToString:@""] || [password.text isEqualToString:@""]) {
-        [[[HelpFunction alloc] init] showAlert:@"הכנס את כל השדות"];
+        [HelpFunction showAlert:@"הכנס את כל השדות"];
         return;
     }
     else {
@@ -75,7 +78,7 @@
     // Stop the loading indicator
     [self.hud hide:YES];
     //show error messege.
-    [[[HelpFunction alloc] init] showAlert:@"מספר אישי או תעודת זהות שגויים"];
+    [HelpFunction showAlert:@"מספר אישי או תעודת זהות שגויים"];
 }
 
 

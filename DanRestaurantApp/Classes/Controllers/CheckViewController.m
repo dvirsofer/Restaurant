@@ -9,6 +9,7 @@
 #import "CheckViewController.h"
 #import "CheckTableViewCell.h"
 #import "Order+CoreData.h"
+#import "HelpFunction.h"
 
 @interface CheckViewController ()
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *priceLbl;
 @property (weak, nonatomic) IBOutlet CheckTableViewCell *checkCell;
 @property (weak, nonatomic) IBOutlet UITableView *checkTableView;
+@property (strong, nonatomic) CheckViewNetworkManager *checkManager; // Network manager
 
 @end
 
@@ -23,14 +25,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Get order from local database
     self.orders = [Order loadOrders];
+    
+    // Save order in server database
+    self.checkManager = [[CheckViewNetworkManager alloc] init];
+    self.checkManager.delegate = self;
+    [self.checkManager saveOrders: self.orders];
+    
+    // Delete order from local database
+    
     self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice] stringValue]];
     [self.checkTableView reloadData];
-    self.navigationItem.hidesBackButton = YES; // Disable back button
+    
+    // Disable back button
+    self.navigationItem.hidesBackButton = YES;
 }
 
 - (IBAction)goBack:(id)sender {
-    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+    //[self.navigationController.navigationController popViewControllerAnimated:YES]; // from Cart
+    [self.navigationController popViewControllerAnimated:YES]; // From
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,6 +99,14 @@
     //cell.foodImage.image = foodPhoto;
     [cell setUserInteractionEnabled:NO];
     return cell;
+}
+
+#pragma mark - CheckViewNetworkManagerDelegate
+- (void) finishSaving {
+    [HelpFunction showAlert:@"הפריטים נשמרו בהצלחה"];
+}
+- (void) errorFound:(NSError *)error {
+    [HelpFunction showAlert:[error localizedDescription]];
 }
 
 

@@ -20,6 +20,6 @@
 @property (nonatomic, strong) id<CarouselViewNetworkManagerDelegate> delegate;
 
 - (void) getAllParams:(NSNumber *)option;
-- (void) getGetItemsByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate;
+- (void) getGetItemsByTarget:(NSNumber *)targetId;
 
 @end

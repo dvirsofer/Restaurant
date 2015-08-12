@@ -42,11 +42,11 @@ static NSString * const GET_ITEMS_BY_TARGET_URL = @"http://webmail.dan.co.il/res
      }];
 }
 
-- (void) getGetItemsByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate {
+- (void) getGetItemsByTarget:(NSNumber *)targetId {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *params = @ {@"target_id" : targetId, @"order_date" : orderDate};
+    NSDictionary *params = @ {@"target_id" : targetId};
     
     [manager POST:GET_ITEMS_BY_TARGET_URL parameters:params
           success:^(AFHTTPRequestOperation *operation, id responseObject)

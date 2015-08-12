@@ -59,7 +59,7 @@
     [fetchRequest setEntity:entity];
     
     // Create the sort descriptors array.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"target_name" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
     
@@ -162,6 +162,20 @@
             orderInLocal.price = [NSNumber numberWithFloat:([orderInLocal.price floatValue] * 0.9)];
         }
     }
+}
+
++ (NSNumber *)getNumOfProductById:(NSNumber *)prodId {
+    // Load all orders
+    NSArray *orders = [self loadOrders];
+    int numOfItems = 0;
+    // Sum all the orders prices
+    for (Order *order in orders) {
+        if(order.prod_id == prodId) {
+            numOfItems++;
+        }
+    }
+    // Convert from int to NSNumber
+    return [NSNumber numberWithInt:numOfItems];
 }
 
 @end

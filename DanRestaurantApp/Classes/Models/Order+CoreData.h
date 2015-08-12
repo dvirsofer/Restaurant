@@ -16,5 +16,6 @@
 + (void)removeOrder:(Order *)order;
 + (NSNumber *)getTotalPrice;
 + (void)updateOrderPrice: (Order *)order;
++ (NSNumber *)getNumOfProductById:(NSNumber *)prodId;
 
 @end
