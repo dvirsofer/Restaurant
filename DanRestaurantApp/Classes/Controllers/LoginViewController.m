@@ -40,6 +40,12 @@
     self.hud.labelText = @"מתחבר אנא המתן";
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    // Clear text views
+    self.personal_number.text = @"";
+    self.password.text = @"";
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -51,7 +57,7 @@
 - (void)checkLogin:(id)sender {
     // Basic check if any of the text fields is empty
     if([personal_number.text isEqualToString:@""] || [password.text isEqualToString:@""]) {
-        [HelpFunction showAlert:@"הכנס את כל השדות"];
+        [HelpFunction showAlert:@"שגיאה" andMessage:@"הכנס את כל השדות"];
         return;
     }
     else {
@@ -78,7 +84,7 @@
     // Stop the loading indicator
     [self.hud hide:YES];
     //show error messege.
-    [HelpFunction showAlert:@"מספר אישי או תעודת זהות שגויים"];
+    [HelpFunction showAlert:@"שגיאה" andMessage:@"מספר אישי או תעודת זהות שגויים"];
 }
 
 

@@ -9,6 +9,7 @@
 #import "CartViewController.h"
 #import "CartTableViewCell.h"
 #import "Order+CoreData.h"
+#import "Employee+CoreData.h"
 
 @interface CartViewController ()
 
@@ -32,9 +33,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.clicked = NO; // Not editable
-    self.orders = [Order loadOrders];
-    self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice] stringValue]];
+    // Not editable table
+    self.clicked = NO;
+    // Get the employee id
+    NSNumber *employee_id = [Employee getSessionId];
+    // Get all orders from localDB
+    self.orders = [Order loadOrders: employee_id];
+    // Set the total price
+    self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice:employee_id] stringValue]];
+    // Refresh the table
     [self.cartTableView reloadData];
     
 }
@@ -97,18 +104,20 @@
     {
         Order *orderToDelete = [self.orders objectAtIndex:indexPath.row];
         // Check if it's low price item
+        // Get the date formatted
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd"];
         NSString *order_date = [formatter stringFromDate:orderToDelete.order_date];
-        NSArray *arrayOfOrders = [Order loadOrdersByTarget:orderToDelete.target_id andDate:order_date];
+        // Get the employee id
+        NSNumber *employee_id = [Employee getSessionId];
+        NSArray *arrayOfOrders = [Order loadOrdersByTarget:orderToDelete.target_id andDate:order_date andEmployeeId:employee_id];
         if([arrayOfOrders objectAtIndex:0] == orderToDelete && [arrayOfOrders count] > 1) {
-            [Order updateOrderPrice:[arrayOfOrders objectAtIndex:1]];
+            [Order updateOrderPrice:[arrayOfOrders objectAtIndex:1] andEmployeeId:employee_id];
         }
         // Remove order from local db
         [Order removeOrder: orderToDelete];
         // Remove order from orders array - orders which displayed in cart
-        self.orders = [Order loadOrders];
-        //[self.orders removeObjectAtIndex:indexPath.row];
+        self.orders = [Order loadOrders:employee_id];
         // Remove order from the cart table view
         [self.cartTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic];
         // Update the new sum after deletion
@@ -116,7 +125,7 @@
         [UIView animateWithDuration:0.4 animations:^{
             self.priceLbl.alpha = 0;
         } completion:^(BOOL finished) {
-            self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice] stringValue]];
+            self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice:employee_id] stringValue]];
             [UIView animateWithDuration:0.4 animations:^{
                 self.priceLbl.alpha = 1;
             }];
@@ -141,6 +150,16 @@
 }
 
 - (IBAction)finishOrder:(id)sender {
+    if([self.priceLbl.text isEqualToString:@"₪0"])
+    {
+        // No items
+        [[[UIAlertView alloc] initWithTitle:@"שגיאה"
+                                    message:@"יש להוסיף מוצרים לעגלה"
+                                   delegate:nil
+                          cancelButtonTitle:@"אישור"
+                          otherButtonTitles:nil] show];
+        return;
+    }
     // Show "are you sure?" alert
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"הזמן"
                                                     message:@"האם אתה בטוח שברצונך לסיים את ההזמנה?"

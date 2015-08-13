@@ -10,11 +10,12 @@
 
 @implementation HelpFunction
 
-+(void)showAlert:(NSString *)alert {
-    [[[UIAlertView alloc] initWithTitle:@"שגיאה"
-                               message:alert delegate:nil
-                     cancelButtonTitle:@"אישור"
-                      otherButtonTitles:nil] show];
++(void)showAlert:(NSString *)title andMessage:(NSString *)message {
+    [[[UIAlertView alloc] initWithTitle:title
+                            message:message
+                            delegate:nil
+                            cancelButtonTitle:@"אישור"
+                            otherButtonTitles:nil] show];
 }
 
 @end

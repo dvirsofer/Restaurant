@@ -65,11 +65,11 @@
 -(void)historyButtonAction:(id)sender {
     // When clicked history
     NSLog(@"History clicked");
-    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"חזור"
+    /*UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"חזור"
                                                                       style:UIBarButtonItemStylePlain
                                                                      target:nil
                                                                      action:nil];
-    [[self navigationItem] setBackBarButtonItem:newBackButton];
+    [self.navigationItem setBackBarButtonItem:newBackButton];*/
     
     [self performSegueWithIdentifier: @"historySegue" sender: self];
 }
@@ -77,17 +77,19 @@
 -(void)cartButtonAction:(id)sender {
     // When clicked cart
     NSLog(@"Cart clicked");
-    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"חזור"
+    /*UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"חזור"
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
-    [[self navigationItem] setBackBarButtonItem:newBackButton];
+    [self.navigationItem setBackBarButtonItem:newBackButton];*/
  
     [self performSegueWithIdentifier: @"cartSegue" sender: self];
 }
 
 - (IBAction)logoutButtonAction:(id)sender {
-    // Delete all coredata
+    // Clean localDB
+    [Employee deleteAllEmployees];
+    
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -111,13 +113,14 @@
 {
     NSLog(@"prepareForSegue: %@", segue.identifier);
     
-    CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"PastaSegue"]) {
+        CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
         carouselController.customItemsOption = [NSNumber numberWithInt:1];
-        [carouselController setTabViewController:self];
+        carouselController.tabViewController = self;
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
+        CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
         carouselController.customItemsOption = [NSNumber numberWithInt:2];
-        [carouselController setTabViewController:self];
+        carouselController.tabViewController = self;
     }
 }
 
@@ -131,7 +134,7 @@
 
 - (void) errorFound:(NSError *) error{
     // Show error messege.
-    [HelpFunction showAlert:@"Wrong ID or Password"];
+    [HelpFunction showAlert:@"שגיאה" andMessage:error.localizedDescription];
 }
 
 #pragma mark - alert view

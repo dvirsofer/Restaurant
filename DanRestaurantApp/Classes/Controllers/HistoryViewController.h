@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "STCollapseTableView.h"
 
-@interface HistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface HistoryViewController : UIViewController
 
 @end

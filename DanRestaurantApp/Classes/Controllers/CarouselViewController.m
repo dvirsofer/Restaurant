@@ -170,7 +170,7 @@
     NSNumber *numOfItems = [NSNumber numberWithInt:[self.currentPopup.numOfItems.text intValue]];
     
     // Get all orders ordered by targetId in the current date from Local Database
-    NSArray *orders = [Order loadOrdersByTarget:targetId andDate:currentDate];
+    NSArray *orders = [Order loadOrdersByTarget:targetId andDate:currentDate andEmployeeId:employeeId];
     
     // LowPrice is the price of the first product
     // highPrice is the price of the other products
@@ -179,11 +179,11 @@
     NSMutableArray *prices;
     
     // Get number of items of the product in localDB
-    NSNumber *numOfProducts = [Order getNumOfProductById:prodId];
+    NSNumber *numOfProducts = [Order getNumOfProductById:prodId andEmployeeId:employeeId];
     //******************** Check if there are items in quantity ********************//
     if([numOfItems intValue] + [numOfProducts intValue] > [prod.quantity intValue]) {
         // Show error message - out of quantity
-        [HelpFunction showAlert:@"אין מספיק מוצרים במלאי"];
+        [HelpFunction showAlert:@"שגיאה" andMessage:@"אין מספיק מוצרים במלאי"];
         // Remove the popup
         [self.currentPopup removeAnimate];
         return;
@@ -217,7 +217,7 @@
     // More than maximum items per employee - Show Error Alert
     else if([numOfItemsFromServer intValue] + [orders count] + [numOfItems intValue] > MAX_PER_EMPLOYEE) {
         // Alert - Can't order anymore!
-        [HelpFunction showAlert:@"עברת את הגבלת הפריטים ליום"];
+        [HelpFunction showAlert:@"שגיאה" andMessage:@"עברת את הגבלת הפריטים ליום"];
         // Remove the popup
         [self.currentPopup removeAnimate];
         return;
@@ -251,7 +251,7 @@
 
 - (void) errorFound:(NSError *) error{
     // Show error messege.
-    [HelpFunction showAlert:[error localizedDescription]];
+    [HelpFunction showAlert:@"שגיאה" andMessage:[error localizedDescription]];
 }
 
 #pragma mark - PopUpViewDelegate
@@ -284,29 +284,15 @@
 
 -(void) endOrder:(id) popup
 {
+    
     [self addToCart:popup];
     // Show "are you sure?" alert
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"הזמן"
-                                                    message:@"האם אתה בטוח שברצונך לסיים את ההזמנה?"
-                                                   delegate:self.tabViewController
-                                          cancelButtonTitle:@"לא"
-                                          otherButtonTitles:@"כן", nil];
+                                                message:@"האם אתה בטוח שברצונך לסיים את ההזמנה?"
+                                                delegate:self.tabViewController
+                                                cancelButtonTitle:@"לא"
+                                                otherButtonTitles:@"כן", nil];
     [alert show];
 }
-
-/*#pragma mark - alert view
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch(buttonIndex) {
-        case 0: //"No" pressed
-            break;
-        case 1: //"Yes" pressed
-            // Save in database
-            
-            // Move to cart view
-            [self performSegueWithIdentifier:@"checkViewSegue" sender: self];
-            break;
-    }
-}*/
 
 @end

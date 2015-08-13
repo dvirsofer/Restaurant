@@ -10,12 +10,12 @@
 
 @interface Order (CoreData)
 + (void)saveOrder:(NSArray *)json;
-+ (NSMutableArray *)loadOrders;
-+ (void)deleteAllOrders;
-+ (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate;
++ (NSMutableArray *)loadOrders:(NSNumber *)employee_id;
++ (void)deleteAllOrders:(NSNumber *)employee_id;
++ (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate andEmployeeId:(NSNumber *)employee_id;
 + (void)removeOrder:(Order *)order;
-+ (NSNumber *)getTotalPrice;
-+ (void)updateOrderPrice: (Order *)order;
-+ (NSNumber *)getNumOfProductById:(NSNumber *)prodId;
++ (NSNumber *)getTotalPrice:(NSNumber *)employee_id;
++ (void)updateOrderPrice: (Order *)order andEmployeeId:(NSNumber *)employee_id;
++ (NSNumber *)getNumOfProductById:(NSNumber *)prodId andEmployeeId:(NSNumber *)employee_id;
 
 @end

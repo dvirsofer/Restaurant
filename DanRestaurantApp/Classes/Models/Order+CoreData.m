@@ -51,7 +51,7 @@
  @discussion Load all orders from local database
  @return Array of all orders
  */
-+ (NSMutableArray *)loadOrders {
++ (NSMutableArray *)loadOrders:(NSNumber *)employee_id {
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     // Create and configure a fetch request with the Book entity.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -59,8 +59,8 @@
     [fetchRequest setEntity:entity];
     
     // Create the sort descriptors array.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"price" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    NSSortDescriptor *sortByTarget = [[NSSortDescriptor alloc] initWithKey:@"target_id" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortByTarget, nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     // Create and initialize the fetch results controller.
@@ -73,17 +73,27 @@
     }
     // Get a mutable array from local data
     NSMutableArray *orders = [NSMutableArray arrayWithArray:[aFetchedResultsController fetchedObjects]];
+    int size = (int)[orders count];
+    Order *order;
+    for (int i = size-1; i >= 0; i--) {
+        // Check if it's the connected user's cart
+        order = [orders objectAtIndex:i];
+        if(![order.employee_id isEqualToNumber:employee_id])
+        {
+            [orders removeObject:order];
+        }
+    }
     return orders;
 }
 
 /*!
  @discussion Delete all orders from local database
  */
-+ (void)deleteAllOrders{
++ (void)deleteAllOrders:(NSNumber *)employee_id {
     AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = appdelegate.managedObjectContext;
     
-    NSMutableArray *orders = [self loadOrders];
+    NSMutableArray *orders = [self loadOrders:employee_id];
     
     for (int i = 0; i < [orders count]; i++) {
         // Get order in index i
@@ -108,8 +118,8 @@
  orderDate- input of the date the order has created
  @return Array of orders
  */
-+ (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate {
-    NSMutableArray *orders = [self loadOrders];
++ (NSArray *)loadOrdersByTarget:(NSNumber *)targetId andDate:(NSString *)orderDate andEmployeeId:(NSNumber *)employee_id {
+    NSMutableArray *orders = [self loadOrders: employee_id];
     int len = (int)[orders count] - 1;
     for (int i = len; i >= 0; i--) {
         // Get order in index i
@@ -142,9 +152,9 @@
  @discussion Get the total price to pay
  @return NSNumber* - total price
  */
-+ (NSNumber *)getTotalPrice {
++ (NSNumber *)getTotalPrice:(NSNumber *)employee_id{
     // Load all orders
-    NSArray *orders = [self loadOrders];
+    NSArray *orders = [self loadOrders:employee_id];
     float totalPrice = 0;
     // Sum all the orders prices
     for (Order *order in orders) {
@@ -154,9 +164,9 @@
     return [NSNumber numberWithFloat:totalPrice];
 }
 
-+ (void)updateOrderPrice: (Order *)order {
++ (void)updateOrderPrice:(Order *)order andEmployeeId:(NSNumber *)employee_id  {
     // Load all orders
-    NSArray *orders = [self loadOrders];
+    NSArray *orders = [self loadOrders:employee_id];
     for (Order *orderInLocal in orders) {
         if(orderInLocal == order) {
             orderInLocal.price = [NSNumber numberWithFloat:([orderInLocal.price floatValue] * 0.9)];
@@ -164,9 +174,9 @@
     }
 }
 
-+ (NSNumber *)getNumOfProductById:(NSNumber *)prodId {
++ (NSNumber *)getNumOfProductById:(NSNumber *)prodId andEmployeeId:(NSNumber *)employee_id {
     // Load all orders
-    NSArray *orders = [self loadOrders];
+    NSArray *orders = [self loadOrders:employee_id];
     int numOfItems = 0;
     // Sum all the orders prices
     for (Order *order in orders) {

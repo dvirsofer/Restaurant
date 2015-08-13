@@ -9,6 +9,7 @@
 #import "CheckViewController.h"
 #import "CheckTableViewCell.h"
 #import "Order+CoreData.h"
+#import "Employee+CoreData.h"
 #import "HelpFunction.h"
 
 @interface CheckViewController ()
@@ -25,26 +26,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Get the employee id
+    NSNumber *employee_id = [Employee getSessionId];
     // Get order from local database
-    self.orders = [Order loadOrders];
-    
+    self.orders = [Order loadOrders:employee_id];
     // Save order in server database
     self.checkManager = [[CheckViewNetworkManager alloc] init];
     self.checkManager.delegate = self;
     [self.checkManager saveOrders: self.orders];
-    
-    // Delete order from local database
-    
-    self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice] stringValue]];
+    // Set the price label
+    self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice:employee_id] stringValue]];
+    // Refresh the table
     [self.checkTableView reloadData];
-    
     // Disable back button
     self.navigationItem.hidesBackButton = YES;
 }
 
 - (IBAction)goBack:(id)sender {
     //[self.navigationController.navigationController popViewControllerAnimated:YES]; // from Cart
-    [self.navigationController popViewControllerAnimated:YES]; // From
+    [self.navigationController popToRootViewControllerAnimated:YES]; // From
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,10 +103,12 @@
 
 #pragma mark - CheckViewNetworkManagerDelegate
 - (void) finishSaving {
-    [HelpFunction showAlert:@"הפריטים נשמרו בהצלחה"];
+    [HelpFunction showAlert:@"ההזמנה בוצעה" andMessage:@"הפריטים נשמרו בהצלחה"];
+    // Delete all orders from localDB
+    [Order deleteAllOrders:[Employee getSessionId]];
 }
 - (void) errorFound:(NSError *)error {
-    [HelpFunction showAlert:[error localizedDescription]];
+    [HelpFunction showAlert:@"שגיאה" andMessage:[error localizedDescription]];
 }
 
 
