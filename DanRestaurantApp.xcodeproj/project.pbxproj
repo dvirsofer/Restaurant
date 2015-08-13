@@ -37,6 +37,8 @@
 		1CCF2A581B403C8B00679D8C /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A571B403C8B00679D8C /* CartTableViewCell.m */; };
 		1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A5D1B403E4600679D8C /* CartViewController.m */; };
 		1CEAEEF01B65338D006DA344 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1CEAEEEF1B65338D006DA344 /* loading.gif */; };
+		1CEAEEF31B78181E006DA344 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAEEF21B78181E006DA344 /* HistoryViewController.m */; };
+		1CEAEEF61B78B3B7006DA344 /* CheckViewNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAEEF51B78B3B7006DA344 /* CheckViewNetworkManager.m */; };
 		443CA1EB1B5AB2AB00B8DA75 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 443CA1EA1B5AB2AB00B8DA75 /* CarouselView.m */; };
 		4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */; };
 		4440AFD81B42EB99001D6E2D /* dan_logo_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */; };
@@ -120,6 +122,10 @@
 		1CCF2A5C1B403E4600679D8C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		1CCF2A5D1B403E4600679D8C /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 		1CEAEEEF1B65338D006DA344 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		1CEAEEF11B78181E006DA344 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		1CEAEEF21B78181E006DA344 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		1CEAEEF41B78B3B7006DA344 /* CheckViewNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckViewNetworkManager.h; path = Network/CheckViewNetworkManager.h; sourceTree = "<group>"; };
+		1CEAEEF51B78B3B7006DA344 /* CheckViewNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckViewNetworkManager.m; path = Network/CheckViewNetworkManager.m; sourceTree = "<group>"; };
 		39506D9C5F357B6147445F2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		443CA1E91B5AB2AB00B8DA75 /* CarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselView.h; sourceTree = "<group>"; };
 		443CA1EA1B5AB2AB00B8DA75 /* CarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselView.m; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 				1C17E8F31B60F3B50065870F /* LoginNetworkManager.m */,
 				1C17E8F41B60F3B50065870F /* PopupNetworkManager.h */,
 				1C17E8F51B60F3B50065870F /* PopupNetworkManager.m */,
+				1CEAEEF41B78B3B7006DA344 /* CheckViewNetworkManager.h */,
+				1CEAEEF51B78B3B7006DA344 /* CheckViewNetworkManager.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -344,6 +352,8 @@
 				44D4B40E1B416D920087CA9C /* MainViewController.m */,
 				1C09ED681B41B7D10099792A /* TabBarSegue.h */,
 				1C09ED691B41B7D10099792A /* TabBarSegue.m */,
+				1CEAEEF11B78181E006DA344 /* HistoryViewController.h */,
+				1CEAEEF21B78181E006DA344 /* HistoryViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -533,6 +543,7 @@
 			files = (
 				1C17E8F81B60F3B50065870F /* PopupNetworkManager.m in Sources */,
 				44D10A001B56ACE900411609 /* Model.xcdatamodeld in Sources */,
+				1CEAEEF31B78181E006DA344 /* HistoryViewController.m in Sources */,
 				1CBB38281B623E370060337B /* Authorization+CoreData.m in Sources */,
 				444B5B7B1B4434AA00CD116D /* CarouselViewController.m in Sources */,
 				1CBB38291B623E370060337B /* Employee.m in Sources */,
@@ -544,6 +555,7 @@
 				1C4BF4991B3E9EF900D99F3B /* AppDelegate.m in Sources */,
 				44D07F3F1B63F6430050AC45 /* Order.m in Sources */,
 				44D4B40F1B416D920087CA9C /* MainViewController.m in Sources */,
+				1CEAEEF61B78B3B7006DA344 /* CheckViewNetworkManager.m in Sources */,
 				1CBB382B1B623E370060337B /* Item.m in Sources */,
 				1CBB382A1B623E370060337B /* Employee+CoreData.m in Sources */,
 				1C17E8F71B60F3B50065870F /* LoginNetworkManager.m in Sources */,
