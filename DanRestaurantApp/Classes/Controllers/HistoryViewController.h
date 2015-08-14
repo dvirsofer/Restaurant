@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "STCollapseTableView.h"
+#import "HistoryNetworkManager.h"
 
-@interface HistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
+@interface HistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, HistoryNetworkManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet STCollapseTableView *tableView;
 @property (nonatomic, strong) NSMutableArray* data;

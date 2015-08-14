@@ -7,6 +7,16 @@
 //
 
 #import "HistoryViewController.h"
+#import "Employee+CoreData.h"
+#import "MBProgressHUD.h"
+#import "HelpFunction.h"
+
+@interface HistoryViewController ()
+
+@property (strong, nonatomic) HistoryNetworkManager *historyManager; // Network manager
+@property (strong, nonatomic) MBProgressHUD *hud;
+
+@end
 
 @implementation HistoryViewController
 
@@ -32,43 +42,18 @@
 
 - (void)setupViewController
 {
-    NSArray* dates = @[@"10/08/2015",
-                       @"11/08/2015",
-                       @"12/08/2015",
-                       @"13/08/2015",
-                       @"14/08/2015",
-                       @"15/08/2015"];
+    // setup the network manager
+    self.historyManager = [[HistoryNetworkManager alloc] init];
+    self.historyManager.delegate = self;
+    // get the session id
+    NSNumber *employeeId = [Employee getSessionId];
+    // get the history data
+    [self.historyManager getHistory:employeeId];
     
-    self.data = [[NSMutableArray alloc] init];
-    for (int i = 0 ; i < [dates count] ; i++)
-    {
-        NSMutableArray* section = [[NSMutableArray alloc] init];
-        for (int j = 0 ; j < 3 ; j++)
-        {
-            [section addObject:[NSString stringWithFormat:@"Cell n°%i", j]];
-        }
-        [self.data addObject:section];
-    }
-    
-    self.headers = [[NSMutableArray alloc] init];
-    for (int i = 0 ; i < [dates count] ; i++)
-    {
-        UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-        
-        UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 20)];
-        [yourLabel setTextColor:[UIColor blackColor]];
-        [yourLabel setBackgroundColor:[UIColor clearColor]];
-        [yourLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
-        [yourLabel setText:[dates objectAtIndex:i]];
-        [header addSubview:yourLabel];
-        if(i % 2) {
-            [header setBackgroundColor:[UIColor blueColor]];
-        } else {
-            [header setBackgroundColor:[UIColor grayColor]];
-        }
-        
-        [self.headers addObject:header];
-    }
+    //setup spinner
+    /*self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.hud];
+    self.hud.labelText = @"מתחבר אנא המתן";*/
 }
 
 - (void)viewDidLoad
@@ -84,7 +69,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.data count];
+    return [self.headers count];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,7 +83,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     
-    NSString* text = [[self.data objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSString* text = [[[self.data objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"description"];
     cell.textLabel.text = text;
     
     return cell;
@@ -111,12 +96,57 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40;
+    return 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     return [self.headers objectAtIndex:section];
+}
+
+#pragma mark - HistoryNetworkManagerDelegate
+- (void) resultsFound:(NSArray *)json {
+    self.headers = [[NSMutableArray alloc] init];
+    self.data = [[NSMutableArray alloc] init];
+    int datesSize = (int)[json count];
+    for (int i = 0; i < datesSize; i++)
+    {
+        // set the date header in index [i]
+        UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        UILabel *dateText = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 20)];
+        [dateText setTextColor:[UIColor blackColor]];
+        [dateText setBackgroundColor:[UIColor clearColor]];
+        [dateText setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+        [dateText setText:[[json objectAtIndex:i] valueForKey:@"Key"]];
+        [header addSubview:dateText];
+        if(i % 2) {
+            [header setBackgroundColor:[UIColor blueColor]];
+        } else {
+            [header setBackgroundColor:[UIColor grayColor]];
+        }
+        [self.headers addObject:header];
+        //[self.headers addObject:[[json objectAtIndex:i] valueForKey:@"Key"]];
+        int ordersSize = (int)[[[json objectAtIndex:i] valueForKey:@"Value"] count];
+        //NSMutableArray *order = [[NSMutableArray alloc] initWithCapacity:ordersSize];
+        for (int j = 0; j < ordersSize; j++)
+        {
+            NSMutableArray *order = [[NSMutableArray alloc] init];
+            // set the order in index [i][j] in the returned json
+            [order addObject:[[[json objectAtIndex:i] valueForKey:@"Value"] objectAtIndex:j]];
+            [self.data addObject:order];
+        }
+    }
+    [self.tableView reloadData];
+    NSLog(@"HEADERS: %lu, DATA: %lu", (unsigned long)[self.headers count], (unsigned long)[[self.data objectAtIndex:1] count]);
+    // Stop the loading indicator
+    //[self.hud hide:YES];
+}
+
+- (void) errorFound:(NSError *) error{
+    // Stop the loading indicator
+    //[self.hud hide:YES];
+    //show error messege.
+    [HelpFunction showAlert:@"שגיאה" andMessage:error.localizedDescription];
 }
 
 

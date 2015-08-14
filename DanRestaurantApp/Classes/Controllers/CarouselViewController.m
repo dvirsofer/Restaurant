@@ -8,7 +8,6 @@
 
 #import "CarouselViewController.h"
 #import "CustomPopUp.h"
-#import "AFHTTPRequestOperationManager.h"
 #import "Product+CoreData.h"
 #import "Authorization+CoreData.h"
 #import "Employee+CoreData.h"

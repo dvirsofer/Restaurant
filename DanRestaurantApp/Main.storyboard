@@ -64,9 +64,11 @@
                                 <constraints>
                                     <constraint firstItem="y1t-fL-utg" firstAttribute="leading" secondItem="ao2-j0-COf" secondAttribute="leading" constant="8" id="Ika-2F-Sjp"/>
                                     <constraint firstAttribute="centerX" secondItem="rYF-Wy-YRS" secondAttribute="centerX" id="Q8T-zk-U0h"/>
+                                    <constraint firstItem="rYF-Wy-YRS" firstAttribute="top" secondItem="Dgy-f4-Poo" secondAttribute="bottom" constant="6" id="U1D-gE-dIq"/>
                                     <constraint firstAttribute="trailing" secondItem="Dgy-f4-Poo" secondAttribute="trailing" constant="8" id="UmQ-rA-jHP"/>
                                     <constraint firstAttribute="bottom" secondItem="rYF-Wy-YRS" secondAttribute="bottom" constant="8" id="XKb-Pf-Uda"/>
                                     <constraint firstItem="Dgy-f4-Poo" firstAttribute="top" secondItem="y1t-fL-utg" secondAttribute="bottom" constant="8" id="hMU-Xv-xJB"/>
+                                    <constraint firstItem="Dgy-f4-Poo" firstAttribute="height" secondItem="y1t-fL-utg" secondAttribute="height" id="ldf-y1-Fbs"/>
                                     <constraint firstItem="Dgy-f4-Poo" firstAttribute="leading" secondItem="ao2-j0-COf" secondAttribute="leading" constant="8" id="nhL-dE-QDm"/>
                                     <constraint firstAttribute="trailing" secondItem="y1t-fL-utg" secondAttribute="trailing" constant="8" id="yq6-Sg-yHg"/>
                                     <constraint firstItem="y1t-fL-utg" firstAttribute="top" secondItem="ao2-j0-COf" secondAttribute="top" constant="8" id="zZe-Bs-cDA"/>
@@ -746,7 +748,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dDP-Ok-jby" customClass="STCollapseTableView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="334"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="k44-B8-rkN" id="iDK-KA-Y3z"/>
@@ -755,6 +757,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dDP-Ok-jby" firstAttribute="width" secondItem="ZXF-FQ-9F4" secondAttribute="width" id="3PN-H7-wMd"/>
+                            <constraint firstAttribute="centerX" secondItem="dDP-Ok-jby" secondAttribute="centerX" id="J76-GC-r9F"/>
+                            <constraint firstItem="dDP-Ok-jby" firstAttribute="height" secondItem="ZXF-FQ-9F4" secondAttribute="height" multiplier="0.8" id="JlM-L2-6pY"/>
+                            <constraint firstItem="dDP-Ok-jby" firstAttribute="top" secondItem="avm-Cp-5de" secondAttribute="bottom" constant="-64" id="c7y-pR-orN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="היסטוריה" id="yFP-38-ilA" userLabel="היסטוריה"/>
                     <connections>

@@ -31,6 +31,7 @@
     // Clean localDB
     [Employee deleteAllEmployees];
     
+    // setup the network manager
     self.loginManager = [[LoginNetworkManager alloc] init];
     self.loginManager.delegate = self;
     
