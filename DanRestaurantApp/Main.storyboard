@@ -185,6 +185,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwk-Yx-pwA">
                                 <rect key="frame" x="0.0" y="512" width="289" height="84"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="סנדוייצ׳ים">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -408,11 +409,11 @@
                         <viewControllerLayoutGuide type="bottom" id="fFI-dB-4PM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rqG-7J-boJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="395"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKT-oy-TfV" userLabel="iCarousel" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="395"/>
+                                <rect key="frame" x="300" y="31" width="0.0" height="300"/>
                                 <connections>
                                     <outlet property="dataSource" destination="1tk-AU-ebL" id="PZE-tZ-68M"/>
                                     <outlet property="delegate" destination="1tk-AU-ebL" id="WE9-Cc-96f"/>
@@ -421,18 +422,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.095459437889999998" green="0.33903458380000001" blue="0.4714664361" alpha="0.88" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="JKT-oy-TfV" firstAttribute="height" secondItem="rqG-7J-boJ" secondAttribute="height" multiplier="0.5" id="QwW-Xi-2k4"/>
                             <constraint firstAttribute="centerX" secondItem="JKT-oy-TfV" secondAttribute="centerX" id="TAl-z6-uH0"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="395"/>
                     <connections>
                         <outlet property="carousel" destination="JKT-oy-TfV" id="2Tz-CQ-Lua"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZW-Dt-BNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1933" y="-792.5"/>
+            <point key="canvasLocation" x="2109" y="-792.5"/>
         </scene>
         <!--קבלה-->
         <scene sceneID="Vld-fZ-NJe">
