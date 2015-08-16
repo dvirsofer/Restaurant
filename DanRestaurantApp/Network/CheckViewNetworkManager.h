@@ -16,7 +16,7 @@
 
 @interface CheckViewNetworkManager : NSObject
 
-@property (nonatomic, strong) id<CheckViewNetworkManagerDelegate> delegate;
+@property (nonatomic, weak) id<CheckViewNetworkManagerDelegate> delegate;
 
 - (void) saveOrders:(NSMutableArray *) orders;
 

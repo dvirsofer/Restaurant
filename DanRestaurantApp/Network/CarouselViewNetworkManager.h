@@ -11,7 +11,7 @@
 @protocol CarouselViewNetworkManagerDelegate <NSObject>
 @required
 - (void) resultsFound:(NSArray *)items;
--(void) itemsFound:(NSNumber *)numOfItemsFromServer;
+- (void) itemsFound:(NSNumber *)numOfItemsFromServer;
 - (void) errorFound:(NSError *)error;
 @end
 
@@ -20,6 +20,6 @@
 @property (nonatomic, strong) id<CarouselViewNetworkManagerDelegate> delegate;
 
 - (void) getAllParams:(NSNumber *)option;
-- (void) getGetItemsByTarget:(NSNumber *)targetId;
+- (void) getItemsByTarget:(NSNumber *)targetId;
 
 @end

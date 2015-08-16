@@ -238,12 +238,11 @@
                               nil];
         [products addObject:info];
     }
-    //convert object to data
+    //convert products to NSData
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:products
                                                        options:NSJSONWritingPrettyPrinted error:&error];
     // Save in local database
     [Order saveOrder:[NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil]];
-    
     // Remove the popup
     [self.currentPopup removeAnimate];
 }
@@ -278,7 +277,7 @@
         targetId = auth.target_id;
     }
     // Get number of items from Server
-    [self.networkManager getGetItemsByTarget:targetId];
+    [self.networkManager getItemsByTarget:targetId];
 }
 
 -(void) endOrder:(id) popup

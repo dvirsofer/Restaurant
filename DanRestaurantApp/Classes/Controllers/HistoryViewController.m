@@ -11,12 +11,17 @@
 #import "MBProgressHUD.h"
 #import "HelpFunction.h"
 #import "CartTableViewCell.h"
+#import "Order+CoreData.h"
 
 @interface HistoryViewController ()
+
+@property (nonatomic, strong) NSMutableArray* data;
+@property (nonatomic, strong) NSMutableArray* headers;
 
 @property (strong, nonatomic) HistoryNetworkManager *historyManager; // Network manager
 @property (strong, nonatomic) MBProgressHUD *hud;
 @property (strong, nonatomic) IBOutlet UILabel *totalPrice;
+@property NSString *selectedDate;
 
 @end
 
@@ -51,26 +56,22 @@
     NSNumber *employeeId = [Employee getSessionId];
     // get the history data
     [self.historyManager getHistory:employeeId];
-    
-    //setup spinner
-    /*self.hud = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:self.hud];
-    self.hud.labelText = @"מתחבר אנא המתן";*/
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // Refresh data
     [self.tableView reloadData];
     // Set exclusive sections
     [self.tableView setExclusiveSections:YES];
-    [self.tableView openSection:0 animated:NO];
+    //[self.tableView openSection:1 animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    // return the number of sections (dates)
     return [self.headers count];
 }
 
@@ -113,7 +114,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.data objectAtIndex:section] count];
+    // Get the selectedDate
+    self.selectedDate = ((UILabel *)[((UIView *)[self.headers objectAtIndex:section]).subviews objectAtIndex:0]).text;
+    // Update the price after clicked a section
+    float price = 0;
+    int rows = (int)[[self.data objectAtIndex:section] count];
+    for(int i=0; i<rows; i++)
+    {
+        price += [[[[[self.data objectAtIndex:section] objectAtIndex:i] valueForKey:@"price"] objectAtIndex:0] floatValue];
+    }
+    // Make fade animation on update price
+    [UIView animateWithDuration:0.4 animations:^{
+        self.totalPrice.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.totalPrice.text = [@"₪" stringByAppendingString:[NSString stringWithFormat:@"%.2f", price]];
+        [UIView animateWithDuration:0.4 animations:^{
+            self.totalPrice.alpha = 1;
+        }];
+    }];
+    return rows;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -158,22 +177,53 @@
         }
         [self.data addObject:ordersArray];
     }
+    // Refresh table
     [self.tableView reloadData];
-    NSLog(@"HEADERS: %@, DATA: %@", self.headers, self.data);
-    // Stop the loading indicator
-    //[self.hud hide:YES];
 }
 
-- (void) errorFound:(NSError *) error{
-    // Stop the loading indicator
-    //[self.hud hide:YES];
+- (void) ordersFound:(NSArray *)json {
+    // Save order in localDB
+    [Order saveOrder:json];
+    // Move to check view controller
+    [self performSegueWithIdentifier:@"checkSegue" sender: self];
+}
+
+- (void) errorFound:(NSError *) error {
     //show error messege.
     [HelpFunction showAlert:@"שגיאה" andMessage:error.localizedDescription];
 }
 
 #pragma mark - Buttons Actions
 - (IBAction)makeOrder:(id)sender {
-    
+    if([self.totalPrice.text isEqualToString:@"₪0"])
+    {
+        // No items
+        [[[UIAlertView alloc] initWithTitle:@"שגיאה"
+                                    message:@"בחר בתאריך להזמנה"
+                                   delegate:nil
+                          cancelButtonTitle:@"אישור"
+                          otherButtonTitles:nil] show];
+        return;
+    }
+    // Show "are you sure?" alert
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"הזמן"
+                                                    message:@"האם אתה בטוח שברצונך לסיים את ההזמנה?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"לא"
+                                          otherButtonTitles:@"כן", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch(buttonIndex) {
+        case 0: //"No" pressed
+            break;
+        case 1: //"Yes" pressed
+            // Get orders json from server by the selected date
+            [self.historyManager getHistoryByDate:self.selectedDate];
+            break;
+    }
 }
 
 

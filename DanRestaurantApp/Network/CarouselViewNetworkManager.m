@@ -42,7 +42,7 @@ static NSString * const GET_ITEMS_BY_TARGET_URL = @"http://webmail.dan.co.il/res
      }];
 }
 
-- (void) getGetItemsByTarget:(NSNumber *)targetId {
+- (void) getItemsByTarget:(NSNumber *)targetId {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];

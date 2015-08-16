@@ -175,8 +175,6 @@
         case 0: //"No" pressed
             break;
         case 1: //"Yes" pressed
-            // Save in database
-            
             // Move to check view
             [self performSegueWithIdentifier:@"checkSegue" sender: self];
             break;
