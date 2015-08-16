@@ -10,11 +10,13 @@
 #import "Employee+CoreData.h"
 #import "MBProgressHUD.h"
 #import "HelpFunction.h"
+#import "CartTableViewCell.h"
 
 @interface HistoryViewController ()
 
 @property (strong, nonatomic) HistoryNetworkManager *historyManager; // Network manager
 @property (strong, nonatomic) MBProgressHUD *hud;
+@property (strong, nonatomic) IBOutlet UILabel *totalPrice;
 
 @end
 
@@ -74,18 +76,38 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"cell";
+    static NSString *cellIdentifier = @"checkTableCell";
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    CartTableViewCell *cell = (CartTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+        cell = [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     
-    NSString* text = [[[self.data objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"description"];
-    cell.textLabel.text = text;
-    
+    // Get all the data to show
+    NSArray* description = [[[self.data objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"description"];
+    NSArray* imgUrl = [[[self.data objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"imgUrl"];
+    NSArray* price = [[[self.data objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"price"];
+    NSArray* targetName = [[[self.data objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] valueForKey:@"targetName"];
+
+    // Configure the cell
+    cell.backgroundColor = [UIColor colorWithRed:24/255.0 green:86/255.0 blue:120/255.0 alpha:0.88];
+    NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
+    [fmt setPositiveFormat:@"0.##"];
+    cell.foodPrice.text = [@"₪" stringByAppendingString:[fmt stringFromNumber:[price objectAtIndex:0]]];
+    cell.foodName.text = [description objectAtIndex:0];
+    cell.foodTarget.text = [targetName objectAtIndex:0];
+    UIImage *foodPhoto = [UIImage imageNamed:@"loading.gif"];
+    cell.foodImage.image = foodPhoto;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[imgUrl objectAtIndex:0]]]];
+        // Now the image will have been loaded and decoded and is ready to rock for the main thread
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [cell.foodImage setImage:foodPhoto];
+        });
+    });
+    //cell.foodImage.image = foodPhoto;
     return cell;
 }
 
@@ -125,19 +147,19 @@
             [header setBackgroundColor:[UIColor grayColor]];
         }
         [self.headers addObject:header];
-        //[self.headers addObject:[[json objectAtIndex:i] valueForKey:@"Key"]];
         int ordersSize = (int)[[[json objectAtIndex:i] valueForKey:@"Value"] count];
-        //NSMutableArray *order = [[NSMutableArray alloc] initWithCapacity:ordersSize];
+        NSMutableArray *ordersArray = [[NSMutableArray alloc] initWithCapacity:ordersSize];
         for (int j = 0; j < ordersSize; j++)
         {
             NSMutableArray *order = [[NSMutableArray alloc] init];
             // set the order in index [i][j] in the returned json
             [order addObject:[[[json objectAtIndex:i] valueForKey:@"Value"] objectAtIndex:j]];
-            [self.data addObject:order];
+            [ordersArray addObject:order];
         }
+        [self.data addObject:ordersArray];
     }
     [self.tableView reloadData];
-    NSLog(@"HEADERS: %lu, DATA: %lu", (unsigned long)[self.headers count], (unsigned long)[[self.data objectAtIndex:1] count]);
+    NSLog(@"HEADERS: %@, DATA: %@", self.headers, self.data);
     // Stop the loading indicator
     //[self.hud hide:YES];
 }
@@ -148,6 +170,12 @@
     //show error messege.
     [HelpFunction showAlert:@"שגיאה" andMessage:error.localizedDescription];
 }
+
+#pragma mark - Buttons Actions
+- (IBAction)makeOrder:(id)sender {
+    
+}
+
 
 
 @end
