@@ -25,6 +25,10 @@
 		1C4BF5171B3EAEC200D99F3B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5161B3EAEC200D99F3B /* LoginViewController.m */; };
 		1C4BF51A1B3EB06E00D99F3B /* CheckTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */; };
 		1C4BF5251B3EF1EF00D99F3B /* CheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BF5241B3EF1EF00D99F3B /* CheckViewController.m */; };
+		1C5549251B80E05000033EF7 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C5549241B80E04F00033EF7 /* plus.png */; };
+		1C5549291B8156D500033EF7 /* food-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C5549281B8156D500033EF7 /* food-background.jpg */; };
+		1C55492B1B81DAFF00033EF7 /* GreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C55492A1B81DAFF00033EF7 /* GreenButton.png */; };
+		1C633D061B81F76C00BAB62A /* popup.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C633D051B81F76C00BAB62A /* popup.png */; };
 		1CAC900F1B56A68200F11F10 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAC900E1B56A68200F11F10 /* CoreData.framework */; };
 		1CBB38271B623E370060337B /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB38161B623E370060337B /* Authorization.m */; };
 		1CBB38281B623E370060337B /* Authorization+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB38181B623E370060337B /* Authorization+CoreData.m */; };
@@ -46,10 +50,8 @@
 		4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */; };
 		444B5B7B1B4434AA00CD116D /* CarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B5B7A1B4434AA00CD116D /* CarouselViewController.m */; };
 		4456FC7F1B405D3E004663F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4456FC7E1B405D3E004663F0 /* Main.storyboard */; };
-		44D00DE51B4D57E600A445F0 /* popup.png in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DE41B4D57E600A445F0 /* popup.png */; };
 		44D00DE71B4D589900A445F0 /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DE61B4D589900A445F0 /* PopupView.xib */; };
 		44D00DED1B4D5BDB00A445F0 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DEC1B4D5BDB00A445F0 /* minus.png */; };
-		44D00DF11B4D5C2500A445F0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 44D00DF01B4D5C2500A445F0 /* plus.png */; };
 		44D00DF41B4D5CFF00A445F0 /* CustomPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */; };
 		44D07F361B63BA180050AC45 /* HelpFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D07F351B63BA180050AC45 /* HelpFunction.m */; };
 		44D07F3F1B63F6430050AC45 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D07F3E1B63F6430050AC45 /* Order.m */; };
@@ -101,6 +103,10 @@
 		1C4BF5191B3EB06E00D99F3B /* CheckTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTableViewCell.m; sourceTree = "<group>"; };
 		1C4BF5231B3EF1EF00D99F3B /* CheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckViewController.h; sourceTree = "<group>"; };
 		1C4BF5241B3EF1EF00D99F3B /* CheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckViewController.m; sourceTree = "<group>"; };
+		1C5549241B80E04F00033EF7 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		1C5549281B8156D500033EF7 /* food-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "food-background.jpg"; sourceTree = "<group>"; };
+		1C55492A1B81DAFF00033EF7 /* GreenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenButton.png; sourceTree = "<group>"; };
+		1C633D051B81F76C00BAB62A /* popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popup.png; sourceTree = "<group>"; };
 		1CAC900E1B56A68200F11F10 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1CAC90101B56A93E00F11F10 /* DanRestaurantApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DanRestaurantApp-Prefix.pch"; path = "DanRestaurantApp/DanRestaurantApp-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		1CBB38151B623E370060337B /* Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authorization.h; sourceTree = "<group>"; };
@@ -138,10 +144,8 @@
 		444B5B791B4434AA00CD116D /* CarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselViewController.h; sourceTree = "<group>"; };
 		444B5B7A1B4434AA00CD116D /* CarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselViewController.m; sourceTree = "<group>"; };
 		4456FC7E1B405D3E004663F0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		44D00DE41B4D57E600A445F0 /* popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popup.png; sourceTree = "<group>"; };
 		44D00DE61B4D589900A445F0 /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
 		44D00DEC1B4D5BDB00A445F0 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
-		44D00DF01B4D5C2500A445F0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		44D00DF21B4D5CFF00A445F0 /* CustomPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopUp.h; sourceTree = "<group>"; };
 		44D00DF31B4D5CFF00A445F0 /* CustomPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopUp.m; sourceTree = "<group>"; };
 		44D07F341B63BA180050AC45 /* HelpFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpFunction.h; sourceTree = "<group>"; };
@@ -206,13 +210,15 @@
 		1C09ED581B41AA5C0099792A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1C633D051B81F76C00BAB62A /* popup.png */,
+				1C55492A1B81DAFF00033EF7 /* GreenButton.png */,
+				1C5549281B8156D500033EF7 /* food-background.jpg */,
+				1C5549241B80E04F00033EF7 /* plus.png */,
 				1CEAEEEF1B65338D006DA344 /* loading.gif */,
 				1CC950D91B453DA100CD201E /* page.png */,
 				1C09ED611B41ADC40099792A /* background@3x.png */,
 				4440AFDA1B42EBFC001D6E2D /* dan_logo_x3.png */,
 				44D00DEC1B4D5BDB00A445F0 /* minus.png */,
-				44D00DF01B4D5C2500A445F0 /* plus.png */,
-				44D00DE41B4D57E600A445F0 /* popup.png */,
 				4440AFD41B42EB99001D6E2D /* dan_logo_x1.png */,
 				4440AFD51B42EB99001D6E2D /* dan_logo_x2.png */,
 				1C09ED621B41ADC40099792A /* button_separator@3x.png */,
@@ -478,7 +484,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D00DE51B4D57E600A445F0 /* popup.png in Resources */,
+				1C633D061B81F76C00BAB62A /* popup.png in Resources */,
 				1C09ED641B41ADC40099792A /* button_separator@3x.png in Resources */,
 				4456FC7F1B405D3E004663F0 /* Main.storyboard in Resources */,
 				1CC950DA1B453DA100CD201E /* page.png in Resources */,
@@ -487,9 +493,11 @@
 				1C4BF4A41B3E9EF900D99F3B /* LaunchScreen.xib in Resources */,
 				4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */,
 				1C09ED5F1B41AA710099792A /* button_separator.png in Resources */,
+				1C5549291B8156D500033EF7 /* food-background.jpg in Resources */,
 				4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */,
 				44D00DED1B4D5BDB00A445F0 /* minus.png in Resources */,
-				44D00DF11B4D5C2500A445F0 /* plus.png in Resources */,
+				1C55492B1B81DAFF00033EF7 /* GreenButton.png in Resources */,
+				1C5549251B80E05000033EF7 /* plus.png in Resources */,
 				1C09ED5E1B41AA710099792A /* background@2x.png in Resources */,
 				1C4BF4A11B3E9EF900D99F3B /* Images.xcassets in Resources */,
 				44D00DE71B4D589900A445F0 /* PopupView.xib in Resources */,

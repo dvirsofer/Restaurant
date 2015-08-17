@@ -18,7 +18,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *personal_number; // Personal number text field
 @property (strong, nonatomic) IBOutlet UITextField *password; // Employee id text field
 @property (strong, nonatomic) LoginNetworkManager *loginManager; // Network manager
-@property (strong, nonatomic) MBProgressHUD *hud;
+@property (strong, nonatomic) MBProgressHUD *hud; // Loading Spinner
 
 @end
 
@@ -38,6 +38,9 @@
     //setup spinner
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
+    
+    // Set the hud to display with a color
+    self.hud.color = [UIColor colorWithRed:0.23 green:0.50 blue:0.82 alpha:0.90];
     self.hud.labelText = @"מתחבר אנא המתן";
 }
 

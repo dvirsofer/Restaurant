@@ -86,4 +86,15 @@
     }
 }
 
++ (instancetype)createMySelfTarget:(NSNumber *)target_id {
+    // Add "My Self" as target option
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appdelegate managedObjectContext];
+    NSEntityDescription  *entity = [NSEntityDescription entityForName:@"Authorization" inManagedObjectContext:context];
+    Authorization *mySelf = (Authorization *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    mySelf.target_id = target_id;
+    mySelf.name = @"עבורי";
+    return mySelf;
+}
+
 @end

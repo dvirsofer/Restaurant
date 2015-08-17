@@ -13,5 +13,6 @@
 + (void)saveAuth:(NSArray *)json;
 + (NSMutableArray *)loadAuth;
 + (void)deleteAllAuth;
++ (instancetype)createMySelfTarget:(NSNumber *)target_id;
 
 @end

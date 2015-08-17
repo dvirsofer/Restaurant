@@ -7,7 +7,6 @@
 //
 
 #import "CustomPopUp.h"
-#import "Authorization+CoreData.h"
 
 @implementation CustomPopUp
 
@@ -82,9 +81,8 @@ NSInteger const MAX_PER_EMPLOYEE = 2;
  @discussion if animated is on - show with animate
  @param  Popup's view and Animated-Y/N.
  */
-- (void)showInView:(UIView *)aView animated:(BOOL)animated withTargets:(NSMutableArray *)targets
+- (void)showInView:(UIView *)aView animated:(BOOL)animated
 {
-    self.auths = [NSArray arrayWithArray: targets];
     [aView addSubview:self.view];
     if (animated) {
         [self showAnimate];
@@ -98,17 +96,24 @@ NSInteger const MAX_PER_EMPLOYEE = 2;
     return 1;
 }
 
+/*!
+ @brief set the height of each object in the picker view
+ */
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 30.0f;
+}
+
 // The number of rows of data
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return [self.auths count];
+    return [self.delegate getCount];
 }
 
-// The data to return for the row and component (column) that's being passed in
+// The data to return for the row and component (column)
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-#warning CHANGE TO ACCESS FROM DELEGATE
-    return ((Authorization *)[self.auths objectAtIndex:row]).name;
+    return [self.delegate getAuthName:row];
 }
 
 #pragma mark - buttons methods

@@ -12,5 +12,7 @@
 
 -(void) addToCart:(id) popup;
 -(void) endOrder:(id) popup;
+-(NSString *) getAuthName:(NSInteger) row;
+-(NSInteger) getCount;
 
 @end

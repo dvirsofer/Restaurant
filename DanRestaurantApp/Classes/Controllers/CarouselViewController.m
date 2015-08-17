@@ -38,11 +38,17 @@
 {
     [super viewDidLoad];
     
+    //self.tabViewController.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    //self.tabViewController.hud.labelText = @"אנא המתן...";
+    //[self.tabViewController.hud show:YES];
+
     //setup spinner
-    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
-    self.hud.labelText = @"אנא המתן...";
+    //self.hud.labelText = @"אנא המתן...";
     [self.hud show:YES];
+    
 
     // Remove all old products from local database
     [Product deleteAllProducts];
@@ -100,26 +106,18 @@
     // Get item index for button
     NSNumber *index = [NSNumber numberWithLong:[sender tag]];
     // Initiate the popup view
-    self.popup = [[CustomPopUp alloc] initWithNibName:@"PopupView" bundle:nil];
+    self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone4PopupView" bundle:nil];
     // Save the clicked item index
     self.popup.productIndex = index;
     // Get authorizations from local db
     self.auths = [Authorization loadAuth];
-#warning MOVE TO MODEL
-    // Add "My Self" as target option
-    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appdelegate managedObjectContext];
-    NSEntityDescription  *entity = [NSEntityDescription entityForName:@"Authorization" inManagedObjectContext:context];
-    Authorization *mySelf = (Authorization *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
-    mySelf.target_id = [Employee getSessionId];
-    mySelf.name = @"עבורי";
-    [self.auths insertObject:mySelf atIndex:0];
+    // Insert "my self" to the authorized array
+    [self.auths insertObject:[Authorization createMySelfTarget:[Employee getSessionId]] atIndex:0];
 
-    // Set the popup delegate to be the controller
+    // Set the popup delegate to be this controller
     self.popup.delegate = self;
-    
     // Show popup
-    [self.popup showInView:self.view animated:YES withTargets: self.auths];
+    [self.popup showInView:self.view animated:YES];
 }
 
 #pragma mark - CarouselViewNetworkManagerDelegate
@@ -291,6 +289,14 @@
                                                 cancelButtonTitle:@"לא"
                                                 otherButtonTitles:@"כן", nil];
     [alert show];
+}
+
+-(NSString *) getAuthName:(NSInteger)row {
+    return ((Authorization *)[self.auths objectAtIndex:row]).name;
+}
+
+-(NSInteger) getCount {
+    return [self.auths count];
 }
 
 @end

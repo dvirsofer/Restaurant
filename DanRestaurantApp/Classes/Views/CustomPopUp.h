@@ -12,6 +12,7 @@
 @interface CustomPopUp : UIViewController
 
 extern NSInteger const MAX_PER_EMPLOYEE; // Set the maximum of quantity per one item
+
 @property (weak, nonatomic) IBOutlet UIView *popUpView;
 @property (strong, nonatomic) IBOutlet UIButton *plus;
 @property (strong, nonatomic) IBOutlet UIButton *minus;
@@ -19,11 +20,9 @@ extern NSInteger const MAX_PER_EMPLOYEE; // Set the maximum of quantity per one 
 @property (strong, nonatomic) IBOutlet UIPickerView *targetPicker;
 
 @property (strong, nonatomic) NSNumber *productIndex;
-@property (strong, nonatomic) NSArray *auths;
-
 @property (weak, nonatomic) id<PopUpViewDelegate> delegate;
 
 -(void)removeAnimate;
--(void)showInView:(UIView *)aView animated:(BOOL)animated withTargets:(NSMutableArray *)targets;
+-(void)showInView:(UIView *)aView animated:(BOOL)animated;
 
 @end
