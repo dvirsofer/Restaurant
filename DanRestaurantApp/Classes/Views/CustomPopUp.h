@@ -3,7 +3,7 @@
 //  DanRestaurantApp
 //
 //  Created by Dvir&Or on 7/8/15.
-//  Copyright (c) 2015 Dvir & Or. All rights reserved.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

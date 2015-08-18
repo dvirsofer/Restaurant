@@ -2,8 +2,8 @@
 //  MainViewController.m
 //  DanRestaurantApp
 //
-//  Created by DvirSofer on 6/29/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 6/29/15.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 
 #import "MainViewController.h"
@@ -23,11 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Init ProgressBar
-    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:self.hud];
-    self.hud.labelText = @"אנא המתן...";
     
     // Add bar buttons - History & Cart
     UIBarButtonItem *historyButton = [[UIBarButtonItem alloc] initWithTitle:@"היסטוריה" style:UIBarButtonItemStylePlain target:self action:@selector(historyButtonAction:)];
@@ -63,39 +58,29 @@
 
 #pragma mark - Actions
 -(void)historyButtonAction:(id)sender {
-    // When clicked history
-    NSLog(@"History clicked");
-    /*UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"חזור"
-                                                                      style:UIBarButtonItemStylePlain
-                                                                     target:nil
-                                                                     action:nil];
-    [self.navigationItem setBackBarButtonItem:newBackButton];*/
-    
+    // When clicked history button
     [self performSegueWithIdentifier: @"historySegue" sender: self];
 }
 
 -(void)cartButtonAction:(id)sender {
-    // When clicked cart
-    NSLog(@"Cart clicked");
-    /*UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"חזור"
-                                     style:UIBarButtonItemStylePlain
-                                    target:nil
-                                    action:nil];
-    [self.navigationItem setBackBarButtonItem:newBackButton];*/
- 
+    // When clicked cart button
     [self performSegueWithIdentifier: @"cartSegue" sender: self];
 }
 
 - (IBAction)logoutButtonAction:(id)sender {
     // Clean localDB
     [Employee deleteAllEmployees];
-    
+    [Authorization deleteAllAuth];
+    // Go back to Login page
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)pressedPastaButton:(id)sender {
+    // Set pasta button bolded (blue)
     [self.pastaButton setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:0.9] forState:UIControlStateNormal];
+    // Set pasta button unbolded (white)
     [self.sandwichButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    // Perform the segue (show the pastas in carousel)
     [self performSegueWithIdentifier: @"PastaSegue" sender: self];
 }
 
@@ -104,30 +89,26 @@
     [self.sandwichButton setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:0.9] forState:UIControlStateNormal];
     // Set pasta button unbolded (white)
     [self.pastaButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    // 
+    // Perform the segue (show the sandwiches in carousel)
     [self performSegueWithIdentifier: @"SandwichSegue" sender: self];
 }
 
 #pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"prepareForSegue: %@", segue.identifier);
-    
     if ([segue.identifier isEqualToString:@"PastaSegue"]) {
         CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
+        // Set the item option 1 - Pastas
         carouselController.customItemsOption = [NSNumber numberWithInt:1];
-        carouselController.tabViewController = self;
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
         CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
+        // Set the item option 2 - Sandwiches
         carouselController.customItemsOption = [NSNumber numberWithInt:2];
-        carouselController.tabViewController = self;
     }
 }
 
 #pragma mark - PopupNetworkManagerDelegate
 - (void) resultsFound:(NSArray *)json {
-#warning// TODO: Remove it !!!!!!!!!!!!!!!!!!!!
-    [Authorization deleteAllAuth];
     // Save authorized targets info in local db
     [Authorization saveAuth: json];
 }
@@ -141,12 +122,10 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch(buttonIndex) {
-        case 0: //"No" pressed
+        case 0: //"No" pressed - do nothing.
             break;
         case 1: //"Yes" pressed
-            // Save in database
-            
-            // Move to cart view
+            // Move to cart view (save the order there)
             [self performSegueWithIdentifier:@"checkViewSegue" sender: self];
             break;
     }

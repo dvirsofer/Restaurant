@@ -2,8 +2,8 @@
 //  Authorization+CoreData.h
 //  DanRestaurantApp
 //
-//  Created by Or on 7/22/15.
-//  Copyright (c) 2015 Or & Dvir. All rights reserved.
+//  Created by Dvir&Or on 7/22/15.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 
 #import "Authorization.h"

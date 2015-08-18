@@ -1,14 +1,14 @@
 //
-//  CartTableViewCell.m
+//  TableViewCell.m
 //  DanRestaurantApp
 //
-//  Created by Or on 6/28/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 8/17/15.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 
-#import "CartTableViewCell.h"
+#import "TableViewCell.h"
 
-@implementation CartTableViewCell
+@implementation TableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
@@ -29,7 +29,7 @@
 }
 
 + (NSString *)reuseIdentifier {
-    return @"cartTableCell";
+    return @"tableCell";
 }
 
 

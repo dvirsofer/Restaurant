@@ -2,12 +2,12 @@
 //  CartViewController.m
 //  DanRestaurantApp
 //
-//  Created by Or on 6/28/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 6/28/15.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 
 #import "CartViewController.h"
-#import "CartTableViewCell.h"
+#import "TableViewCell.h"
 #import "Order+CoreData.h"
 #import "Employee+CoreData.h"
 
@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSMutableArray *orders;
 @property (assign, nonatomic, getter=isClicked) BOOL clicked;
 @property (strong, nonatomic) IBOutlet UILabel *priceLbl;
-@property (weak, nonatomic) IBOutlet CartTableViewCell *cartCell;
+@property (weak, nonatomic) IBOutlet TableViewCell *cartCell;
 @property (weak, nonatomic) IBOutlet UITableView *cartTableView;
 
 -(IBAction)editButtonClicked:(id)sender;
@@ -60,20 +60,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"cartTableCell";
-    
-    CartTableViewCell *cell = (CartTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        [[NSBundle mainBundle] loadNibNamed:@"CartTableViewCell" owner:self options:nil];
-        cell = self.cartCell;
-        self.cartCell = nil;
-    }
-    
-    if (cell == nil) {
-        cell = [[CartTableViewCell alloc]
-                initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:CellIdentifier];
+    // Get the identifier of the cell
+    NSString *cellIdentifier = [TableViewCell reuseIdentifier];
+    TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell)
+    {
+        cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     
     // Configure the cell
@@ -83,10 +75,9 @@
                           objectAtIndex:[indexPath row]]).prod_name;
     cell.foodTarget.text = ((Order *)[self.orders
                             objectAtIndex:[indexPath row]]).target_name;
-    /*UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:
-                                                                               ((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];*/
     UIImage *foodPhoto = [UIImage imageNamed:@"loading.gif"];
     cell.foodImage.image = foodPhoto;
+    // Load the images in async task
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];
         // Now the image will have been loaded and decoded and is ready to rock for the main thread
@@ -94,7 +85,6 @@
             [cell.foodImage setImage:foodPhoto];
         });
     });
-    //cell.foodImage.image = foodPhoto;
     return cell;
 }
 
@@ -102,18 +92,10 @@
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
+        // Get the order in the selected index - that we want to delete
         Order *orderToDelete = [self.orders objectAtIndex:indexPath.row];
-        // Check if it's low price item
-        // Get the date formatted
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *order_date = [formatter stringFromDate:orderToDelete.order_date];
         // Get the employee id
         NSNumber *employee_id = [Employee getSessionId];
-        NSArray *arrayOfOrders = [Order loadOrdersByTarget:orderToDelete.target_id andDate:order_date andEmployeeId:employee_id];
-        if([arrayOfOrders objectAtIndex:0] == orderToDelete && [arrayOfOrders count] > 1) {
-            [Order updateOrderPrice:[arrayOfOrders objectAtIndex:1] andEmployeeId:employee_id];
-        }
         // Remove order from local db
         [Order removeOrder: orderToDelete];
         // Remove order from orders array - orders which displayed in cart

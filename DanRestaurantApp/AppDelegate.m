@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  DanRestaurantApp
 //
-//  Created by Or on 6/27/15.
+//  Created by Dvir&Or on 6/27/15.
 //  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 

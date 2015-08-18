@@ -2,13 +2,12 @@
 //  CarouselViewNetworkManager.m
 //  DanRestaurantApp
 //
-//  Created by Or on 7/16/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 7/16/15.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 
 #import "CarouselViewNetworkManager.h"
 #import "AFHTTPRequestOperationManager.h"
-#import "Item.h"
 
 @implementation CarouselViewNetworkManager
 

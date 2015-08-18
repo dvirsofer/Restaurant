@@ -2,8 +2,8 @@
 //  CarouselViewNetworkManager.h
 //  DanRestaurantApp
 //
-//  Created by Or on 7/16/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 7/16/15.
+//  Copyright (c) Dvir&Or Or. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -2,8 +2,8 @@
 //  LoginViewController.m
 //  DanRestaurantApp
 //
-//  Created by Or on 6/27/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 6/27/15.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //  
 
 #import "LoginViewController.h"
@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 #import "HelpFunction.h"
 #import "Product+CoreData.h"
+#import "Authorization+CoreData.h"
 
 @interface LoginViewController ()
 
@@ -30,6 +31,7 @@
     
     // Clean localDB
     [Employee deleteAllEmployees];
+    [Authorization deleteAllAuth];
     
     // setup the network manager
     self.loginManager = [[LoginNetworkManager alloc] init];

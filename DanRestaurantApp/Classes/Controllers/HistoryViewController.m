@@ -2,15 +2,15 @@
 //  HistoryViewController.m
 //  DanRestaurantApp
 //
-//  Created by Or on 8/9/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 8/9/15.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 
 #import "HistoryViewController.h"
 #import "Employee+CoreData.h"
 #import "MBProgressHUD.h"
 #import "HelpFunction.h"
-#import "CartTableViewCell.h"
+#import "TableViewCell.h"
 #import "Order+CoreData.h"
 
 @interface HistoryViewController ()
@@ -77,13 +77,13 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"checkTableCell";
+    NSString *cellIdentifier = [TableViewCell reuseIdentifier];
     
-    CartTableViewCell *cell = (CartTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell)
     {
-        cell = [[CartTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+        cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     
     // Get all the data to show
@@ -108,7 +108,6 @@
             [cell.foodImage setImage:foodPhoto];
         });
     });
-    //cell.foodImage.image = foodPhoto;
     return cell;
 }
 
@@ -137,7 +136,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+    return 40;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -154,16 +153,18 @@
     {
         // set the date header in index [i]
         UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-        UILabel *dateText = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 20)];
+        UILabel *dateText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
         [dateText setTextColor:[UIColor blackColor]];
         [dateText setBackgroundColor:[UIColor clearColor]];
-        [dateText setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+        [dateText setFont:[UIFont fontWithName: @"Trebuchet MS" size: 17.0f]];
         [dateText setText:[[json objectAtIndex:i] valueForKey:@"Key"]];
+        [dateText setTextAlignment:NSTextAlignmentCenter];
+        [dateText setCenter:header.center];
         [header addSubview:dateText];
         if(i % 2) {
-            [header setBackgroundColor:[UIColor blueColor]];
+            [header setBackgroundColor:[UIColor colorWithRed:255/255.0 green:215/255.0 blue:0/255.0 alpha:1]];
         } else {
-            [header setBackgroundColor:[UIColor grayColor]];
+            [header setBackgroundColor:[UIColor colorWithRed:238/255.0 green:221/255.0 blue:130/255.0 alpha:1]];
         }
         [self.headers addObject:header];
         int ordersSize = (int)[[[json objectAtIndex:i] valueForKey:@"Value"] count];

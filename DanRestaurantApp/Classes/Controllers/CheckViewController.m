@@ -2,12 +2,12 @@
 //  CheckViewController.m
 //  DanRestaurantApp
 //
-//  Created by Or on 6/27/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 6/27/15.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 
 #import "CheckViewController.h"
-#import "CheckTableViewCell.h"
+#import "TableViewCell.h"
 #import "Order+CoreData.h"
 #import "Employee+CoreData.h"
 #import "HelpFunction.h"
@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) NSMutableArray *orders;
 @property (strong, nonatomic) IBOutlet UILabel *priceLbl;
-@property (weak, nonatomic) IBOutlet CheckTableViewCell *checkCell;
+@property (weak, nonatomic) IBOutlet TableViewCell *checkCell;
 @property (weak, nonatomic) IBOutlet UITableView *checkTableView;
 @property (strong, nonatomic) CheckViewNetworkManager *checkManager; // Network manager
 
@@ -62,20 +62,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"checkTableCell";
-    
-    CheckTableViewCell *cell = (CheckTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        [[NSBundle mainBundle] loadNibNamed:@"CheckTableViewCell" owner:self options:nil];
-        cell = self.checkCell;
-        self.checkCell = nil;
-    }
-    
-    if (cell == nil) {
-        cell = [[CheckTableViewCell alloc]
-                initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:CellIdentifier];
+    // Get the identifier of the cell
+    NSString *cellIdentifier = [TableViewCell reuseIdentifier];
+    TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell)
+    {
+        cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     
     // Configure the cell
@@ -85,8 +77,6 @@
                                     objectAtIndex:[indexPath row]]).prod_name;
     cell.foodTarget.text = ((Order *)[self.orders
                                       objectAtIndex:[indexPath row]]).target_name;
-    /*UIImage *foodPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:
-     ((Order *)[self.orders objectAtIndex: [indexPath row]]).img_url]]];*/
     UIImage *foodPhoto = [UIImage imageNamed:@"loading.gif"];
     cell.foodImage.image = foodPhoto;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
@@ -96,14 +86,13 @@
             [cell.foodImage setImage:foodPhoto];
         });
     });
-    //cell.foodImage.image = foodPhoto;
     [cell setUserInteractionEnabled:NO];
     return cell;
 }
 
 #pragma mark - CheckViewNetworkManagerDelegate
 - (void) finishSaving {
-    [HelpFunction showAlert:@"ההזמנה בוצעה" andMessage:@"הפריטים נשמרו בהצלחה"];
+    [HelpFunction showAlert:@"ההזמנה בוצעה" andMessage:@"Bon Appetit!בתאבון"];
     // Delete all orders from localDB
     [Order deleteAllOrders:[Employee getSessionId]];
 }

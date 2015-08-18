@@ -2,8 +2,8 @@
 //  CarouselViewController.m
 //  DanRestaurantApp
 //
-//  Created by DvirSofer on 7/1/15.
-//  Copyright (c) 2015 Or. All rights reserved.
+//  Created by Dvir&Or on 7/1/15.
+//  Copyright (c) 2015 Dvir&Or. All rights reserved.
 //
 
 #import "CarouselViewController.h"
@@ -106,6 +106,7 @@
     // Get item index for button
     NSNumber *index = [NSNumber numberWithLong:[sender tag]];
     // Initiate the popup view
+#warning CHECK WHICH DEVICE IS IT
     self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone4PopupView" bundle:nil];
     // Save the clicked item index
     self.popup.productIndex = index;
