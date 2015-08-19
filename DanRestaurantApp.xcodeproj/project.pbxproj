@@ -39,6 +39,9 @@
 		1CC950DA1B453DA100CD201E /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CC950D91B453DA100CD201E /* page.png */; };
 		1CCF2A5E1B403E4600679D8C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF2A5D1B403E4600679D8C /* CartViewController.m */; };
 		1CE7D69A1B849FD7004076E3 /* iPhone5PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7D6991B849FD6004076E3 /* iPhone5PopupView.xib */; };
+		1CE7D69C1B84A98B004076E3 /* iPhone6PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7D69B1B84A98B004076E3 /* iPhone6PopupView.xib */; };
+		1CE7D69E1B84B65D004076E3 /* iPhone6PlusPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7D69D1B84B65C004076E3 /* iPhone6PlusPopupView.xib */; };
+		1CE7D6A01B84D3BD004076E3 /* iPadPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7D69F1B84D3BC004076E3 /* iPadPopupView.xib */; };
 		1CEAEEF01B65338D006DA344 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1CEAEEEF1B65338D006DA344 /* loading.gif */; };
 		1CEAEEF31B78181E006DA344 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAEEF21B78181E006DA344 /* HistoryViewController.m */; };
 		1CEAEEF61B78B3B7006DA344 /* CheckViewNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAEEF51B78B3B7006DA344 /* CheckViewNetworkManager.m */; };
@@ -123,6 +126,9 @@
 		1CCF2A5C1B403E4600679D8C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		1CCF2A5D1B403E4600679D8C /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 		1CE7D6991B849FD6004076E3 /* iPhone5PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhone5PopupView.xib; sourceTree = "<group>"; };
+		1CE7D69B1B84A98B004076E3 /* iPhone6PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhone6PopupView.xib; sourceTree = "<group>"; };
+		1CE7D69D1B84B65C004076E3 /* iPhone6PlusPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhone6PlusPopupView.xib; sourceTree = "<group>"; };
+		1CE7D69F1B84D3BC004076E3 /* iPadPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPadPopupView.xib; sourceTree = "<group>"; };
 		1CEAEEEF1B65338D006DA344 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		1CEAEEF11B78181E006DA344 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		1CEAEEF21B78181E006DA344 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
@@ -284,6 +290,9 @@
 				1C4BF4B91B3EA40600D99F3B /* Assets */,
 				1C4BF4971B3E9EF900D99F3B /* AppDelegate.h */,
 				1C4BF4981B3E9EF900D99F3B /* AppDelegate.m */,
+				1CE7D69F1B84D3BC004076E3 /* iPadPopupView.xib */,
+				1CE7D69D1B84B65C004076E3 /* iPhone6PlusPopupView.xib */,
+				1CE7D69B1B84A98B004076E3 /* iPhone6PopupView.xib */,
 				1CE7D6991B849FD6004076E3 /* iPhone5PopupView.xib */,
 				44D00DE61B4D589900A445F0 /* iPhone4PopupView.xib */,
 				4456FC7E1B405D3E004663F0 /* Main.storyboard */,
@@ -484,8 +493,11 @@
 				1C09ED5D1B41AA710099792A /* background.png in Resources */,
 				1C4BF4A41B3E9EF900D99F3B /* LaunchScreen.xib in Resources */,
 				4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */,
+				1CE7D6A01B84D3BD004076E3 /* iPadPopupView.xib in Resources */,
 				1C09ED5F1B41AA710099792A /* button_separator.png in Resources */,
+				1CE7D69E1B84B65D004076E3 /* iPhone6PlusPopupView.xib in Resources */,
 				1C5549291B8156D500033EF7 /* food-background.jpg in Resources */,
+				1CE7D69C1B84A98B004076E3 /* iPhone6PopupView.xib in Resources */,
 				4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */,
 				1C633D111B833C1F00BAB62A /* plus.png in Resources */,
 				1C09ED5E1B41AA710099792A /* background@2x.png in Resources */,

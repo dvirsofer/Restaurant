@@ -66,7 +66,6 @@
     [self.tableView reloadData];
     // Set exclusive sections
     [self.tableView setExclusiveSections:YES];
-    //[self.tableView openSection:1 animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -152,8 +151,9 @@
     for (int i = 0; i < datesSize; i++)
     {
         // set the date header in index [i]
-        UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-        UILabel *dateText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 40)];
+        UILabel *dateText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 40)];
         [dateText setTextColor:[UIColor blackColor]];
         [dateText setBackgroundColor:[UIColor clearColor]];
         [dateText setFont:[UIFont fontWithName: @"Trebuchet MS" size: 17.0f]];

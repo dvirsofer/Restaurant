@@ -164,6 +164,9 @@
     return [NSNumber numberWithFloat:totalPrice];
 }
 
+/*!
+ @discussion Update the order price in case of low price
+ */
 + (void)updateOrderPrice:(Order *)order andEmployeeId:(NSNumber *)employee_id  {
     // Load all orders
     NSArray *orders = [self loadOrders:employee_id];
@@ -174,6 +177,9 @@
     }
 }
 
+/*!
+ @discussion Get the number of products by the id
+ */
 + (NSNumber *)getNumOfProductById:(NSNumber *)prodId andEmployeeId:(NSNumber *)employee_id {
     // Load all orders
     NSArray *orders = [self loadOrders:employee_id];

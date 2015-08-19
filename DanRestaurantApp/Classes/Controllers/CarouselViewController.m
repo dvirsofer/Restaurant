@@ -46,7 +46,8 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
-    //self.hud.labelText = @"אנא המתן...";
+    // Set the hud to display with a color
+    self.hud.color = [UIColor colorWithRed:0.23 green:0.50 blue:0.82 alpha:0.90];
     [self.hud show:YES];
     
 
@@ -113,7 +114,7 @@
         if ([UIScreen mainScreen].bounds.size.width > 320) {
             if ([UIScreen mainScreen].scale == 3) {
                 // iPhone6Plus - 5.5" - 414x736
-                self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone6plusPopupView" bundle:nil];
+                self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone6PlusPopupView" bundle:nil];
             } else {
                 // iPhone6 - 4.7" - 375x667
                 self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone6PopupView" bundle:nil];
@@ -301,8 +302,14 @@
 
 -(void) endOrder:(id) popup
 {
-    
     [self addToCart:popup];
+    // Check if has no items in localDB
+    if([[Order loadOrders:[Employee getSessionId]] count] == 0 && [self.currentPopup.numOfItems.text isEqualToString:@"0"]) {
+        // No items
+        // Show "are you sure?" alert
+        [HelpFunction showAlert:@"שגיאה" andMessage:@"אין מוצרים בעגלה"];
+        return;
+    }
     // Show "are you sure?" alert
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"הזמן"
                                                 message:@"האם אתה בטוח שברצונך לסיים את ההזמנה?"

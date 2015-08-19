@@ -11,6 +11,7 @@
 #import "Employee+CoreData.h"
 #import "Authorization+CoreData.h"
 #import "HelpFunction.h"
+#import "Order+CoreData.h"
 
 @interface MainViewController ()
 
@@ -100,10 +101,12 @@
         CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
         // Set the item option 1 - Pastas
         carouselController.customItemsOption = [NSNumber numberWithInt:1];
+        carouselController.tabViewController = self;
     } else if ([segue.identifier isEqualToString:@"SandwichSegue"]) {
         CarouselViewController *carouselController = (CarouselViewController *) segue.destinationViewController;
         // Set the item option 2 - Sandwiches
         carouselController.customItemsOption = [NSNumber numberWithInt:2];
+        carouselController.tabViewController = self;
     }
 }
 
