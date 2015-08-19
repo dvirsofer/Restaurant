@@ -7,9 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPopUp">
             <connections>
-                <outlet property="minus" destination="KRQ-w2-diO" id="RBs-FF-f9d"/>
                 <outlet property="numOfItems" destination="QpL-Ei-ctv" id="ELy-dk-KUu"/>
-                <outlet property="plus" destination="1um-Pz-J5O" id="tpR-jj-RiP"/>
                 <outlet property="popUpView" destination="s5P-pN-yOF" id="x8l-P8-1fz"/>
                 <outlet property="targetPicker" destination="UeQ-5T-o0g" id="wyN-H3-1c6"/>
                 <outlet property="view" destination="CM8-uR-S5f" id="zsK-Qf-2bV"/>

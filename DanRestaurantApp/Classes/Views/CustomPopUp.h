@@ -14,8 +14,6 @@
 extern NSInteger const MAX_PER_EMPLOYEE; // Set the maximum of quantity per one item
 
 @property (weak, nonatomic) IBOutlet UIView *popUpView;
-@property (strong, nonatomic) IBOutlet UIButton *plus;
-@property (strong, nonatomic) IBOutlet UIButton *minus;
 @property (strong, nonatomic) IBOutlet UITextField *numOfItems;
 @property (strong, nonatomic) IBOutlet UIPickerView *targetPicker;
 

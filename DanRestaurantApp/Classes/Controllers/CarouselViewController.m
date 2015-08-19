@@ -106,8 +106,28 @@
     // Get item index for button
     NSNumber *index = [NSNumber numberWithLong:[sender tag]];
     // Initiate the popup view
-#warning CHECK WHICH DEVICE IS IT
-    self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone4PopupView" bundle:nil];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // iPad
+        self.popup = [[CustomPopUp alloc] initWithNibName:@"iPadPopupView" bundle:nil];
+    } else {
+        if ([UIScreen mainScreen].bounds.size.width > 320) {
+            if ([UIScreen mainScreen].scale == 3) {
+                // iPhone6Plus - 5.5" - 414x736
+                self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone6plusPopupView" bundle:nil];
+            } else {
+                // iPhone6 - 4.7" - 375x667
+                self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone6PopupView" bundle:nil];
+            }
+        } else {
+            if([UIScreen mainScreen].bounds.size.height > 480) {
+                // iPhone 5/5s - 4"
+                self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone5PopupView" bundle:nil];
+            } else {
+                // iPhone 4s and earlier - 3.5"
+                self.popup = [[CustomPopUp alloc] initWithNibName:@"iPhone4PopupView" bundle:nil];
+            }
+        }
+    }
     // Save the clicked item index
     self.popup.productIndex = index;
     // Get authorizations from local db
