@@ -62,6 +62,10 @@
 {
     [super viewDidLoad];
 
+    // Do not display empty cells
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    // Set table background color
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:17/255.0 green:59/255.0 blue:87/255.0 alpha:0.8]];
     // Refresh data
     [self.tableView reloadData];
     // Set exclusive sections

@@ -59,6 +59,10 @@
     
     // Set the price label
     self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice:employee_id] stringValue]];
+    // Do not display empty cells
+    self.checkTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    // Set table background color
+    [self.checkTableView setBackgroundColor:[UIColor colorWithRed:17/255.0 green:59/255.0 blue:87/255.0 alpha:0.8]];
     // Refresh the table
     [self.checkTableView reloadData];
     // Disable back button
