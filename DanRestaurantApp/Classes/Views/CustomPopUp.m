@@ -123,7 +123,6 @@ NSInteger const MAX_PER_EMPLOYEE = 2;
  @param  Button press.
  */
 - (IBAction)closePopup:(id)sender {
-    //[self.delegate removeTargets];
     [self removeAnimate];
 }
 

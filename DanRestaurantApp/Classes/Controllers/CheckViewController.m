@@ -11,6 +11,7 @@
 #import "Order+CoreData.h"
 #import "Employee+CoreData.h"
 #import "HelpFunction.h"
+#import "MBProgressHUD.h"
 
 @interface CheckViewController ()
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet TableViewCell *checkCell;
 @property (weak, nonatomic) IBOutlet UITableView *checkTableView;
 @property (strong, nonatomic) CheckViewNetworkManager *checkManager; // Network manager
+@property (strong, nonatomic) MBProgressHUD *hud; // Loading Spinner
 
 @end
 
@@ -26,14 +28,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //setup spinner
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.hud];
+    // Set the hud to display with a color
+    self.hud.color = [UIColor colorWithRed:0.23 green:0.50 blue:0.82 alpha:0.90];
+    // Set the hud text
+    self.hud.labelText = @"אנא המתן";
+    
+    // Start spinner
+    [self.hud show:YES];
+    
     // Get the employee id
     NSNumber *employee_id = [Employee getSessionId];
     // Get order from local database
     self.orders = [Order loadOrders:employee_id];
-    // Save order in server database
+    
+    // Save order in server's database
     self.checkManager = [[CheckViewNetworkManager alloc] init];
     self.checkManager.delegate = self;
     [self.checkManager saveOrders: self.orders];
+    
     // Set the price label
     self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice:employee_id] stringValue]];
     // Refresh the table
@@ -92,6 +108,9 @@
 
 #pragma mark - CheckViewNetworkManagerDelegate
 - (void) finishSaving {
+    // Stop spinner
+    [self.hud hide:YES];
+    
     [HelpFunction showAlert:@"ההזמנה בוצעה" andMessage:@"Bon Appetit!בתאבון"];
     // Delete all orders from localDB
     [Order deleteAllOrders:[Employee getSessionId]];

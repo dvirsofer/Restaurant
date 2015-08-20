@@ -40,9 +40,9 @@
     //setup spinner
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
-    
     // Set the hud to display with a color
     self.hud.color = [UIColor colorWithRed:0.23 green:0.50 blue:0.82 alpha:0.90];
+    // Set the hud text
     self.hud.labelText = @"מתחבר אנא המתן";
 }
 

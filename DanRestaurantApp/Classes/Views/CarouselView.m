@@ -10,7 +10,7 @@
 
 @implementation CarouselView
 
--(instancetype)initWithItem: (Product *) product {
+-(instancetype)initWithItem: (Product *) product andVC:(CarouselViewController *)vc andIndex:(NSInteger)index {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         // iPad
         //Create the photo to display on carousel
@@ -118,11 +118,22 @@
                 NSString *ImageURL = product.img_url;
                 NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
                 UIImage *image = [UIImage imageWithData:imageData];
+                // Make rounded button to add
+                CarouselView *cv = [UIButton buttonWithType:UIButtonTypeCustom];
+                [cv setBackgroundImage:image forState:UIControlStateNormal];
+                [cv setBackgroundColor:[UIColor clearColor]];
+                [cv setFrame:CGRectMake(0, 0, 300, 300)];
+                cv.imageView.contentMode = UIViewContentModeCenter;
+                cv.layer.cornerRadius = 20;
+                cv.layer.borderWidth = 1;
+                cv.layer.borderColor = [UIColor blackColor].CGColor;
+                cv.clipsToBounds = YES;
+                cv.tag = index;
+                [cv addTarget:vc action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
+                
                 self = [UIButton buttonWithType:UIButtonTypeCustom];
-                [self setBackgroundImage:image forState:UIControlStateNormal];
-                [self setBackgroundColor:[UIColor clearColor]];
                 [self setFrame:CGRectMake(0, 0, 300, 300)];
-                self.imageView.contentMode = UIViewContentModeCenter;
+                [self addSubview:cv];
                 
                 //Create Description label
                 UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 235, 300, 150)];
@@ -264,6 +275,11 @@
             }
         }
     }
+
 }
+
+-(void) buttonIsPressed:(UIButton *)sender {}
+
+
 
 @end

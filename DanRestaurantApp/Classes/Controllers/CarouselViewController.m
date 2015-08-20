@@ -38,13 +38,8 @@
 {
     [super viewDidLoad];
     
-    //self.tabViewController.hud = [[MBProgressHUD alloc] initWithView:self.view];
-    //self.tabViewController.hud.labelText = @"אנא המתן...";
-    //[self.tabViewController.hud show:YES];
-
     //setup spinner
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
     // Set the hud to display with a color
     self.hud.color = [UIColor colorWithRed:0.23 green:0.50 blue:0.82 alpha:0.90];
@@ -90,10 +85,8 @@
     //create new view if no view is available for recycling
     if(view == nil)
     {
-        button = (CarouselView *)view;
-        
         // Create custom carousel view (which is clickable)
-        button = [[CarouselView alloc] initWithItem:[self.items objectAtIndex:index]];
+        button = [[CarouselView alloc] initWithItem:[self.items objectAtIndex:index] andVC:self andIndex:index];
         
         // Set button tag to save the index
         button.tag = index;
@@ -154,7 +147,6 @@
 
 -(void) itemsFound:(NSNumber *)numOfItemsFromServer {
     // Create the array of the order //
-    
     // The id of employee who makes the order
     NSNumber *employeeId = [Employee getSessionId];
     // Get the target name + id
@@ -276,7 +268,6 @@
 - (void) addToCart:(id) popup
 {
     self.currentPopup = (CustomPopUp *)popup;
-    
     NSNumber *numOfItems = [NSNumber numberWithInt:[self.currentPopup.numOfItems.text intValue]];
     // No items in popup - Do nothing
     if([numOfItems intValue] == 0) {

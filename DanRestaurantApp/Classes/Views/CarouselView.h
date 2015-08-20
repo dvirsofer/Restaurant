@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Product.h"
+#import "CarouselViewController.h"
 
 @interface CarouselView : UIButton
 
--(instancetype)initWithItem: (Product *) product;
+-(instancetype)initWithItem: (Product *) product andVC:(CarouselViewController *)vc andIndex:(NSInteger)index;
 
 @end
