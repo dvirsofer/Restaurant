@@ -12,6 +12,6 @@
 
 @interface CarouselView : UIButton
 
--(instancetype)initWithItem: (Product *) product andVC:(CarouselViewController *)vc andIndex:(NSInteger)index;
+-(instancetype)initWithItem: (Product *) product andVC:(CarouselViewController *)delegate andIndex:(NSInteger)index;
 
 @end

@@ -24,11 +24,11 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.015686275440000001" green="0.33333334329999997" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="dan_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ljO-QC-has">
-                                <rect key="frame" x="271" y="76" width="58" height="36"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="dan_logo_splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="ljO-QC-has">
+                                <rect key="frame" x="250" y="76" width="100" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="3Z2-wi-bOO"/>
-                                    <constraint firstAttribute="width" constant="58" id="OcQ-Gx-Ve9"/>
+                                    <constraint firstAttribute="height" constant="80" id="3Z2-wi-bOO"/>
+                                    <constraint firstAttribute="width" constant="100" id="OcQ-Gx-Ve9"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ao2-j0-COf">
@@ -86,7 +86,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.08235294118" green="0.28627450980000002" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="ao2-j0-COf" secondAttribute="centerX" id="6GV-GI-xkd"/>
                             <constraint firstItem="AYL-9L-fiX" firstAttribute="trailing" secondItem="56V-JN-edo" secondAttribute="trailingMargin" id="CEb-nk-KAJ"/>
@@ -586,7 +586,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.095459437889999998" green="0.33903458380000001" blue="0.4714664361" alpha="0.88" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.23137254901960785" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Xqv-aA-XOS" firstAttribute="top" secondItem="bkm-1A-dzR" secondAttribute="bottom" constant="8" id="1Ht-oh-BDp"/>
                             <constraint firstItem="bkm-1A-dzR" firstAttribute="leading" secondItem="LSj-YU-9Uo" secondAttribute="leadingMargin" id="1oO-gA-mni"/>
@@ -802,11 +802,11 @@
     <resources>
         <image name="background.png" width="748" height="88"/>
         <image name="button_separator.png" width="6" height="81"/>
-        <image name="dan_logo" width="58" height="36"/>
+        <image name="dan_logo_splash.png" width="1800" height="1200"/>
         <image name="food-background.jpg" width="900" height="900"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CCH-wS-7gk"/>
-        <segue reference="SJL-fZ-fgQ"/>
+        <segue reference="Acm-Ee-ZW6"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -42,6 +42,8 @@
 		1CE7D69C1B84A98B004076E3 /* iPhone6PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7D69B1B84A98B004076E3 /* iPhone6PopupView.xib */; };
 		1CE7D69E1B84B65D004076E3 /* iPhone6PlusPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7D69D1B84B65C004076E3 /* iPhone6PlusPopupView.xib */; };
 		1CE7D6A01B84D3BD004076E3 /* iPadPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7D69F1B84D3BC004076E3 /* iPadPopupView.xib */; };
+		1CE7D6A31B85F80D004076E3 /* background_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7D6A11B85F80D004076E3 /* background_splash.png */; };
+		1CE7D6A41B85F80D004076E3 /* dan_logo_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7D6A21B85F80D004076E3 /* dan_logo_splash.png */; };
 		1CEAEEF01B65338D006DA344 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1CEAEEEF1B65338D006DA344 /* loading.gif */; };
 		1CEAEEF31B78181E006DA344 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAEEF21B78181E006DA344 /* HistoryViewController.m */; };
 		1CEAEEF61B78B3B7006DA344 /* CheckViewNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAEEF51B78B3B7006DA344 /* CheckViewNetworkManager.m */; };
@@ -129,6 +131,8 @@
 		1CE7D69B1B84A98B004076E3 /* iPhone6PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhone6PopupView.xib; sourceTree = "<group>"; };
 		1CE7D69D1B84B65C004076E3 /* iPhone6PlusPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPhone6PlusPopupView.xib; sourceTree = "<group>"; };
 		1CE7D69F1B84D3BC004076E3 /* iPadPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPadPopupView.xib; sourceTree = "<group>"; };
+		1CE7D6A11B85F80D004076E3 /* background_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_splash.png; sourceTree = "<group>"; };
+		1CE7D6A21B85F80D004076E3 /* dan_logo_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dan_logo_splash.png; sourceTree = "<group>"; };
 		1CEAEEEF1B65338D006DA344 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		1CEAEEF11B78181E006DA344 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		1CEAEEF21B78181E006DA344 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 				1C633D0E1B833C1F00BAB62A /* minus.png */,
 				1C633D0F1B833C1F00BAB62A /* plus.png */,
 				1C633D051B81F76C00BAB62A /* popup.png */,
+				1CE7D6A11B85F80D004076E3 /* background_splash.png */,
+				1CE7D6A21B85F80D004076E3 /* dan_logo_splash.png */,
 				1C5549281B8156D500033EF7 /* food-background.jpg */,
 				1CEAEEEF1B65338D006DA344 /* loading.gif */,
 				1CC950D91B453DA100CD201E /* page.png */,
@@ -495,12 +501,14 @@
 				4440AFD71B42EB99001D6E2D /* dan_logo_x1.png in Resources */,
 				1CE7D6A01B84D3BD004076E3 /* iPadPopupView.xib in Resources */,
 				1C09ED5F1B41AA710099792A /* button_separator.png in Resources */,
+				1CE7D6A41B85F80D004076E3 /* dan_logo_splash.png in Resources */,
 				1CE7D69E1B84B65D004076E3 /* iPhone6PlusPopupView.xib in Resources */,
 				1C5549291B8156D500033EF7 /* food-background.jpg in Resources */,
 				1CE7D69C1B84A98B004076E3 /* iPhone6PopupView.xib in Resources */,
 				4440AFDB1B42EBFC001D6E2D /* dan_logo_x3.png in Resources */,
 				1C633D111B833C1F00BAB62A /* plus.png in Resources */,
 				1C09ED5E1B41AA710099792A /* background@2x.png in Resources */,
+				1CE7D6A31B85F80D004076E3 /* background_splash.png in Resources */,
 				1C4BF4A11B3E9EF900D99F3B /* Images.xcassets in Resources */,
 				44D00DE71B4D589900A445F0 /* iPhone4PopupView.xib in Resources */,
 				1CEAEEF01B65338D006DA344 /* loading.gif in Resources */,

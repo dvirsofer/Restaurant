@@ -294,7 +294,7 @@
 -(void) endOrder:(id) popup
 {
     [self addToCart:popup];
-    // Check if has no items in localDB
+    // Check if has no items to finish the order
     if([[Order loadOrders:[Employee getSessionId]] count] == 0 && [self.currentPopup.numOfItems.text isEqualToString:@"0"]) {
         // No items
         // Show "are you sure?" alert

@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Not editable table
     self.clicked = NO;
     // Get the employee id
@@ -41,6 +42,10 @@
     self.orders = [Order loadOrders: employee_id];
     // Set the total price
     self.priceLbl.text = [@"₪" stringByAppendingString:[[Order getTotalPrice:employee_id] stringValue]];
+    // Do not display empty cells
+    self.cartTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    // Set table background color
+    [self.cartTableView setBackgroundColor:[UIColor colorWithRed:17/255.0 green:59/255.0 blue:87/255.0 alpha:0.8]];
     // Refresh the table
     [self.cartTableView reloadData];
     

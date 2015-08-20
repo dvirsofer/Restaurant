@@ -29,6 +29,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Get the employee id
+    NSNumber *employee_id = [Employee getSessionId];
+    // Get order from local database
+    self.orders = [Order loadOrders:employee_id];
+    // Check if there are orders to save
+    if([self.orders count] == 0) {
+        // No orders - Go back to main screen
+        [HelpFunction showAlert:@"ההזמנה בוטלה" andMessage:@"אין מוצרים בעגלה"];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        return;
+    }
+    
     //setup spinner
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
@@ -36,14 +48,9 @@
     self.hud.color = [UIColor colorWithRed:0.23 green:0.50 blue:0.82 alpha:0.90];
     // Set the hud text
     self.hud.labelText = @"אנא המתן";
-    
     // Start spinner
     [self.hud show:YES];
-    
-    // Get the employee id
-    NSNumber *employee_id = [Employee getSessionId];
-    // Get order from local database
-    self.orders = [Order loadOrders:employee_id];
+
     
     // Save order in server's database
     self.checkManager = [[CheckViewNetworkManager alloc] init];
@@ -59,8 +66,7 @@
 }
 
 - (IBAction)goBack:(id)sender {
-    //[self.navigationController.navigationController popViewControllerAnimated:YES]; // from Cart
-    [self.navigationController popToRootViewControllerAnimated:YES]; // From
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

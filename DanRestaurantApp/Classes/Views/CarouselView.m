@@ -8,20 +8,33 @@
 
 #import "CarouselView.h"
 
+
 @implementation CarouselView
 
--(instancetype)initWithItem: (Product *) product andVC:(CarouselViewController *)vc andIndex:(NSInteger)index {
+#pragma GCC diagnostic ignored "-Wundeclared-selector" // the compiler doesn't recognize the selector - which being recognized only in runtime
+-(instancetype)initWithItem: (Product *) product andVC:(CarouselViewController *)delegate andIndex:(NSInteger)index {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         // iPad
         //Create the photo to display on carousel
         NSString *ImageURL = product.img_url;
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
         UIImage *image = [UIImage imageWithData:imageData];
+        // Make rounded button with image to add to the CarouselView
+        CarouselView *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [imageButton setBackgroundImage:image forState:UIControlStateNormal];
+        [imageButton setBackgroundColor:[UIColor clearColor]];
+        [imageButton setFrame:CGRectMake(0, 0, 500, 500)];
+        imageButton.imageView.contentMode = UIViewContentModeCenter;
+        imageButton.layer.cornerRadius = 20;
+        imageButton.layer.borderWidth = 1;
+        imageButton.layer.borderColor = [UIColor blackColor].CGColor;
+        imageButton.clipsToBounds = YES;
+        imageButton.tag = index;
+        [imageButton addTarget:delegate action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
         self = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self setBackgroundImage:image forState:UIControlStateNormal];
-        [self setBackgroundColor:[UIColor clearColor]];
         [self setFrame:CGRectMake(0, 0, 500, 500)];
-        self.imageView.contentMode = UIViewContentModeCenter;
+        [self addSubview:imageButton];
         
         //Create Description label
         UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 400, 500, 250)];
@@ -69,11 +82,22 @@
                 NSString *ImageURL = product.img_url;
                 NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
                 UIImage *image = [UIImage imageWithData:imageData];
+                // Make rounded button with image to add to the CarouselView
+                CarouselView *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                [imageButton setBackgroundImage:image forState:UIControlStateNormal];
+                [imageButton setBackgroundColor:[UIColor clearColor]];
+                [imageButton setFrame:CGRectMake(0, 0, 320, 320)];
+                imageButton.imageView.contentMode = UIViewContentModeCenter;
+                imageButton.layer.cornerRadius = 20;
+                imageButton.layer.borderWidth = 1;
+                imageButton.layer.borderColor = [UIColor blackColor].CGColor;
+                imageButton.clipsToBounds = YES;
+                imageButton.tag = index;
+                [imageButton addTarget:delegate action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
+                
                 self = [UIButton buttonWithType:UIButtonTypeCustom];
-                [self setBackgroundImage:image forState:UIControlStateNormal];
-                [self setBackgroundColor:[UIColor clearColor]];
                 [self setFrame:CGRectMake(0, 0, 320, 320)];
-                self.imageView.contentMode = UIViewContentModeCenter;
+                [self addSubview:imageButton];
                 
                 //Create Description label
                 UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 255, 320, 160)];
@@ -118,22 +142,22 @@
                 NSString *ImageURL = product.img_url;
                 NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
                 UIImage *image = [UIImage imageWithData:imageData];
-                // Make rounded button to add
-                CarouselView *cv = [UIButton buttonWithType:UIButtonTypeCustom];
-                [cv setBackgroundImage:image forState:UIControlStateNormal];
-                [cv setBackgroundColor:[UIColor clearColor]];
-                [cv setFrame:CGRectMake(0, 0, 300, 300)];
-                cv.imageView.contentMode = UIViewContentModeCenter;
-                cv.layer.cornerRadius = 20;
-                cv.layer.borderWidth = 1;
-                cv.layer.borderColor = [UIColor blackColor].CGColor;
-                cv.clipsToBounds = YES;
-                cv.tag = index;
-                [cv addTarget:vc action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
+                // Make rounded button with image to add to the CarouselView
+                CarouselView *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                [imageButton setBackgroundImage:image forState:UIControlStateNormal];
+                [imageButton setBackgroundColor:[UIColor clearColor]];
+                [imageButton setFrame:CGRectMake(0, 0, 300, 300)];
+                imageButton.imageView.contentMode = UIViewContentModeCenter;
+                imageButton.layer.cornerRadius = 20;
+                imageButton.layer.borderWidth = 1;
+                imageButton.layer.borderColor = [UIColor blackColor].CGColor;
+                imageButton.clipsToBounds = YES;
+                imageButton.tag = index;
+                [imageButton addTarget:delegate action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
                 
                 self = [UIButton buttonWithType:UIButtonTypeCustom];
                 [self setFrame:CGRectMake(0, 0, 300, 300)];
-                [self addSubview:cv];
+                [self addSubview:imageButton];
                 
                 //Create Description label
                 UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 235, 300, 150)];
@@ -180,11 +204,22 @@
                 NSString *ImageURL = product.img_url;
                 NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
                 UIImage *image = [UIImage imageWithData:imageData];
+                // Make rounded button with image to add to the CarouselView
+                CarouselView *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                [imageButton setBackgroundImage:image forState:UIControlStateNormal];
+                [imageButton setBackgroundColor:[UIColor clearColor]];
+                [imageButton setFrame:CGRectMake(0, 0, 250, 250)];
+                imageButton.imageView.contentMode = UIViewContentModeCenter;
+                imageButton.layer.cornerRadius = 20;
+                imageButton.layer.borderWidth = 1;
+                imageButton.layer.borderColor = [UIColor blackColor].CGColor;
+                imageButton.clipsToBounds = YES;
+                imageButton.tag = index;
+                [imageButton addTarget:delegate action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
+                
                 self = [UIButton buttonWithType:UIButtonTypeCustom];
-                [self setBackgroundImage:image forState:UIControlStateNormal];
-                [self setBackgroundColor:[UIColor clearColor]];
                 [self setFrame:CGRectMake(0, 0, 250, 250)];
-                self.imageView.contentMode = UIViewContentModeCenter;
+                [self addSubview:imageButton];
                 
                 //Create Description label
                 UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 195, 250, 125)];
@@ -229,11 +264,22 @@
                 NSString *ImageURL = product.img_url;
                 NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
                 UIImage *image = [UIImage imageWithData:imageData];
+                // Make rounded button with image to add to the CarouselView
+                CarouselView *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                [imageButton setBackgroundImage:image forState:UIControlStateNormal];
+                [imageButton setBackgroundColor:[UIColor clearColor]];
+                [imageButton setFrame:CGRectMake(0, 0, 180, 180)];
+                imageButton.imageView.contentMode = UIViewContentModeCenter;
+                imageButton.layer.cornerRadius = 20;
+                imageButton.layer.borderWidth = 1;
+                imageButton.layer.borderColor = [UIColor blackColor].CGColor;
+                imageButton.clipsToBounds = YES;
+                imageButton.tag = index;
+                [imageButton addTarget:delegate action:@selector(buttonIsPressed:) forControlEvents:UIControlEventTouchUpInside];
+                
                 self = [UIButton buttonWithType:UIButtonTypeCustom];
-                [self setBackgroundImage:image forState:UIControlStateNormal];
-                [self setBackgroundColor:[UIColor clearColor]];
                 [self setFrame:CGRectMake(0, 0, 180, 180)];
-                self.imageView.contentMode = UIViewContentModeCenter;
+                [self addSubview:imageButton];
                 
                 //Create Description label
                 UILabel *description = [[UILabel alloc]initWithFrame:CGRectMake(0, 140, 180, 90)];
@@ -277,9 +323,5 @@
     }
 
 }
-
--(void) buttonIsPressed:(UIButton *)sender {}
-
-
 
 @end
